@@ -5,9 +5,16 @@ import { FormGroup, FormControl } from 'react-bootstrap';
 const FormAlternative = (props) => {
   const { field, form, type, icon, placeholder } = props;
   const { name, value, onChange, onBlur } = field;
+  const { errors, touched } = form;
+  const showError = errors[name] && touched[name];
 
   return (
     <FormGroup className="mb-3">
+      {showError && (
+        <p className="mb-1 text-12 text-danger weight-600">
+          {placeholder} - {errors[name]}
+        </p>
+      )}
       <div className="input-group input-group-merge input-group-alternative">
         <div className="input-group-prepend">
           <span className="input-group-text">
@@ -38,6 +45,10 @@ FormAlternative.propTypes = {
     onChange: PropTypes.func,
     onBlur: PropTypes.func,
   }),
+  form: PropTypes.shape({
+    errors: PropTypes.shape({}),
+    touched: PropTypes.shape({}),
+  }),
 };
 
 FormAlternative.defaultProps = {
@@ -47,6 +58,10 @@ FormAlternative.defaultProps = {
     onChange: null,
     onBlur: null,
   },
+  form: {
+    errors: {},
+    touched: {},
+  },
 };
 
-export default FormAlternative;
+export default React.memo(FormAlternative);

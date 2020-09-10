@@ -1,6 +1,5 @@
 import React from 'react';
-import Loading from './Loading.style';
 
-const LoadingCpn = () => <Loading />;
+const Loading = () => <div className="loading">Loading&#8230;</div>;
 
-export default LoadingCpn;
+export default Loading;

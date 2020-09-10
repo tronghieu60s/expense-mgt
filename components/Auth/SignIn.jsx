@@ -2,19 +2,16 @@ import FormAlternative from 'components/UI/Form/FormAlternative';
 import FormCheckAlternative from 'components/UI/Form/FormCheckAlternative';
 import * as PATH from 'constant/path';
 import * as TEXT from 'constant/text';
-import { Form, FastField, Field } from 'formik';
+import { FastField, Form } from 'formik';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
 import { Button } from 'react-bootstrap';
 
 const SignIn = (props) => {
-  const { values, errors, touched } = props.formikProps;
-  console.log(values, errors, touched);
-
   return (
     <Form>
       <FastField
-        name="email"
+        name="username"
         component={FormAlternative}
         type="text"
         icon="fa fa-user"
@@ -27,7 +24,7 @@ const SignIn = (props) => {
         icon="fa fa-key"
         placeholder={TEXT.FORM_PASSWORD}
       />
-      <Field name="remember" component={FormCheckAlternative} text={TEXT.FORM_REMEMBER_ME} />
+      <FastField name="remember" component={FormCheckAlternative} text={TEXT.FORM_REMEMBER_ME} />
       <Button type="submit" variant="primary" className="mb-2" block>
         {TEXT.LOGIN_TITLE}
       </Button>
@@ -41,12 +38,6 @@ const SignIn = (props) => {
   );
 };
 
-SignIn.propTypes = {
-  formikProps: PropTypes.shape({
-    values: PropTypes.shape({}).isRequired,
-    errors: PropTypes.shape({}).isRequired,
-    touched: PropTypes.shape({}).isRequired,
-  }).isRequired,
-};
+SignIn.propTypes = {};
 
 export default SignIn;

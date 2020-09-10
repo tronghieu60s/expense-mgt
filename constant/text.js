@@ -9,5 +9,7 @@ export const FORM_USERNAME = 'Tên đăng nhập';
 export const FORM_PASSWORD = 'Mật khẩu';
 export const FORM_REMEMBER_ME = 'Nhớ tôi';
 export const NEED_A_ACCOUNT = 'Cần một tài khoản?';
+export const FIELD_IS_REQUIRED = 'Trường này là bắt buộc';
+export const INVALID_EMAIL = 'Email không hợp lệ';
 
 export const LOADING_TEXT = 'Đang tải...';

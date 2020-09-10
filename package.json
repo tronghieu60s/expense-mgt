@@ -31,7 +31,8 @@
     "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0",
     "sass": "^1.26.10",
-    "styled-components": "^5.2.0"
+    "styled-components": "^5.2.0",
+    "yup": "^0.29.3"
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
