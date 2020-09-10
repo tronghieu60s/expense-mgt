@@ -17,6 +17,7 @@
     "chart.js": "^2.9.3",
     "chartjs-plugin-labels": "^1.1.0",
     "firebase": "^7.19.1",
+    "formik": "^2.1.5",
     "jsonwebtoken": "^8.5.1",
     "next": "^9.5.3",
     "next-redux-wrapper": "^6.0.2",
@@ -25,10 +26,12 @@
     "react-chartjs-2": "^2.10.0",
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.1",
+    "react-toastify": "^6.0.8",
     "redux": "^4.0.5",
     "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0",
-    "sass": "^1.26.10"
+    "sass": "^1.26.10",
+    "styled-components": "^5.2.0"
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",

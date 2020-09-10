@@ -24,7 +24,7 @@ Auth.propTypes = {
   slogan: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
 
-  children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]).isRequired,
+  children: PropTypes.element.isRequired,
 };
 
 export default Auth;

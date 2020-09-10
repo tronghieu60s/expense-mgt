@@ -1,18 +1,14 @@
-import { createStore, applyMiddleware, combineReducers } from 'redux';
-import { HYDRATE, createWrapper } from 'next-redux-wrapper';
-import thunkMiddleware from 'redux-thunk';
-import count from 'redux/reducers/count.reducer';
+import { createWrapper, HYDRATE } from 'next-redux-wrapper';
+import { applyMiddleware, createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import thunkMiddleware from 'redux-thunk';
+import rootReducer from './reducers/root';
 
 const bindMiddleware = (middleware) => {
   if (process.env.NODE_ENV !== 'production')
     return composeWithDevTools(applyMiddleware(...middleware));
   return applyMiddleware(...middleware);
 };
-
-const combinedReducer = combineReducers({
-  count,
-});
 
 const reducer = (state, action) => {
   if (action.type === HYDRATE) {
@@ -22,7 +18,7 @@ const reducer = (state, action) => {
     };
     return nextState;
   }
-  return combinedReducer(state, action);
+  return rootReducer(state, action);
 };
 
 const initStore = () => {
