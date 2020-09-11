@@ -28,6 +28,7 @@ const FormAlternative = (props) => {
           onBlur={onBlur}
           type={type}
           placeholder={placeholder}
+          autoComplete="off"
         />
       </div>
     </FormGroup>

@@ -1,15 +1,20 @@
+import bcrypt from 'bcryptjs';
 import SignIn from 'components/Auth/SignIn';
 import * as TEXT from 'constant/text';
+import * as ALERT from 'constant/alert';
+import * as PATH from 'constant/path';
+import Auth from 'containers/Pages/Auth/Auth';
 import { Formik } from 'formik';
-import { delay } from 'helpers/common';
+import { delay, toastCustom } from 'helpers/common';
 import { useRouter } from 'next/router';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { hideLoadingUi, showLoadingUi } from 'redux/actions/ui.action';
+import { loginUser } from 'redux/actions/user.action';
+import { getUsers } from 'utils/firebase';
 import * as Yup from 'yup';
-import Auth from 'containers/Pages/Auth/Auth';
 
-const SignInContainer = (props) => {
+const SignInContainer = () => {
   const router = useRouter();
   const dispatch = useDispatch();
 
@@ -24,9 +29,27 @@ const SignInContainer = (props) => {
     password: Yup.string().required(TEXT.FIELD_IS_REQUIRED),
   });
 
+  const handleUserLogin = async (users, values) => {
+    const { password, username } = values;
+    let user = null;
+    for (let i = 0; i < users.length; i += 1) {
+      if (users[i].username === username) {
+        const checkPass = bcrypt.compareSync(password, users[i].password);
+        if (checkPass) user = users[i];
+        break;
+      }
+    }
+    return user;
+  };
+
   const onSubmit = async (values) => {
     dispatch(showLoadingUi());
-    console.log(values);
+    const users = await getUsers();
+    const user = await handleUserLogin(users, values);
+    if (user) {
+      dispatch(loginUser(user, values.remember));
+      router.push(PATH.HOME_PAGE);
+    } else toastCustom('error', ALERT.USER_LOGIN_FAILED);
     await delay(1000);
     dispatch(hideLoadingUi());
   };

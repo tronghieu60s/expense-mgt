@@ -47,7 +47,7 @@ export function getUser(_id) {
 }
 
 export function newUser(data) {
-  const display_name = data.user_login;
+  const display_name = data.username;
   const balance = { percent: jars, income: jars, expense: jars };
   return usersModel
     .push({ ...data, display_name, balance })
