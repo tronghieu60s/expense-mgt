@@ -5,7 +5,7 @@ import { FastField, Form } from 'formik';
 import Link from 'next/link';
 import { Button } from 'react-bootstrap';
 
-const SignUp = (props) => {
+const SignUp = () => {
   return (
     <Form>
       <FastField
@@ -51,7 +51,5 @@ const SignUp = (props) => {
     </Form>
   );
 };
-
-SignUp.propTypes = {};
 
 export default SignUp;

@@ -1,8 +1,8 @@
-import Auth from 'containers/Pages/Auth/Auth';
+import LayoutMain from 'containers/Layout/LayoutMain';
 import React from 'react';
 
 const index = () => {
-  return <Auth />;
+  return <LayoutMain />;
 };
 
 export default index;

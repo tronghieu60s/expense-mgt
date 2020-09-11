@@ -2,43 +2,41 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FormGroup, FormControl } from 'react-bootstrap';
 
-const FormAlternative = (props) => {
-  const { field, form, type, icon, placeholder } = props;
+const FormAlternative2Col = (props) => {
+  const { field, form, type, title, disabled } = props;
   const { name, value, onChange, onBlur } = field;
   const { errors, touched } = form;
   const showError = errors[name] && touched[name];
 
   return (
-    <FormGroup className="mb-3">
+    <FormGroup className="mb-3 d-flex justify-content-between align-items-center mt-3">
       {showError && (
         <p className="mb-1 text-12 text-danger weight-600">
-          {placeholder} - {errors[name]}
+          {title} - {errors[name]}
         </p>
       )}
+      <div className="mb-0 text-12 weight-600 text-uppercase">{title}:</div>
       <div className="input-group input-group-merge input-group-alternative">
-        <div className="input-group-prepend">
-          <span className="input-group-text">
-            <i className={icon} aria-hidden="true" />
-          </span>
-        </div>
         <FormControl
+          size="sm"
           name={name}
           value={value}
           onChange={onChange}
           onBlur={onBlur}
           type={type}
-          placeholder={placeholder}
           autoComplete="off"
+          disabled={disabled}
         />
       </div>
     </FormGroup>
   );
 };
 
-FormAlternative.propTypes = {
+FormAlternative2Col.propTypes = {
   type: PropTypes.string,
-  icon: PropTypes.string,
+  title: PropTypes.string,
   placeholder: PropTypes.string,
+  disabled: PropTypes.bool,
 
   field: PropTypes.shape({
     name: PropTypes.string,
@@ -52,10 +50,11 @@ FormAlternative.propTypes = {
   }),
 };
 
-FormAlternative.defaultProps = {
+FormAlternative2Col.defaultProps = {
   type: '',
-  icon: '',
+  title: '',
   placeholder: '',
+  disabled: false,
 
   field: {
     name: '',
@@ -69,4 +68,4 @@ FormAlternative.defaultProps = {
   },
 };
 
-export default React.memo(FormAlternative);
+export default React.memo(FormAlternative2Col);

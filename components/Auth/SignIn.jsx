@@ -4,10 +4,9 @@ import * as PATH from 'constant/path';
 import * as TEXT from 'constant/text';
 import { FastField, Form } from 'formik';
 import Link from 'next/link';
-import PropTypes from 'prop-types';
 import { Button } from 'react-bootstrap';
 
-const SignIn = (props) => {
+const SignIn = () => {
   return (
     <Form>
       <FastField
@@ -37,7 +36,5 @@ const SignIn = (props) => {
     </Form>
   );
 };
-
-SignIn.propTypes = {};
 
 export default SignIn;

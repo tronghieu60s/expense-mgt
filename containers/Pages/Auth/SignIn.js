@@ -5,7 +5,7 @@ import * as ALERT from 'constant/alert';
 import * as PATH from 'constant/path';
 import Auth from 'containers/Pages/Auth/Auth';
 import { Formik } from 'formik';
-import { delay, toastCustom } from 'helpers/common';
+import { delayLoading, toastCustom } from 'helpers/common';
 import { useRouter } from 'next/router';
 import React from 'react';
 import { useDispatch } from 'react-redux';
@@ -50,7 +50,7 @@ const SignInContainer = () => {
       dispatch(loginUser(user, values.remember));
       router.push(PATH.HOME_PAGE);
     } else toastCustom('error', ALERT.USER_LOGIN_FAILED);
-    await delay(1000);
+    await delayLoading();
     dispatch(hideLoadingUi());
   };
 

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { FormControl } from 'react-bootstrap';
 
 const FormCheckAlternative = (props) => {
-  const { field, form, text } = props;
+  const { field, text } = props;
   const { name, value, onChange, onBlur } = field;
 
   return (
@@ -25,7 +25,7 @@ const FormCheckAlternative = (props) => {
 };
 
 FormCheckAlternative.propTypes = {
-  text: PropTypes.string.isRequired,
+  text: PropTypes.string,
 
   field: PropTypes.shape({
     name: PropTypes.string,
@@ -36,6 +36,8 @@ FormCheckAlternative.propTypes = {
 };
 
 FormCheckAlternative.defaultProps = {
+  text: '',
+
   field: {
     name: '',
     value: false,
@@ -44,4 +46,4 @@ FormCheckAlternative.defaultProps = {
   },
 };
 
-export default FormCheckAlternative;
+export default React.memo(FormCheckAlternative);

@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import PropTypes from 'prop-types';
+import { createElement } from 'react';
 
 const Layout = (props) => {
   return (
@@ -25,9 +26,15 @@ const Layout = (props) => {
 };
 
 Layout.propTypes = {
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
 
-  children: PropTypes.element.isRequired,
+  children: PropTypes.element,
+};
+
+Layout.defaultProps = {
+  title: '',
+
+  children: createElement('div'),
 };
 
 export default Layout;

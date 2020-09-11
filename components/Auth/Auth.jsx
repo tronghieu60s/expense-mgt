@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { createElement } from 'react';
 import PropTypes from 'prop-types';
 
 const Auth = (props) => {
@@ -21,10 +21,17 @@ const Auth = (props) => {
 };
 
 Auth.propTypes = {
-  slogan: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
+  slogan: PropTypes.string,
+  title: PropTypes.string,
 
-  children: PropTypes.element.isRequired,
+  children: PropTypes.element,
+};
+
+Auth.defaultProps = {
+  slogan: '',
+  title: '',
+
+  children: createElement('div'),
 };
 
 export default Auth;

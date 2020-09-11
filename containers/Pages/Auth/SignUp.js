@@ -4,7 +4,7 @@ import * as ALERT from 'constant/alert';
 import * as TEXT from 'constant/text';
 import Auth from 'containers/Pages/Auth/Auth';
 import { Formik } from 'formik';
-import { delay, toastCustom } from 'helpers/common';
+import { delayLoading, toastCustom } from 'helpers/common';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { hideLoadingUi, showLoadingUi } from 'redux/actions/ui.action';
@@ -55,7 +55,7 @@ const SignUpContainer = () => {
         if (res) toastCustom('success', ALERT.USER_NEW_SUCCESS);
       });
     }
-    await delay(1000);
+    await delayLoading();
     dispatch(hideLoadingUi());
   };
 

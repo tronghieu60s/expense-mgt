@@ -8,8 +8,13 @@ export const REGISTER_SLOGAN = 'Một tài khoản để tham gia với chúng t
 
 export const FORM_EMAIL = 'Email';
 export const FORM_USERNAME = 'Tên đăng nhập';
+export const FORM_DISPLAYNAME = 'Tên hiển thị';
 export const FORM_PASSWORD = 'Mật khẩu';
+export const FORM_OLD_PASSWORD = 'Mật khẩu cũ';
+export const FORM_NEW_PASSWORD = 'Mật khẩu mới';
+export const FORM_RENEW_PASSWORD = 'Nhập lại mật khẩu mới';
 export const FORM_REMEMBER_ME = 'Nhớ tôi';
+
 export const NEED_A_ACCOUNT = 'Cần một tài khoản?';
 export const FIELD_IS_REQUIRED = 'Trường này là bắt buộc';
 export const INVALID_EMAIL = 'Email không hợp lệ';

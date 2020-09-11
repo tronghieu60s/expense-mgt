@@ -6,6 +6,11 @@ const PRIVATE_KEY = process.env.NEXT_PUBLIC_PRIVATE_KEY;
 const userInitialState = {};
 export default function userReducer(state = userInitialState, action) {
   switch (action.type) {
+    case userActionTypes.SET: {
+      const { user } = action;
+      if (user) return { ...user };
+      return { ...state };
+    }
     case userActionTypes.LOGIN: {
       const { user, remember } = action;
       const userStorage = jwt.sign(user._id, PRIVATE_KEY);

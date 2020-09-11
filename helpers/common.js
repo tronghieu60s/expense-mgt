@@ -2,9 +2,14 @@ import { toast } from 'react-toastify';
 import { Toast } from 'react-bootstrap';
 import * as TEXT from 'constant/text';
 
-const autoClose = 4000;
+const timeDelayLoading = 500; // milliseconds
+const timeAutoCloseToast = 4000; // milliseconds
 
 export const delay = (ms) => new Promise((res) => setTimeout(res, ms));
+
+export const delayLoading = async () => {
+  await delay(timeDelayLoading);
+};
 
 export const toastCustom = (status, values) => {
   const date = new Date();
@@ -22,7 +27,7 @@ export const toastCustom = (status, values) => {
       );
     },
     {
-      autoClose,
+      autoClose: timeAutoCloseToast,
     },
   );
 };
