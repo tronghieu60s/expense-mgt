@@ -3,31 +3,34 @@ import PropTypes from 'prop-types';
 import { FormGroup, FormControl } from 'react-bootstrap';
 
 const FormAlternative = (props) => {
-  const { field, form, type, icon, placeholder } = props;
+  const { field, form, type, icon, placeholder, disabled, defaultValue } = props;
   const { name, value, onChange, onBlur } = field;
   const { errors, touched } = form;
   const showError = errors[name] && touched[name];
 
   return (
-    <FormGroup className="mb-3">
-      {showError && (
-        <p className="mb-1 text-12 text-danger weight-600">
-          {placeholder} - {errors[name]}
-        </p>
-      )}
+    <FormGroup className="mb-2">
+      <p className={`mb-1 text-12 weight-600 ${showError && 'text-danger'}`}>
+        {placeholder}
+        {showError && ` - ${errors[name]}`}
+      </p>
       <div className="input-group input-group-merge input-group-alternative">
-        <div className="input-group-prepend">
-          <span className="input-group-text">
-            <i className={icon} aria-hidden="true" />
-          </span>
-        </div>
+        {icon && (
+          <div className="input-group-prepend">
+            <span className="input-group-text">
+              <i className={icon} aria-hidden="true" />
+            </span>
+          </div>
+        )}
         <FormControl
+          size={!icon && 'sm'}
           name={name}
-          value={value}
+          value={defaultValue || value}
           onChange={onChange}
           onBlur={onBlur}
           type={type}
           placeholder={placeholder}
+          disabled={disabled}
           autoComplete="off"
         />
       </div>
@@ -39,6 +42,8 @@ FormAlternative.propTypes = {
   type: PropTypes.string,
   icon: PropTypes.string,
   placeholder: PropTypes.string,
+  defaultValue: PropTypes.string,
+  disabled: PropTypes.bool,
 
   field: PropTypes.shape({
     name: PropTypes.string,
@@ -56,6 +61,8 @@ FormAlternative.defaultProps = {
   type: '',
   icon: '',
   placeholder: '',
+  defaultValue: '',
+  disabled: false,
 
   field: {
     name: '',

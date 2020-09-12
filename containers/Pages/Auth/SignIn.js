@@ -1,7 +1,6 @@
 import bcrypt from 'bcryptjs';
 import SignIn from 'components/Auth/SignIn';
 import * as TEXT from 'constant/text';
-import * as ALERT from 'constant/alert';
 import * as PATH from 'constant/path';
 import Auth from 'containers/Pages/Auth/Auth';
 import { Formik } from 'formik';
@@ -44,12 +43,14 @@ const SignInContainer = () => {
 
   const onSubmit = async (values) => {
     dispatch(showLoadingUi());
+
     const users = await getUsers();
     const user = await handleUserLogin(users, values);
     if (user) {
       dispatch(loginUser(user, values.remember));
       router.push(PATH.HOME_PAGE);
-    } else toastCustom('error', ALERT.USER_LOGIN_FAILED);
+    } else toastCustom('error', TEXT.USER_LOGIN_FAILED);
+
     await delayLoading();
     dispatch(hideLoadingUi());
   };

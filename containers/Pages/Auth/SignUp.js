@@ -1,6 +1,5 @@
 import bcrypt from 'bcryptjs';
 import SignUp from 'components/Auth/SignUp';
-import * as ALERT from 'constant/alert';
 import * as TEXT from 'constant/text';
 import Auth from 'containers/Pages/Auth/Auth';
 import { Formik } from 'formik';
@@ -34,11 +33,11 @@ const SignUpContainer = () => {
     const { username, email } = values;
     for (let i = 0; i < users.length; i += 1) {
       if (users[i].username === username) {
-        toastCustom('error', ALERT.USER_USERNAME_EXISTS);
+        toastCustom('error', TEXT.USER_USERNAME_EXISTS);
         return false;
       }
       if (users[i].email === email) {
-        toastCustom('error', ALERT.USER_EMAIL_EXISTS);
+        toastCustom('error', TEXT.USER_EMAIL_EXISTS);
         return false;
       }
     }
@@ -52,7 +51,7 @@ const SignUpContainer = () => {
     if (checkUser) {
       const hashPass = bcrypt.hashSync(values.password, 12);
       newUser({ ...values, password: hashPass }).then((res) => {
-        if (res) toastCustom('success', ALERT.USER_NEW_SUCCESS);
+        if (res) toastCustom('success', TEXT.USER_NEW_SUCCESS);
       });
     }
     await delayLoading();

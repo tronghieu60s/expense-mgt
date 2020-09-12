@@ -60,7 +60,12 @@ const LayoutMainContainer = (props) => {
     );
   return (
     <Layout title={title}>
-      <LayoutMain user={user} pathname={pathname} handleLogout={handleLogout} />
+      <LayoutMain
+        user={user}
+        pathname={pathname}
+        handleLogout={handleLogout}
+        componentSetting={<LayoutMainSettingContainer />}
+      />
     </Layout>
   );
 };
