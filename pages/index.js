@@ -1,8 +1,8 @@
-import LayoutMain from 'containers/Layout/LayoutMain';
+import Home from 'containers/Home';
 import React from 'react';
 
 const index = () => {
-  return <LayoutMain />;
+  return <Home />;
 };
 
 export default index;

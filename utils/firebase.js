@@ -47,9 +47,10 @@ export function getUser(_id) {
 }
 
 export function newUser(data) {
+  const display_name = data.username;
   const balance = { percent: jars, income: jars, expense: jars };
   return usersModel
-    .push({ ...data, balance })
+    .push({ ...data, display_name, balance })
     .then(async (res) => {
       return getUser(res.key).then((user) => {
         return updateUser(res.key, { ...user, _id: res.key });

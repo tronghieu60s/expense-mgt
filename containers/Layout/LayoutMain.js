@@ -1,13 +1,13 @@
-import LayoutMain from 'components/LayoutMain';
-import Loading from 'components/UI/Loading/Loading';
+import LayoutMain from 'components/Layout/LayoutMain';
+import Loading from 'components/UI/Loading';
 import * as PATH from 'constant/path';
 import * as TEXT from 'constant/text';
-import Layout from 'containers/Layout/Layout';
+import Layout from 'containers/Layout';
 import { delayLoading } from 'helpers/common';
 import jwt from 'jsonwebtoken';
 import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
-import React, { useEffect } from 'react';
+import React, { useEffect, createElement } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { hideLoadingUi, showLoadingUi } from 'redux/actions/ui.action';
 import { logoutUser, setUser } from 'redux/actions/user.action';
@@ -65,17 +65,23 @@ const LayoutMainContainer = (props) => {
         pathname={pathname}
         handleLogout={handleLogout}
         componentSetting={<LayoutMainSettingContainer />}
-      />
+      >
+        {props.children}
+      </LayoutMain>
     </Layout>
   );
 };
 
 LayoutMainContainer.propTypes = {
   title: PropTypes.string,
+
+  children: PropTypes.element,
 };
 
 LayoutMainContainer.defaultProps = {
   title: '',
+
+  children: createElement('div'),
 };
 
 export default React.memo(LayoutMainContainer);

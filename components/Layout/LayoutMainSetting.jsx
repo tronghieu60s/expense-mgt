@@ -50,6 +50,12 @@ const LayoutMainSetting = (props) => {
                       placeholder={TEXT.FORM_EMAIL}
                       disabled
                     />
+                    <FastField
+                      name="display_name"
+                      component={FormAlternative}
+                      type="text"
+                      placeholder={TEXT.FORM_DISPLAYNAME}
+                    />
                   </Col>
                   <Col xs={6}>
                     <div className="mb-0 text-13 weight-800 text-uppercase mb-2">
@@ -96,6 +102,7 @@ LayoutMainSetting.propTypes = {
   user: PropTypes.shape({
     username: PropTypes.string,
     email: PropTypes.string,
+    display_name: PropTypes.string,
   }),
 
   initialValues: PropTypes.shape({}),
@@ -107,6 +114,7 @@ LayoutMainSetting.defaultProps = {
   user: {
     username: '',
     email: '',
+    display_name: '',
   },
 
   initialValues: {},
@@ -114,4 +122,4 @@ LayoutMainSetting.defaultProps = {
   onSubmit: null,
 };
 
-export default React.memo(LayoutMainSetting);
+export default LayoutMainSetting;

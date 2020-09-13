@@ -15,6 +15,15 @@ export const FORM_NEW_PASSWORD = 'Mật khẩu mới';
 export const FORM_RENEW_PASSWORD = 'Nhập lại mật khẩu mới';
 export const FORM_REMEMBER_ME = 'Nhớ tôi';
 
+export const FORM_MONEY = 'Số tiền';
+export const FORM_TRANSFER = 'Hũ chuyển';
+export const FORM_RECEIVE = 'Hũ nhận';
+export const FORM_JAR = 'Chọn hũ';
+export const FORM_GROUP = 'Chọn nhóm';
+export const FORM_DATE = 'Chọn ngày';
+export const FORM_DESCRIPTION = 'Mô tả';
+export const FORM_NO_GLASS = 'Không sử dụng hũ (vào hũ thiết yếu)';
+
 export const NEED_A_ACCOUNT = 'Cần một tài khoản?';
 export const FIELD_IS_REQUIRED = 'Trường này là bắt buộc';
 export const INVALID_EMAIL = 'Email không hợp lệ';
@@ -27,10 +36,16 @@ export const SETTING = 'Cài đặt';
 export const PERSONAL_INFORMATION = 'Thông tin cá nhân';
 export const CHANGE_PASSWORD = 'Đổi mật khẩu';
 
+export const LOADING_TEXT = 'Đang tải...';
 export const SAVE = 'Lưu';
+export const SAVE_DEFAULT = 'Lưu mặc định';
 export const CANCEL = 'Hủy';
 
-export const LOADING_TEXT = 'Đang tải...';
+export const INCOME = 'Thu nhập';
+export const EXPENSE = 'Chi tiêu';
+export const AVAILABLE_BALANCES = 'Số dư khả dụng';
+export const REPORT_REVENUE_EXPENDITURE = 'Báo cáo thu chi';
+export const ADD_TRANSACTION = 'Thêm giao dịch';
 
 export const USER_LOGIN_FAILED = 'Tên tài khoản hoặc mật khẩu không chính xác.';
 export const USER_USERNAME_EXISTS = 'Tên đăng nhập đã có người sử dụng.';

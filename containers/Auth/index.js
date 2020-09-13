@@ -1,6 +1,6 @@
-import Auth from 'components/Auth/Auth';
+import Auth from 'components/Auth';
 import * as PATH from 'constant/path';
-import Layout from 'containers/Layout/Layout';
+import Layout from 'containers/Layout';
 import jwt from 'jsonwebtoken';
 import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';

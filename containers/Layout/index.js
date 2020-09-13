@@ -1,5 +1,5 @@
 import Layout from 'components/Layout';
-import Loading from 'components/UI/Loading/Loading';
+import Loading from 'components/UI/Loading';
 import PropTypes from 'prop-types';
 import React, { createElement } from 'react';
 import { useSelector } from 'react-redux';

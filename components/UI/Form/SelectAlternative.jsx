@@ -1,16 +1,27 @@
 import React from 'react';
+import { FormGroup } from 'react-bootstrap';
 import PropTypes from 'prop-types';
-import { FormGroup, FormControl } from 'react-bootstrap';
 
-const FormAlternative = (props) => {
-  const { field, form, type, icon, placeholder, disabled, defaultValue } = props;
-  const { name, value, onChange, onBlur } = field;
+const SelectAlternative = (props) => {
+  const { field, form, icon, placeholder, disabled, options } = props;
+  const { name, value, onBlur } = field;
   const { errors, touched } = form;
   const showError = errors[name] && touched[name];
 
+  const handleSelectedOptionChange = (selectedOption) => {
+    const selectedValue = selectedOption ? selectedOption.value : selectedOption;
+    const changeEvent = {
+      target: {
+        name,
+        value: selectedValue,
+      },
+    };
+    field.onChange(changeEvent);
+  };
+
   return (
     <FormGroup className="mb-2">
-      <p className={`mb-1 text-12 weight-600 ${showError && 'text-danger'}`}>
+      <p className={`mb-1 text-12 weight-600 text-capitalize ${showError && 'text-danger'}`}>
         {placeholder}
         {showError && ` - ${errors[name]}`}
       </p>
@@ -22,32 +33,37 @@ const FormAlternative = (props) => {
             </span>
           </div>
         )}
-        <FormControl
-          size={!icon && 'sm'}
+        <select
+          className={`form-control ${!icon && 'form-control-sm'}`}
           name={name}
-          value={defaultValue || value}
-          onChange={onChange}
+          value={value}
           onBlur={onBlur}
-          type={type}
+          onChange={handleSelectedOptionChange}
           placeholder={placeholder}
           disabled={disabled}
-          autoComplete="off"
-        />
+        >
+          {options.map((option) => {
+            return (
+              <option key={option.key} value={option.key}>
+                {option.value}
+              </option>
+            );
+          })}
+        </select>
       </div>
     </FormGroup>
   );
 };
 
-FormAlternative.propTypes = {
-  type: PropTypes.string,
+SelectAlternative.propTypes = {
   icon: PropTypes.string,
   placeholder: PropTypes.string,
-  defaultValue: PropTypes.string,
   disabled: PropTypes.bool,
+  options: PropTypes.array,
 
   field: PropTypes.shape({
     name: PropTypes.string,
-    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    value: PropTypes.string,
     onChange: PropTypes.func,
     onBlur: PropTypes.func,
   }),
@@ -57,12 +73,11 @@ FormAlternative.propTypes = {
   }),
 };
 
-FormAlternative.defaultProps = {
-  type: '',
+SelectAlternative.defaultProps = {
   icon: '',
   placeholder: '',
-  defaultValue: '',
   disabled: false,
+  options: [],
 
   field: {
     name: '',
@@ -76,4 +91,4 @@ FormAlternative.defaultProps = {
   },
 };
 
-export default React.memo(FormAlternative);
+export default SelectAlternative;

@@ -6,7 +6,7 @@ import { Button, Col, Container, Nav, Navbar, Row } from 'react-bootstrap';
 
 const Layout = (props) => {
   const { user, pathname, handleLogout } = props;
-  const { username } = user;
+  const { display_name } = user;
 
   return (
     <div className="expense-main py-3">
@@ -14,7 +14,7 @@ const Layout = (props) => {
         <Row>
           <Col xs={6} md={3}>
             <div className="expense-main-head">
-              <h4 className="mb-0">Xin chào {username}!</h4>
+              <h4 className="mb-0">Xin chào {display_name}!</h4>
               <span className="text-13">Hôm nay bạn có gì mới không?</span>
             </div>
           </Col>
@@ -63,7 +63,7 @@ Layout.propTypes = {
   handleLogout: PropTypes.func,
 
   user: PropTypes.shape({
-    username: PropTypes.string,
+    display_name: PropTypes.string,
   }),
 
   children: PropTypes.element,
@@ -76,7 +76,7 @@ Layout.defaultProps = {
   handleLogout: null,
 
   user: {
-    username: '',
+    display_name: '',
   },
 
   children: createElement('div'),

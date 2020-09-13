@@ -24,7 +24,7 @@ const SignIn = () => {
         placeholder={TEXT.FORM_PASSWORD}
       />
       <FastField name="remember" component={FormCheckAlternative} text={TEXT.FORM_REMEMBER_ME} />
-      <Button type="submit" variant="primary" className="mb-2" block>
+      <Button type="submit" variant="primary" className="mb-2 mt-3" block>
         {TEXT.LOGIN_TITLE}
       </Button>
       <div className="text-13">

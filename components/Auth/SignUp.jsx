@@ -29,7 +29,7 @@ const SignUp = () => {
         icon="fa fa-key"
         placeholder={TEXT.FORM_PASSWORD}
       />
-      <Button type="submit" variant="primary" className="mb-2" block>
+      <Button type="submit" variant="primary" className="mb-2 mt-3" block>
         {TEXT.REGISTER_TITLE}
       </Button>
       <div className="text-13 mb-3">

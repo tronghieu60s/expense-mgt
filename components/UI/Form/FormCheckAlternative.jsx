@@ -7,7 +7,7 @@ const FormCheckAlternative = (props) => {
   const { name, value, onChange, onBlur } = field;
 
   return (
-    <div className="custom-control custom-control-alternative custom-checkbox mb-3">
+    <div className="custom-control custom-control-alternative custom-checkbox">
       <FormControl
         className="custom-control-input"
         type="checkbox"
