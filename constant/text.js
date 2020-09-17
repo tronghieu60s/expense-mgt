@@ -60,7 +60,6 @@ export const PASSWORD_NOT_MATCH_2_FORM = 'Mật khẩu không khớp. Vui lòng 
 export const UPDATE_DATA_SUCCESS = 'Cập nhật dữ liệu thành công.';
 
 export const TRANSACTION_MUST_MONEY = 'Số tiền giao dịch phải lớn hơn 0.';
-export const TRANSACTION_ADD_EMPTY = 'Dữ liệu không được để trống.';
 export const TRANSACTION_ADD_SUCCESS = 'Thêm giao dịch thành công.';
 export const TRANSACTION_LARGER_WALLET =
   'Số tiền giao dịch phải nhỏ hơn số tiền trong ví. Vui lòng thử lại.';

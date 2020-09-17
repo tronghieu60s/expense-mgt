@@ -3,18 +3,62 @@ import * as TEXT from 'constant/text';
 import { delayLoading, toastCustom } from 'helpers/common';
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { hideLoadingUi, showLoadingUi } from 'redux/actions/ui.action';
+import { updateUser, newTransaction } from 'utils/firebase';
+import { setUser } from 'redux/actions/user.action';
 
 const HomeBalancesModalContainer = (props) => {
   const dispatch = useDispatch();
+  const user = useSelector((state) => state.user);
+  const balance = useSelector((state) => state.user.balance);
+  const { income, expense, percent } = balance;
+
   const [tab, setTab] = useState('income');
 
   const onSubmit = async (values) => {
     dispatch(showLoadingUi());
 
-    if (values.money === 0) toastCustom('error', TEXT.TRANSACTION_MUST_MONEY);
-    console.log(values);
+    const type = tab;
+    const { money, jar, group, date, description, transfer, receive, no_glass } = values;
+    if (money === 0) toastCustom('error', TEXT.TRANSACTION_MUST_MONEY);
+    else {
+      let saveUser;
+      switch (type) {
+        case 'income':
+          if (no_glass) {
+            const necessities = money + income['necessities'];
+            const updateBalance = { ...balance, income: { ...income, necessities } };
+            await newTransaction(user._id, { type, date, money, description, jar: 'necessities' });
+            saveUser = await updateUser(user._id, { balance: updateBalance });
+            toastCustom('success', TEXT.TRANSACTION_ADD_SUCCESS);
+          } else {
+            const moneyPercent = money / 100;
+            const newJars = {};
+            for (const key in percent)
+              if (percent.hasOwnProperty(key)) {
+                const splitMoney = moneyPercent * percent[key];
+                newJars[key] = splitMoney + income[key];
+                if (splitMoney !== 0)
+                  await newTransaction(user._id, {
+                    type,
+                    date,
+                    money: splitMoney,
+                    description,
+                    jar: key,
+                  });
+              }
+            saveUser = await updateUser(user._id, { balance: { ...balance, income: newJars } });
+            toastCustom('success', TEXT.TRANSACTION_ADD_SUCCESS);
+          }
+          break;
+        case 'expense':
+          break;
+        default:
+          break;
+      }
+      if (saveUser) dispatch(setUser(saveUser));
+    }
 
     await delayLoading();
     dispatch(hideLoadingUi());

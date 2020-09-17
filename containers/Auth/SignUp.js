@@ -51,6 +51,7 @@ const SignUpContainer = () => {
 
   const onSubmit = async (values) => {
     dispatch(showLoadingUi());
+
     const users = await getUsers();
     const checkUser = await checkUserNotExist(users, values);
     if (checkUser) {
@@ -59,6 +60,7 @@ const SignUpContainer = () => {
         if (res) toastCustom('success', TEXT.USER_NEW_SUCCESS);
       });
     }
+
     await delayLoading();
     dispatch(hideLoadingUi());
   };
