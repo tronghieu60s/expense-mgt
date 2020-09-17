@@ -56,10 +56,13 @@ const HomeBalancesContainer = () => {
     no_glass: Yup.bool().typeError(TEXT.FIELD_NOT_MATCHES),
   });
 
-  const optionsJars = (data) => {
+  const optionsJars = () => {
     const result = [];
     for (const key in JARS)
-      if (JARS.hasOwnProperty(key)) result.push({ key, value: `${JARS[key].name} - ${data[key]}` });
+      if (JARS.hasOwnProperty(key)) {
+        const minus = income[key] - expense[key];
+        result.push({ key, value: `${JARS[key].name} - ${minus.toFixed(1)}` });
+      }
     return result;
   };
 
@@ -77,7 +80,7 @@ const HomeBalancesContainer = () => {
         validationSchema={validationSchema}
         totalIncome={totalIncome}
         totalExpense={totalExpense}
-        optionsJars={optionsJars(income)}
+        optionsJars={optionsJars()}
         optionsGroups={optionsGroups()}
       />
     </HomeBalances>

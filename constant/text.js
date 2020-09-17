@@ -61,6 +61,5 @@ export const UPDATE_DATA_SUCCESS = 'Cập nhật dữ liệu thành công.';
 
 export const TRANSACTION_MUST_MONEY = 'Số tiền giao dịch phải lớn hơn 0.';
 export const TRANSACTION_ADD_SUCCESS = 'Thêm giao dịch thành công.';
-export const TRANSACTION_LARGER_WALLET =
-  'Số tiền giao dịch phải nhỏ hơn số tiền trong ví. Vui lòng thử lại.';
-export const JARS_PERCENT_OVER = 'Tổng phần trăm tất cả hũ phải bằng 100%.\nVui lòng nhập lại.';
+export const TRANSACTION_LARGER_WALLET = 'Số tiền giao dịch phải nhỏ hơn số tiền trong ví.';
+export const JARS_PERCENT_OVER = 'Tổng phần trăm tất cả hũ phải bằng 100%.';

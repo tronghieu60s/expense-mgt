@@ -1,6 +1,6 @@
 import HomeBalancesModal from 'components/Home/Balances/Home-Balances-Modal';
 import * as TEXT from 'constant/text';
-import { delayLoading, toastCustom } from 'helpers/common';
+import { toastCustom } from 'helpers/common';
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -16,7 +16,7 @@ const HomeBalancesModalContainer = (props) => {
 
   const [tab, setTab] = useState('income');
 
-  const onSubmit = async (values) => {
+  const onSubmit = async (values, { resetForm }) => {
     dispatch(showLoadingUi());
 
     const type = tab;
@@ -53,14 +53,35 @@ const HomeBalancesModalContainer = (props) => {
           }
           break;
         case 'expense':
+          if (income[jar] - expense[jar] - money >= 0) {
+            expense[jar] += money;
+            saveUser = await updateUser(user._id, { balance: { ...balance, expense } });
+            await newTransaction(user._id, {
+              type,
+              date,
+              money,
+              description,
+              jar,
+              group,
+            });
+            toastCustom('success', TEXT.TRANSACTION_ADD_SUCCESS);
+          } else toastCustom('error', TEXT.TRANSACTION_LARGER_WALLET);
+          break;
+        case 'move-money':
+          if (money <= income[transfer]) {
+            income[transfer] -= money;
+            income[receive] += money;
+            saveUser = await updateUser(user._id, { balance: { ...balance, income } });
+            toastCustom('success', TEXT.TRANSACTION_ADD_SUCCESS);
+          } else toastCustom('error', TEXT.TRANSACTION_LARGER_WALLET);
           break;
         default:
           break;
       }
       if (saveUser) dispatch(setUser(saveUser));
+      resetForm();
     }
 
-    await delayLoading();
     dispatch(hideLoadingUi());
   };
 
