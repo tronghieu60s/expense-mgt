@@ -79,9 +79,10 @@ const HomeBalancesModalContainer = (props) => {
           break;
       }
       if (saveUser) dispatch(setUser(saveUser));
-      resetForm();
+      resetForm({ values: { ...values, money: 0, description: '' } });
     }
 
+    localStorage.setItem('.config_transactions', JSON.stringify(values));
     dispatch(hideLoadingUi());
   };
 

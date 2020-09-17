@@ -1,14 +1,21 @@
+import { parse, isDate, format } from 'date-fns';
+
 export const getDateNow = () => {
-  return new Date().toISOString().slice(0, 10);
+  return format(new Date(), 'yyyy-MM-dd');
 };
 
-export const formatDateMark = (localDate, mark) => {
-  const date = new Date(localDate);
-  let day = date.getDate();
-  let month = date.getMonth() + 1;
-  const year = date.getFullYear();
-  day = day < 10 ? `0${day}` : day;
-  month = month < 10 ? `0${month}` : month;
+export const formatDateMark = (localDate) => {
+  return format(new Date(localDate), `yyyy/MM/dd`);
+};
 
-  return `${day}${mark}${month}${mark}${year}`;
+export const parseDateString = (value, originalValue) => {
+  const dateReg = /^\d{4}([-])\d{2}\1\d{2}$/;
+  const matchDate = String(originalValue).match(dateReg);
+  if (!matchDate) return false;
+
+  const parsedDate = isDate(originalValue)
+    ? originalValue
+    : parse(originalValue, 'yyyy-MM-dd', new Date());
+
+  return parsedDate;
 };

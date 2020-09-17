@@ -162,8 +162,7 @@ const HomeBalancesModal = (props) => {
                   )}
                 </Col>
               </Row>
-              <div className="d-flex justify-content-between w-100 mt-3">
-                <Button variant="outline-primary">{TEXT.SAVE_DEFAULT}</Button>
+              <div className="d-flex justify-content-end w-100 mt-3">
                 <div>
                   <Button variant="secondary" onClick={handleClose}>
                     {TEXT.CANCEL}

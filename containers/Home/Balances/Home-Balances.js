@@ -1,7 +1,7 @@
 import HomeBalances from 'components/Home/Balances/Home-Balances';
 import { GROUPS, JARS } from 'constant/common';
 import * as TEXT from 'constant/text';
-import { getDateNow } from 'helpers/datetime';
+import { getDateNow, parseDateString } from 'helpers/datetime';
 import { objectKeyToArray, objectTotalValues } from 'helpers/object';
 import React from 'react';
 import { useSelector } from 'react-redux';
@@ -18,7 +18,13 @@ const HomeBalancesContainer = () => {
   const totalIncome = objectTotalValues(income);
   const totalExpense = objectTotalValues(expense);
 
+  const configTransactions = JSON.parse(localStorage.getItem('.config_transactions'));
   const initialValues = {
+    ...configTransactions,
+    money: 0,
+    description: '',
+    date: getDateNow(),
+  } || {
     money: 0,
     jar: 'necessities',
     group: 'food',
@@ -29,7 +35,6 @@ const HomeBalancesContainer = () => {
     no_glass: false,
   };
 
-  const dateReg = /^\d{4}([-])\d{2}\1\d{2}$/;
   const validationSchema = Yup.object().shape({
     money: Yup.number().typeError(TEXT.FIELD_NOT_MATCHES).required(TEXT.FIELD_IS_REQUIRED),
     jar: Yup.string()
@@ -40,9 +45,9 @@ const HomeBalancesContainer = () => {
       .typeError(TEXT.FIELD_NOT_MATCHES)
       .oneOf(arrNameGroups, TEXT.FIELD_NOT_MATCHES)
       .required(TEXT.FIELD_IS_REQUIRED),
-    date: Yup.string()
+    date: Yup.date()
       .typeError(TEXT.FIELD_NOT_MATCHES)
-      .matches(dateReg, TEXT.FIELD_NOT_MATCHES)
+      .transform(parseDateString)
       .required(TEXT.FIELD_IS_REQUIRED),
     description: Yup.string().typeError(TEXT.FIELD_NOT_MATCHES),
     transfer: Yup.string()
