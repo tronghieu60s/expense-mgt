@@ -160,19 +160,9 @@ const HomeBalancesModal = (props) => {
                       />
                     </div>
                   )}
-                  {tab === 'move-money' && (
-                    <Button
-                      className="text-capitalize mt-1"
-                      variant="primary"
-                      size="sm"
-                      // onClick={props.handleMoveAllMoney}
-                    >
-                      Chuyển toàn bộ tiền vào hũ nhận
-                    </Button>
-                  )}
                 </Col>
               </Row>
-              <div className="d-flex justify-content-between w-100 mt-5">
+              <div className="d-flex justify-content-between w-100 mt-3">
                 <Button variant="outline-primary">{TEXT.SAVE_DEFAULT}</Button>
                 <div>
                   <Button variant="secondary" onClick={handleClose}>

@@ -4,24 +4,13 @@ import PropTypes from 'prop-types';
 
 const SelectAlternative = (props) => {
   const { field, form, icon, placeholder, disabled, options } = props;
-  const { name, value, onBlur } = field;
+  const { name, value, onBlur, onChange } = field;
   const { errors, touched } = form;
   const showError = errors[name] && touched[name];
 
-  const handleSelectedOptionChange = (selectedOption) => {
-    const selectedValue = selectedOption ? selectedOption.value : selectedOption;
-    const changeEvent = {
-      target: {
-        name,
-        value: selectedValue,
-      },
-    };
-    field.onChange(changeEvent);
-  };
-
   return (
     <FormGroup className="mb-2">
-      <p className={`mb-1 text-12 weight-600 text-capitalize ${showError && 'text-danger'}`}>
+      <p className={`mb-1 text-12 weight-600 ${showError && 'text-danger'}`}>
         {placeholder}
         {showError && ` - ${errors[name]}`}
       </p>
@@ -38,7 +27,7 @@ const SelectAlternative = (props) => {
           name={name}
           value={value}
           onBlur={onBlur}
-          onChange={handleSelectedOptionChange}
+          onChange={onChange}
           placeholder={placeholder}
           disabled={disabled}
         >

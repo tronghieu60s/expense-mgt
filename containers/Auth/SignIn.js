@@ -24,8 +24,8 @@ const SignInContainer = () => {
   };
 
   const validationSchema = Yup.object().shape({
-    username: Yup.string().required(TEXT.FIELD_IS_REQUIRED),
-    password: Yup.string().required(TEXT.FIELD_IS_REQUIRED),
+    username: Yup.string().typeError(TEXT.FIELD_NOT_MATCHES).required(TEXT.FIELD_IS_REQUIRED),
+    password: Yup.string().typeError(TEXT.FIELD_NOT_MATCHES).required(TEXT.FIELD_IS_REQUIRED),
   });
 
   const handleUserLogin = async (users, values) => {

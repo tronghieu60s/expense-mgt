@@ -1,3 +1,9 @@
+export const objectKeyToArray = (object) => {
+  const objectArr = [];
+  for (const key in object) if (object.hasOwnProperty(key)) objectArr.push(key);
+  return objectArr;
+};
+
 export const objectToArray = (object) => {
   const objectArr = [];
   for (const key in object) if (object.hasOwnProperty(key)) objectArr.push(object[key]);

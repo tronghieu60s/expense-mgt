@@ -20,11 +20,16 @@ const SignUpContainer = () => {
   };
 
   const validationSchema = Yup.object().shape({
-    email: Yup.string().email(TEXT.INVALID_EMAIL).required(TEXT.FIELD_IS_REQUIRED),
+    email: Yup.string()
+      .typeError(TEXT.FIELD_NOT_MATCHES)
+      .email(TEXT.INVALID_EMAIL)
+      .required(TEXT.FIELD_IS_REQUIRED),
     username: Yup.string()
+      .typeError(TEXT.FIELD_NOT_MATCHES)
       .matches(/^[A-za-z]{1}[A-Za-z0-9]{4,}$/, TEXT.USERNAME_NOT_MATCH)
       .required(TEXT.FIELD_IS_REQUIRED),
     password: Yup.string()
+      .typeError(TEXT.FIELD_NOT_MATCHES)
       .matches(/^[A-Za-z0-9]{6,}$/, TEXT.PASSWORD_NOT_MATCH)
       .required(TEXT.FIELD_IS_REQUIRED),
   });

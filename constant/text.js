@@ -26,6 +26,7 @@ export const FORM_NO_GLASS = 'Không sử dụng hũ (vào hũ thiết yếu)';
 
 export const NEED_A_ACCOUNT = 'Cần một tài khoản?';
 export const FIELD_IS_REQUIRED = 'Trường này là bắt buộc';
+export const FIELD_NOT_MATCHES = 'Không khớp định dạng yêu cầu';
 export const INVALID_EMAIL = 'Email không hợp lệ';
 export const USERNAME_NOT_MATCH =
   'Tên đăng nhập phải lớn hơn 5 kí tự, bắt đầu bằng một kí tự thường';
@@ -58,6 +59,7 @@ export const PASSWORD_NOT_MATCH_2_FORM = 'Mật khẩu không khớp. Vui lòng 
 
 export const UPDATE_DATA_SUCCESS = 'Cập nhật dữ liệu thành công.';
 
+export const TRANSACTION_MUST_MONEY = 'Số tiền giao dịch phải lớn hơn 0.';
 export const TRANSACTION_ADD_EMPTY = 'Dữ liệu không được để trống.';
 export const TRANSACTION_ADD_SUCCESS = 'Thêm giao dịch thành công.';
 export const TRANSACTION_LARGER_WALLET =

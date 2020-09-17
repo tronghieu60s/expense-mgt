@@ -1,55 +1,43 @@
 import HomeBalancesModal from 'components/Home/Balances/Home-Balances-Modal';
 import * as TEXT from 'constant/text';
-import { getDateNow } from 'helpers/datetime';
+import { delayLoading, toastCustom } from 'helpers/common';
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
-import * as Yup from 'yup';
+import { useDispatch } from 'react-redux';
+import { hideLoadingUi, showLoadingUi } from 'redux/actions/ui.action';
 
 const HomeBalancesModalContainer = (props) => {
+  const dispatch = useDispatch();
   const [tab, setTab] = useState('income');
 
-  const initialValues = {
-    money: 0,
-    jar: '',
-    group: '',
-    date: getDateNow(),
-    description: '',
-    transfer: '',
-    receive: '',
-    no_glass: false,
-  };
-
-  const validationSchema = Yup.object().shape({
-    money: Yup.number().required(TEXT.FIELD_IS_REQUIRED),
-    jar: Yup.string().required(TEXT.FIELD_IS_REQUIRED),
-    group: Yup.string().required(TEXT.FIELD_IS_REQUIRED),
-    date: Yup.string().required(TEXT.FIELD_IS_REQUIRED),
-    description: Yup.string(),
-    transfer: Yup.string().required(TEXT.FIELD_IS_REQUIRED),
-    receive: Yup.string().required(TEXT.FIELD_IS_REQUIRED),
-    no_glass: Yup.bool().required(TEXT.FIELD_IS_REQUIRED),
-  });
-
   const onSubmit = async (values) => {
+    dispatch(showLoadingUi());
+
+    if (values.money === 0) toastCustom('error', TEXT.TRANSACTION_MUST_MONEY);
     console.log(values);
+
+    await delayLoading();
+    dispatch(hideLoadingUi());
   };
 
   return (
     <HomeBalancesModal
-      initialValues={initialValues}
-      validationSchema={validationSchema}
+      tab={tab}
+      setTab={(values) => setTab(values)}
       onSubmit={onSubmit}
+      initialValues={props.initialValues}
+      validationSchema={props.validationSchema}
       totalIncome={props.totalIncome}
       totalExpense={props.totalExpense}
       optionsJars={props.optionsJars}
       optionsGroups={props.optionsGroups}
-      tab={tab}
-      setTab={(values) => setTab(values)}
     />
   );
 };
 
 HomeBalancesModalContainer.propTypes = {
+  initialValues: PropTypes.shape({}),
+  validationSchema: PropTypes.shape({}),
   totalIncome: PropTypes.number,
   totalExpense: PropTypes.number,
   optionsJars: PropTypes.array,
@@ -57,6 +45,8 @@ HomeBalancesModalContainer.propTypes = {
 };
 
 HomeBalancesModalContainer.defaultProps = {
+  initialValues: {},
+  validationSchema: {},
   totalIncome: 0,
   totalExpense: 0,
   optionsJars: [],
