@@ -11,8 +11,8 @@ const FormAlternative = (props) => {
   return (
     <FormGroup className="mb-2">
       <p className={`mb-1 text-12 weight-600 ${showError && 'text-danger'}`}>
-        {placeholder}
-        {showError && ` - ${errors[name]}`}
+        {`${placeholder}${placeholder.length !== 0 && showError ? ' - ' : ''}`}
+        {showError && errors[name]}
       </p>
       <div className="input-group input-group-merge input-group-alternative">
         {icon && (

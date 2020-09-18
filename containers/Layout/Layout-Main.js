@@ -14,8 +14,9 @@ import { setTransactions } from 'redux/actions/transactions.action';
 import { hideLoadingUi, showLoadingUi } from 'redux/actions/ui.action';
 import { logoutUser, setUser } from 'redux/actions/user.action';
 import { getUser, getTransactions } from 'utils/firebase';
-import FooterContainer from './Footer';
-import LayoutMainSettingContainer from './LayoutMainSetting';
+import FooterContainer from './Layout-Main-Footer';
+import LayoutMainSettingContainer from './Layout-Main-Setting';
+import LayoutMainJarsContainer from './Layout-Main-Jars';
 
 const PRIVATE_KEY = process.env.NEXT_PUBLIC_PRIVATE_KEY;
 
@@ -69,6 +70,7 @@ const LayoutMainContainer = (props) => {
         user={user}
         pathname={pathname}
         handleLogout={handleLogout}
+        componentJars={<LayoutMainJarsContainer />}
         componentSetting={<LayoutMainSettingContainer />}
         componentFooter={<FooterContainer />}
       >

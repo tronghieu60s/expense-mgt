@@ -43,7 +43,10 @@ const Layout = (props) => {
             </Navbar>
           </Col>
           <Col md={3} className="mt-2 mt-md-0 text-left text-md-right">
-            {props.componentSetting}
+            <div className="d-flex justify-content-end">
+              {props.componentSetting}
+              <div className="ml-1">{props.componentJars}</div>
+            </div>
             <div className="mt-1">
               <Button variant="danger" size="sm" className="mt-0" onClick={handleLogout}>
                 <i className="fa fa-sign-out" aria-hidden="true" /> Đăng Xuất
@@ -69,6 +72,7 @@ Layout.propTypes = {
   children: PropTypes.element,
   componentFooter: PropTypes.element,
   componentSetting: PropTypes.element,
+  componentJars: PropTypes.element,
 };
 
 Layout.defaultProps = {
@@ -82,6 +86,7 @@ Layout.defaultProps = {
   children: createElement('div'),
   componentFooter: createElement('div'),
   componentSetting: createElement('div'),
+  componentJars: createElement('div'),
 };
 
 export default Layout;

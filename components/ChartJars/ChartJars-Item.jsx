@@ -8,7 +8,7 @@ const ChartJarsItem = (props) => {
   const { jar, remain, percent } = props;
 
   return (
-    <Col xs={6} sm={4} lg={2}>
+    <Col className="mb-3 mb-lg-0" xs={6} sm={4} lg={2}>
       <Doughnut
         data={{
           labels: [jar.name, ''],

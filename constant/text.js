@@ -66,3 +66,7 @@ export const TRANSACTION_LARGER_WALLET = 'Số tiền giao dịch phải nhỏ h
 export const JARS_PERCENT_OVER = 'Tổng phần trăm tất cả hũ phải bằng 100%.';
 
 export const NEW_TRANSACTION = 'Giao dịch mới nhất';
+
+export const SET_UP_JARS = 'Thiết lập các hũ';
+export const MIN_0_PERCENT = 'Nhỏ nhất là 0%';
+export const MAX_100_PERCENT = 'Lớn nhất là 100%';

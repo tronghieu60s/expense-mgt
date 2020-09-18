@@ -17,7 +17,7 @@ const LayoutMainSetting = (props) => {
       <Button className="mr-0" variant="primary" size="sm" onClick={handleShow}>
         <i className="fa fa-user" aria-hidden="true" /> {TEXT.SETTING}
       </Button>
-      <Modal animation={false} show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>{TEXT.SETTING}</Modal.Title>
         </Modal.Header>
