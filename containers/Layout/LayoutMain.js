@@ -1,4 +1,4 @@
-import LayoutMain from 'components/Layout/LayoutMain';
+import LayoutMain from 'components/Layout/Layout-Main';
 import Loading from 'components/UI/Loading';
 import * as PATH from 'constant/path';
 import * as STORAGE from 'constant/storage';

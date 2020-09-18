@@ -1,27 +1,27 @@
 export const JARS = {
   necessities: {
     name: 'Thiết yếu',
-    color: '#e93b70',
+    color: '#5e72e4',
   },
   education: {
     name: 'Giáo dục',
-    color: '#0c78e4',
+    color: '#11cdef',
   },
   saving: {
     name: 'Tiết kiệm',
-    color: '#e6a63c',
+    color: '#2dce89',
   },
   play: {
     name: 'Hưởng thụ',
-    color: '#8d4de9',
+    color: '#172b4d',
   },
   investment: {
     name: 'Đầu tư',
-    color: '#7ed320',
+    color: '#fb6340',
   },
   give: {
     name: 'Thiện tâm',
-    color: '#fd51d9',
+    color: '#f5365c',
   },
 };
 

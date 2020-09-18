@@ -1,8 +1,5 @@
-import Home from 'containers/Home';
-import React from 'react';
+import Index from 'containers/Pages/Index';
 
-const index = () => {
-  return <Home />;
-};
+const index = () => <Index />;
 
 export default index;

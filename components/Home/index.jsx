@@ -15,7 +15,9 @@ const Home = (props) => {
           </Col>
         </Row>
       </Col>
-      {props.children}
+      <Col md={12} lg={9}>
+        {props.children}
+      </Col>
     </Row>
   );
 };

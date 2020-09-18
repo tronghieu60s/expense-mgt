@@ -1,16 +1,13 @@
+import ChartJars from 'containers/ChartJars';
+import Index from 'components/Pages/Index';
+import Home from 'containers/Home';
 import React from 'react';
-import Index from 'components/pages/Index';
-import HomeJars from 'containers/includes/Home-Jars';
-import HomeListJars from 'containers/includes/Home-ListJars';
-import Report from 'containers/includes/Report-Element';
 
 const IndexContainer = () => {
   return (
-    <Index
-      componentBlock1={<HomeJars />}
-      componentBlock2={<Report />}
-      componentBlock3={<HomeListJars />}
-    />
+    <Home>
+      <Index componentBlock1={<ChartJars />} />
+    </Home>
   );
 };
 

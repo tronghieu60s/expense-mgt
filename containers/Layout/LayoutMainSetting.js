@@ -1,5 +1,5 @@
 import bcrypt from 'bcryptjs';
-import LayoutMainSetting from 'components/Layout/LayoutMainSetting';
+import LayoutMainSetting from 'components/Layout/Layout-Main-Setting';
 import * as TEXT from 'constant/text';
 import { delayLoading, toastCustom } from 'helpers/common';
 import React from 'react';

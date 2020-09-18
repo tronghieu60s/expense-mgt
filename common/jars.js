@@ -9,3 +9,13 @@ export const baseJars = () => {
   }
   return base;
 };
+
+export const objectJarsToArray = () => {
+  const arr = [];
+  for (const key in JARS) {
+    if (JARS.hasOwnProperty(key)) {
+      arr.push({ ...JARS[key], nameCode: key });
+    }
+  }
+  return arr;
+};
