@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { hideLoadingUi, showLoadingUi } from 'redux/actions/ui.action';
 import { updateUser, newTransaction } from 'utils/firebase';
 import { setUser } from 'redux/actions/user.action';
+import { addTransactions } from 'redux/actions/transactions.action';
 
 const HomeBalancesModalContainer = (props) => {
   const dispatch = useDispatch();
@@ -30,8 +31,15 @@ const HomeBalancesModalContainer = (props) => {
           if (no_glass) {
             const necessities = money + income['necessities'];
             const updateBalance = { ...balance, income: { ...income, necessities } };
-            await newTransaction(user._id, { type, date, money, description, jar: 'necessities' });
+            const newTransactions = await newTransaction(user._id, {
+              type,
+              date,
+              money,
+              description,
+              jar: 'necessities',
+            });
             saveUser = await updateUser(user._id, { balance: updateBalance });
+            dispatch(addTransactions(newTransactions));
             toastCustom('success', TEXT.TRANSACTION_ADD_SUCCESS);
           } else {
             const moneyPercent = money / 100;
@@ -40,14 +48,16 @@ const HomeBalancesModalContainer = (props) => {
               if (percent.hasOwnProperty(key)) {
                 const splitMoney = moneyPercent * percent[key];
                 newJars[key] = splitMoney + income[key];
-                if (splitMoney !== 0)
-                  await newTransaction(user._id, {
+                if (splitMoney !== 0) {
+                  const newTransactions = await newTransaction(user._id, {
                     type,
                     date,
                     money: splitMoney,
                     description,
                     jar: key,
                   });
+                  dispatch(addTransactions(newTransactions));
+                }
               }
             saveUser = await updateUser(user._id, { balance: { ...balance, income: newJars } });
             toastCustom('success', TEXT.TRANSACTION_ADD_SUCCESS);
@@ -57,7 +67,7 @@ const HomeBalancesModalContainer = (props) => {
           if (income[jar] - expense[jar] - money >= 0) {
             expense[jar] += money;
             saveUser = await updateUser(user._id, { balance: { ...balance, expense } });
-            await newTransaction(user._id, {
+            const newTransactions = await newTransaction(user._id, {
               type,
               date,
               money,
@@ -65,6 +75,7 @@ const HomeBalancesModalContainer = (props) => {
               jar,
               group,
             });
+            dispatch(addTransactions(newTransactions));
             toastCustom('success', TEXT.TRANSACTION_ADD_SUCCESS);
           } else toastCustom('error', TEXT.TRANSACTION_LARGER_WALLET);
           break;

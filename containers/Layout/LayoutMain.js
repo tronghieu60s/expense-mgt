@@ -10,9 +10,11 @@ import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
 import React, { createElement, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { setTransactions } from 'redux/actions/transactions.action';
 import { hideLoadingUi, showLoadingUi } from 'redux/actions/ui.action';
 import { logoutUser, setUser } from 'redux/actions/user.action';
-import { getUser } from 'utils/firebase';
+import { getUser, getTransactions } from 'utils/firebase';
+import FooterContainer from './Footer';
 import LayoutMainSettingContainer from './LayoutMainSetting';
 
 const PRIVATE_KEY = process.env.NEXT_PUBLIC_PRIVATE_KEY;
@@ -21,6 +23,7 @@ const LayoutMainContainer = (props) => {
   const { title } = props;
   const router = useRouter();
   const { pathname } = router;
+
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
 
@@ -36,9 +39,10 @@ const LayoutMainContainer = (props) => {
           getUser(decoded).then((value) => {
             if (value) {
               dispatch(setUser(value));
-              // getTransactions(user._id).then((transaction) => {
-              //   props.setTransactions(transaction);
-              // });
+              if (user._id)
+                getTransactions(user._id).then((transaction) => {
+                  dispatch(setTransactions(transaction));
+                });
             } else router.push(PATH.LOGIN_PAGE);
           });
       });
@@ -66,6 +70,7 @@ const LayoutMainContainer = (props) => {
         pathname={pathname}
         handleLogout={handleLogout}
         componentSetting={<LayoutMainSettingContainer />}
+        componentFooter={<FooterContainer />}
       >
         {props.children}
       </LayoutMain>

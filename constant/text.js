@@ -41,6 +41,7 @@ export const LOADING_TEXT = 'Đang tải...';
 export const SAVE = 'Lưu';
 export const SAVE_DEFAULT = 'Lưu mặc định';
 export const CANCEL = 'Hủy';
+export const SEE_MORE = 'Xem thêm';
 
 export const INCOME = 'Thu nhập';
 export const EXPENSE = 'Chi tiêu';
@@ -63,3 +64,5 @@ export const TRANSACTION_MUST_MONEY = 'Số tiền giao dịch phải lớn hơn
 export const TRANSACTION_ADD_SUCCESS = 'Thêm giao dịch thành công.';
 export const TRANSACTION_LARGER_WALLET = 'Số tiền giao dịch phải nhỏ hơn số tiền trong ví.';
 export const JARS_PERCENT_OVER = 'Tổng phần trăm tất cả hũ phải bằng 100%.';
+
+export const NEW_TRANSACTION = 'Giao dịch mới nhất';

@@ -5,7 +5,7 @@ export const getDateNow = () => {
 };
 
 export const formatDateMark = (localDate) => {
-  return format(new Date(localDate), `yyyy/MM/dd`);
+  return format(new Date(localDate), `dd/MM/yyyy`);
 };
 
 export const parseDateString = (value, originalValue) => {
