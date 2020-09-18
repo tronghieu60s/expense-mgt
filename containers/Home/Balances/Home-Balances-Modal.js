@@ -1,5 +1,6 @@
 import HomeBalancesModal from 'components/Home/Balances/Home-Balances-Modal';
 import * as TEXT from 'constant/text';
+import * as STORAGE from 'constant/storage';
 import { toastCustom } from 'helpers/common';
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
@@ -82,7 +83,7 @@ const HomeBalancesModalContainer = (props) => {
       resetForm({ values: { ...values, money: 0, description: '' } });
     }
 
-    localStorage.setItem('.config_transactions', JSON.stringify(values));
+    localStorage.setItem(STORAGE.STORAGE_TRANSACTIONS, JSON.stringify(values));
     dispatch(hideLoadingUi());
   };
 

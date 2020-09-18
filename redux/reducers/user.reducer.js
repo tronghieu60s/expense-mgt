@@ -1,3 +1,4 @@
+import * as STORAGE from 'constant/storage';
 import jwt from 'jsonwebtoken';
 import { userActionTypes } from '../actions/user.action';
 
@@ -14,15 +15,15 @@ export default function userReducer(state = userInitialState, action) {
     case userActionTypes.LOGIN: {
       const { user, remember } = action;
       const userStorage = jwt.sign(user._id, PRIVATE_KEY);
-      localStorage.removeItem('.config_user');
-      sessionStorage.removeItem('.config_user');
-      if (remember) localStorage.setItem('.config_user', JSON.stringify(userStorage));
-      else sessionStorage.setItem('.config_user', JSON.stringify(userStorage));
+      localStorage.removeItem(STORAGE.STORAGE_USER);
+      sessionStorage.removeItem(STORAGE.STORAGE_USER);
+      if (remember) localStorage.setItem(STORAGE.STORAGE_USER, JSON.stringify(userStorage));
+      else sessionStorage.setItem(STORAGE.STORAGE_USER, JSON.stringify(userStorage));
       return { ...user };
     }
     case userActionTypes.LOGOUT: {
-      localStorage.removeItem('.config_user');
-      sessionStorage.removeItem('.config_user');
+      localStorage.removeItem(STORAGE.STORAGE_USER);
+      sessionStorage.removeItem(STORAGE.STORAGE_USER);
       return { ...userInitialState };
     }
     default:

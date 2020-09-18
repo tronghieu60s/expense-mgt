@@ -1,13 +1,14 @@
 import LayoutMain from 'components/Layout/LayoutMain';
 import Loading from 'components/UI/Loading';
 import * as PATH from 'constant/path';
+import * as STORAGE from 'constant/storage';
 import * as TEXT from 'constant/text';
 import Layout from 'containers/Layout';
 import { delayLoading } from 'helpers/common';
 import jwt from 'jsonwebtoken';
 import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
-import React, { useEffect, createElement } from 'react';
+import React, { createElement, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { hideLoadingUi, showLoadingUi } from 'redux/actions/ui.action';
 import { logoutUser, setUser } from 'redux/actions/user.action';
@@ -25,8 +26,8 @@ const LayoutMainContainer = (props) => {
 
   useEffect(() => {
     const storage =
-      JSON.parse(localStorage.getItem('.config_user')) ||
-      JSON.parse(sessionStorage.getItem('.config_user')) ||
+      JSON.parse(localStorage.getItem(STORAGE.STORAGE_USER)) ||
+      JSON.parse(sessionStorage.getItem(STORAGE.STORAGE_USER)) ||
       null;
     if (storage) {
       jwt.verify(storage, PRIVATE_KEY, (err, decoded) => {

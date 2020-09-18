@@ -1,5 +1,6 @@
 import Auth from 'components/Auth';
 import * as PATH from 'constant/path';
+import * as STORAGE from 'constant/storage';
 import Layout from 'containers/Layout';
 import jwt from 'jsonwebtoken';
 import { useRouter } from 'next/router';
@@ -17,8 +18,8 @@ const AuthContainer = (props) => {
 
   useEffect(() => {
     const storage =
-      JSON.parse(localStorage.getItem('.config_user')) ||
-      JSON.parse(sessionStorage.getItem('.config_user')) ||
+      JSON.parse(localStorage.getItem(STORAGE.STORAGE_USER)) ||
+      JSON.parse(sessionStorage.getItem(STORAGE.STORAGE_USER)) ||
       null;
     if (storage) {
       jwt.verify(storage, PRIVATE_KEY, (err, decoded) => {

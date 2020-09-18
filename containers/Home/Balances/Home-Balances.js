@@ -1,5 +1,6 @@
 import HomeBalances from 'components/Home/Balances/Home-Balances';
 import { GROUPS, JARS } from 'constant/common';
+import * as STORAGE from 'constant/storage';
 import * as TEXT from 'constant/text';
 import { getDateNow, parseDateString } from 'helpers/datetime';
 import { objectKeyToArray, objectTotalValues } from 'helpers/object';
@@ -18,22 +19,24 @@ const HomeBalancesContainer = () => {
   const totalIncome = objectTotalValues(income);
   const totalExpense = objectTotalValues(expense);
 
-  const configTransactions = JSON.parse(localStorage.getItem('.config_transactions'));
-  const initialValues = {
-    ...configTransactions,
-    money: 0,
-    description: '',
-    date: getDateNow(),
-  } || {
-    money: 0,
-    jar: 'necessities',
-    group: 'food',
-    date: getDateNow(),
-    description: '',
-    transfer: 'necessities',
-    receive: 'education',
-    no_glass: false,
-  };
+  const configTransactions = JSON.parse(localStorage.getItem(STORAGE.STORAGE_TRANSACTIONS));
+  const initialValues = configTransactions
+    ? {
+        ...configTransactions,
+        money: 0,
+        description: '',
+        date: getDateNow(),
+      }
+    : {
+        money: 0,
+        jar: arrNameJars[0],
+        group: arrNameGroups[0],
+        date: getDateNow(),
+        description: '',
+        transfer: arrNameJars[0],
+        receive: arrNameJars[1],
+        no_glass: false,
+      };
 
   const validationSchema = Yup.object().shape({
     money: Yup.number().typeError(TEXT.FIELD_NOT_MATCHES).required(TEXT.FIELD_IS_REQUIRED),
