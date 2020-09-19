@@ -8,7 +8,7 @@ const ChartJarsItem = (props) => {
   const { jar, remain, percent } = props;
 
   return (
-    <Col className="mb-3 mb-lg-0" xs={6} sm={4} lg={2}>
+    <Col className="mb-3 mb-lg-0" xs={6} sm={4} md={2}>
       <Doughnut
         data={{
           labels: [jar.name, ''],
@@ -16,6 +16,8 @@ const ChartJarsItem = (props) => {
             {
               backgroundColor: [jar.color, '#fff'],
               data: [percent || 1, 100 - percent],
+              borderColor: [jar.color, jar.color],
+              borderWidth: 1,
             },
           ],
         }}

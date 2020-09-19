@@ -3,7 +3,8 @@ import LayoutMainJars from 'components/Layout/Layout-Main-Jars';
 import LayoutMainJarsItem from 'components/Layout/Layout-Main-JarsItem';
 import { JARS } from 'constant/common';
 import * as TEXT from 'constant/text';
-import React from 'react';
+import { objectTotalValues } from 'helpers/object';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import * as Yup from 'yup';
 
@@ -14,62 +15,50 @@ const jarsColor = arrJarsName.map((jar) => jar.color);
 const LayoutMainJarsContainer = () => {
   const balance = useSelector((state) => state.user.balance);
   const { percent } = balance;
+
+  const [initialInputValues, setInitialInputValues] = useState(percent);
+  const totalPercent = objectTotalValues(initialInputValues);
   const jarsValues = arrJarsName.map((jar) => percent[jar.nameCode]);
 
   const initialValues = { ...percent };
-  const validationSchema = Yup.object().shape({
-    necessities: Yup.number()
-      .typeError(TEXT.FIELD_NOT_MATCHES)
-      .required(TEXT.FIELD_IS_REQUIRED)
-      .min(0, TEXT.MIN_0_PERCENT)
-      .max(100, TEXT.MAX_100_PERCENT),
-    education: Yup.number()
-      .typeError(TEXT.FIELD_NOT_MATCHES)
-      .required(TEXT.FIELD_IS_REQUIRED)
-      .min(0, TEXT.MIN_0_PERCENT)
-      .max(100, TEXT.MAX_100_PERCENT),
-    saving: Yup.number()
-      .typeError(TEXT.FIELD_NOT_MATCHES)
-      .required(TEXT.FIELD_IS_REQUIRED)
-      .min(0, TEXT.MIN_0_PERCENT)
-      .max(100, TEXT.MAX_100_PERCENT),
-    play: Yup.number()
-      .typeError(TEXT.FIELD_NOT_MATCHES)
-      .required(TEXT.FIELD_IS_REQUIRED)
-      .min(0, TEXT.MIN_0_PERCENT)
-      .max(100, TEXT.MAX_100_PERCENT),
-    investment: Yup.number()
-      .typeError(TEXT.FIELD_NOT_MATCHES)
-      .required(TEXT.FIELD_IS_REQUIRED)
-      .min(0, TEXT.MIN_0_PERCENT)
-      .max(100, TEXT.MAX_100_PERCENT),
-    give: Yup.number()
-      .typeError(TEXT.FIELD_NOT_MATCHES)
-      .required(TEXT.FIELD_IS_REQUIRED)
-      .min(0, TEXT.MIN_0_PERCENT)
-      .max(100, TEXT.MAX_100_PERCENT),
-  });
+  const validationSchema = () => {
+    const schema = {};
+    for (const key in percent)
+      if (percent.hasOwnProperty(key))
+        schema[key] = Yup.number()
+          .typeError(TEXT.FIELD_NOT_MATCHES)
+          .required(TEXT.FIELD_IS_REQUIRED);
+    return Yup.object().shape(schema);
+  };
 
-  const onSubmit = async (values) => {
-    console.log(values);
+  const handleChange = (name, value) => {
+    setInitialInputValues({
+      ...initialInputValues,
+      [name]: value || 0,
+    });
   };
 
   const renderInputJarsItem = () => {
     let result = null;
     result = arrJarsName.map((jar) => {
-      return <LayoutMainJarsItem key={jar.nameCode} jar={jar} />;
+      return <LayoutMainJarsItem key={jar.nameCode} jar={jar} handleChange={handleChange} />;
     });
     return result;
+  };
+
+  const onSubmit = async (values) => {
+    console.log(values);
   };
 
   return (
     <LayoutMainJars
       initialValues={initialValues}
-      validationSchema={validationSchema}
+      validationSchema={validationSchema()}
       onSubmit={onSubmit}
       jarsName={jarsName}
       jarsColor={jarsColor}
       jarsValues={jarsValues}
+      totalPercent={totalPercent}
     >
       {renderInputJarsItem()}
     </LayoutMainJars>
@@ -78,4 +67,4 @@ const LayoutMainJarsContainer = () => {
 
 LayoutMainJarsContainer.propTypes = {};
 
-export default LayoutMainJarsContainer;
+export default React.memo(LayoutMainJarsContainer);

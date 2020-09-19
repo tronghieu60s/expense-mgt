@@ -6,10 +6,9 @@ import { Button, Modal } from 'react-bootstrap';
 import { Doughnut } from 'react-chartjs-2';
 
 const LayoutMainJars = (props) => {
-  const { jarsName, jarsColor, jarsValues } = props;
+  const { jarsName, jarsColor, jarsValues, totalPercent } = props;
 
   const [show, setShow] = useState(false);
-
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
@@ -25,7 +24,7 @@ const LayoutMainJars = (props) => {
         </Modal.Header>
         <Modal.Body className="py-2">
           <div className="px-3 pt-2">
-            <div className="px-5">
+            <div className="px-5 mb-4">
               <Doughnut
                 data={{
                   labels: jarsName,
@@ -40,6 +39,7 @@ const LayoutMainJars = (props) => {
                   legend: {
                     position: 'left',
                   },
+                  hover: false,
                 }}
               />
             </div>
@@ -49,7 +49,12 @@ const LayoutMainJars = (props) => {
               onSubmit={props.onSubmit}
             >
               <Form>
-                <div className="my-4 px-5">{props.children}</div>
+                <div className="mb-4 px-5">
+                  <div className="text-12 weight-700 text-uppercase text-right mb-2">
+                    Tổng: {totalPercent || 0}%
+                  </div>
+                  {props.children}
+                </div>
                 <div className="my-3 d-flex justify-content-end">
                   <Button variant="secondary" onClick={handleClose}>
                     {TEXT.CANCEL}
@@ -72,6 +77,7 @@ LayoutMainJars.propTypes = {
   jarsName: PropTypes.array,
   jarsColor: PropTypes.array,
   jarsValues: PropTypes.array,
+  totalPercent: PropTypes.number,
 
   initialValues: PropTypes.shape({}),
   validationSchema: PropTypes.shape({}),
@@ -83,6 +89,7 @@ LayoutMainJars.defaultProps = {
   jarsName: [],
   jarsColor: [],
   jarsValues: [],
+  totalPercent: 0,
 
   initialValues: {},
   validationSchema: {},

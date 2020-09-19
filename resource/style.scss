@@ -21,6 +21,13 @@ span {
   font-size: 13px !important;
 }
 
+// Turn Off Button Up/Down Input Number
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
 .modal-title{
   text-transform: capitalize;
 }

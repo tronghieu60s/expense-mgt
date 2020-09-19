@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { FormGroup, FormControl } from 'react-bootstrap';
 
 const FormAlternative = (props) => {
-  const { field, form, type, icon, placeholder, disabled, defaultValue } = props;
+  const { field, form, type, icon, placeholder, disabled, defaultValue, handleChange } = props;
   const { name, value, onChange, onBlur } = field;
   const { errors, touched } = form;
   const showError = errors[name] && touched[name];
@@ -31,6 +31,7 @@ const FormAlternative = (props) => {
           type={type}
           placeholder={placeholder}
           disabled={disabled}
+          onKeyUp={() => handleChange(name, value)}
           autoComplete="off"
         />
       </div>
@@ -44,6 +45,7 @@ FormAlternative.propTypes = {
   placeholder: PropTypes.string,
   defaultValue: PropTypes.string,
   disabled: PropTypes.bool,
+  handleChange: PropTypes.func,
 
   field: PropTypes.shape({
     name: PropTypes.string,
@@ -63,6 +65,7 @@ FormAlternative.defaultProps = {
   placeholder: '',
   defaultValue: '',
   disabled: false,
+  handleChange: () => {},
 
   field: {
     name: '',
