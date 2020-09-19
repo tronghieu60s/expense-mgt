@@ -25,6 +25,15 @@ export const JARS = {
   },
 };
 
+export const JARSPERCENT = {
+  necessities: 60,
+  education: 10,
+  saving: 10,
+  play: 10,
+  investment: 5,
+  give: 5,
+};
+
 export const GROUPS = {
   food: {
     name: 'Ăn uống',

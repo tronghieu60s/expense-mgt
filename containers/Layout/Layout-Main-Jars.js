@@ -3,9 +3,13 @@ import LayoutMainJars from 'components/Layout/Layout-Main-Jars';
 import LayoutMainJarsItem from 'components/Layout/Layout-Main-JarsItem';
 import { JARS } from 'constant/common';
 import * as TEXT from 'constant/text';
+import { delayLoading, toastCustom } from 'helpers/common';
 import { objectTotalValues } from 'helpers/object';
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { hideLoadingUi, showLoadingUi } from 'redux/actions/ui.action';
+import { setUser } from 'redux/actions/user.action';
+import { updateUser } from 'utils/firebase';
 import * as Yup from 'yup';
 
 const arrJarsName = objectJarsToArray(JARS);
@@ -13,7 +17,9 @@ const jarsName = arrJarsName.map((jar) => jar.name);
 const jarsColor = arrJarsName.map((jar) => jar.color);
 
 const LayoutMainJarsContainer = () => {
-  const balance = useSelector((state) => state.user.balance);
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.user);
+  const { balance } = user;
   const { percent } = balance;
 
   const [initialInputValues, setInitialInputValues] = useState(percent);
@@ -47,7 +53,24 @@ const LayoutMainJarsContainer = () => {
   };
 
   const onSubmit = async (values) => {
-    console.log(values);
+    dispatch(showLoadingUi());
+
+    if (totalPercent === 100) {
+      await updateUser(user._id, {
+        balance: {
+          ...balance,
+          percent: values,
+        },
+      }).then((res) => {
+        if (res) {
+          toastCustom('success', TEXT.UPDATE_DATA_SUCCESS);
+          dispatch(setUser(res));
+        }
+      });
+    } else toastCustom('error', TEXT.JARS_PERCENT_OVER);
+
+    await delayLoading();
+    dispatch(hideLoadingUi());
   };
 
   return (

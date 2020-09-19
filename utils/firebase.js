@@ -3,6 +3,7 @@ import 'firebase/database';
 import 'firebase/storage';
 import { objectToArray } from 'helpers/object';
 import { baseJars } from 'common/jars';
+import { JARSPERCENT } from 'constant/common';
 
 const apiKey = process.env.NEXT_PUBLIC_FIREBASE_APIKEY;
 const projectId = process.env.NEXT_PUBLIC_FIREBASE_PROJECTID;
@@ -48,7 +49,7 @@ export function getUser(_id) {
 
 export function newUser(data) {
   const display_name = data.username;
-  const balance = { percent: jars, income: jars, expense: jars };
+  const balance = { percent: JARSPERCENT, income: jars, expense: jars };
   return usersModel
     .push({ ...data, display_name, balance })
     .then(async (res) => {
