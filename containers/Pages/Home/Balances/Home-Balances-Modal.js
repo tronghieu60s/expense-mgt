@@ -1,4 +1,4 @@
-import HomeBalancesModal from 'components/Home/Balances/Home-Balances-Modal';
+import HomeBalancesModal from 'components/Pages/Home/Balances/Home-Balances-Modal';
 import * as TEXT from 'constant/text';
 import * as STORAGE from 'constant/storage';
 import { toastCustom } from 'helpers/common';
@@ -14,7 +14,7 @@ import { JARS } from 'constant/common';
 const HomeBalancesModalContainer = (props) => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
-  const balance = useSelector((state) => state.user.balance);
+  const { balance } = user;
   const { income, expense, percent } = balance;
 
   const [tab, setTab] = useState('income');
@@ -148,4 +148,4 @@ HomeBalancesModalContainer.defaultProps = {
   optionsGroups: [],
 };
 
-export default HomeBalancesModalContainer;
+export default React.memo(HomeBalancesModalContainer);

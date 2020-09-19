@@ -1,4 +1,4 @@
-import HomeBalances from 'components/Home/Balances/Home-Balances';
+import HomeBalances from 'components/Pages/Home/Balances/Home-Balances';
 import { GROUPS, JARS } from 'constant/common';
 import * as STORAGE from 'constant/storage';
 import * as TEXT from 'constant/text';
@@ -96,4 +96,4 @@ const HomeBalancesContainer = () => {
   );
 };
 
-export default HomeBalancesContainer;
+export default React.memo(HomeBalancesContainer);

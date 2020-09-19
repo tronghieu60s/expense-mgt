@@ -1,4 +1,4 @@
-import TransactionsHistoryItem from 'components/Transactions/History/Transactions-History-Item';
+import TransactionsHistoryItem from 'components/Pages/Transactions/History/Transactions-History-Item';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { JARS } from 'constant/common';

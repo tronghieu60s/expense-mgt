@@ -1,4 +1,4 @@
-import Auth from 'components/Auth';
+import Auth from 'components/Pages/Auth';
 import * as PATH from 'constant/path';
 import * as STORAGE from 'constant/storage';
 import Layout from 'containers/Layout';

@@ -1,4 +1,4 @@
-import TransactionsHistory from 'components/Transactions/History/Transactions-History';
+import TransactionsHistory from 'components/Pages/Transactions/History/Transactions-History';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import TransactionsHistoryItem from './Transactions-History-Item';

@@ -1,6 +1,6 @@
-import ChartJars from 'containers/ChartJars';
 import Index from 'components/Pages/Index';
-import Home from 'containers/Home';
+import Home from 'containers/Pages/Home';
+import ChartJars from 'containers/Pages/Home/ChartJars';
 import React from 'react';
 
 const IndexContainer = () => {

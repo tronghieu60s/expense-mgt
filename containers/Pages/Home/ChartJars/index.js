@@ -1,6 +1,6 @@
 import { objectJarsToArray } from 'common/jars';
-import ChartJars from 'components/ChartJars';
-import ChartJarsItem from 'components/ChartJars/ChartJars-Item';
+import ChartJars from 'components/Pages/Home/ChartJars';
+import ChartJarsItem from 'components/Pages/Home/ChartJars/ChartJars-Item';
 import { JARS } from 'constant/common';
 import React from 'react';
 import { useSelector } from 'react-redux';

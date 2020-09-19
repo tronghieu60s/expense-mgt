@@ -1,8 +1,8 @@
 import bcrypt from 'bcryptjs';
-import SignIn from 'components/Auth/SignIn';
+import SignIn from 'components/Pages/Auth/SignIn';
 import * as PATH from 'constant/path';
 import * as TEXT from 'constant/text';
-import Auth from 'containers/Auth';
+import Auth from 'containers/Pages/Auth';
 import { Formik } from 'formik';
 import { delayLoading, toastCustom } from 'helpers/common';
 import { useRouter } from 'next/router';

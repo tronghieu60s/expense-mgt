@@ -1,6 +1,6 @@
-import Home from 'components/Home';
+import Home from 'components/Pages/Home';
 import LayoutMain from 'containers/Layout/Layout-Main';
-import TransactionsHistory from 'containers/Transactions/History/Transactions-History';
+import TransactionsHistory from 'containers/Pages/Transactions/History/Transactions-History';
 import PropTypes from 'prop-types';
 import React, { createElement } from 'react';
 import HomeBalances from './Balances/Home-Balances';

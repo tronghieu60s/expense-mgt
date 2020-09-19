@@ -1,7 +1,7 @@
 import bcrypt from 'bcryptjs';
-import SignUp from 'components/Auth/SignUp';
+import SignUp from 'components/Pages/Auth/SignUp';
 import * as TEXT from 'constant/text';
-import Auth from 'containers/Auth';
+import Auth from 'containers/Pages/Auth';
 import { Formik } from 'formik';
 import { delayLoading, toastCustom } from 'helpers/common';
 import React from 'react';
