@@ -51,7 +51,7 @@ const HomeBalancesModal = (props) => {
         </span>
       </Button>
 
-      <Modal animation={false} show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>{TEXT.ADD_TRANSACTION}</Modal.Title>
         </Modal.Header>

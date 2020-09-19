@@ -9,6 +9,7 @@ import { hideLoadingUi, showLoadingUi } from 'redux/actions/ui.action';
 import { updateUser, newTransaction } from 'utils/firebase';
 import { setUser } from 'redux/actions/user.action';
 import { addTransactions } from 'redux/actions/transactions.action';
+import { JARS } from 'constant/common';
 
 const HomeBalancesModalContainer = (props) => {
   const dispatch = useDispatch();
@@ -84,6 +85,22 @@ const HomeBalancesModalContainer = (props) => {
             income[transfer] -= money;
             income[receive] += money;
             saveUser = await updateUser(user._id, { balance: { ...balance, income } });
+            const transferTransaction = await newTransaction(user._id, {
+              type: 'expense',
+              date,
+              money,
+              description: `${TEXT.MOVE_TRANSFER_TO} ${JARS[receive].name}`,
+              jar: transfer,
+            });
+            const receiveTransaction = await newTransaction(user._id, {
+              type: 'income',
+              date,
+              money,
+              description: `${TEXT.MOVE_RECEIVE_FROM} ${JARS[transfer].name}`,
+              jar: receive,
+            });
+            dispatch(addTransactions(transferTransaction));
+            dispatch(addTransactions(receiveTransaction));
             toastCustom('success', TEXT.TRANSACTION_ADD_SUCCESS);
           } else toastCustom('error', TEXT.TRANSACTION_LARGER_WALLET);
           break;

@@ -3,6 +3,7 @@ import { GROUPS, JARS } from 'constant/common';
 import * as STORAGE from 'constant/storage';
 import * as TEXT from 'constant/text';
 import { getDateNow, parseDateString } from 'helpers/datetime';
+import { formatMoneyLocal } from 'helpers/money';
 import { objectKeyToArray, objectTotalValues } from 'helpers/object';
 import React from 'react';
 import { useSelector } from 'react-redux';
@@ -69,7 +70,7 @@ const HomeBalancesContainer = () => {
     for (const key in JARS)
       if (JARS.hasOwnProperty(key)) {
         const minus = income[key] - expense[key];
-        result.push({ key, value: `${JARS[key].name} - ${minus.toFixed(1)}` });
+        result.push({ key, value: `${JARS[key].name} - ${formatMoneyLocal(minus)} đ` });
       }
     return result;
   };
