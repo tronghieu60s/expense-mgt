@@ -12,43 +12,41 @@ const HomeBalances = (props) => {
   const incomePercent = 100 - expensePercent;
 
   return (
-    <div className="expense-main-block shadow rounded bg-white p-3 mt-2">
-      <Row>
-        <Col sm={12}>
-          <Doughnut
-            data={{
-              labels: [TEXT.INCOME, TEXT.EXPENSE],
-              datasets: [
-                {
-                  backgroundColor: [COLOR.INCOME_COLOR, COLOR.EXPENSE_COLOR],
-                  data: [incomePercent, expensePercent],
-                },
-              ],
-            }}
-            cutoutPercentage={0}
-            options={{
-              legend: {
-                onClick: null,
+    <Row>
+      <Col sm={12}>
+        <Doughnut
+          data={{
+            labels: [TEXT.INCOME, TEXT.EXPENSE],
+            datasets: [
+              {
+                backgroundColor: [COLOR.INCOME_COLOR, COLOR.EXPENSE_COLOR],
+                data: [incomePercent, expensePercent],
               },
-              plugins: {
-                labels: {
-                  render: () => {
-                    return '';
-                  },
+            ],
+          }}
+          cutoutPercentage={0}
+          options={{
+            legend: {
+              onClick: null,
+            },
+            plugins: {
+              labels: {
+                render: () => {
+                  return '';
                 },
               },
-            }}
-          />
-        </Col>
-        <Col sm={12} className="mt-2 mb-3 text-center">
-          <span className="text-12 text-uppercase">{TEXT.AVAILABLE_BALANCES}</span>
-          <h2 className="mb-0 weight-700">
-            {formatMoneyLocal(totalIncome - totalExpense)} <u>đ</u>
-          </h2>
-        </Col>
-        <Col sm={12}>{props.children}</Col>
-      </Row>
-    </div>
+            },
+          }}
+        />
+      </Col>
+      <Col sm={12} className="mt-2 mb-3 text-center">
+        <span className="text-12 text-uppercase">{TEXT.AVAILABLE_BALANCES}</span>
+        <h2 className="mb-0 weight-700">
+          {formatMoneyLocal(totalIncome - totalExpense)} <u>đ</u>
+        </h2>
+      </Col>
+      <Col sm={12}>{props.children}</Col>
+    </Row>
   );
 };
 

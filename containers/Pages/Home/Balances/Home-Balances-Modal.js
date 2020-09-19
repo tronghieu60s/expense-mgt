@@ -22,7 +22,6 @@ const HomeBalancesModalContainer = (props) => {
   const onSubmit = async (values, { resetForm }) => {
     const type = tab;
     const { money, jar, group, date, description, transfer, receive, no_glass } = values;
-    if (money === 0) return toastCustom('error', TEXT.TRANSACTION_MUST_MONEY);
     if (money % 1000 !== 0) return toastCustom('error', TEXT.TRANSACTION_MUST_DIVISIBLE_1000);
 
     dispatch(showLoadingUi());

@@ -52,8 +52,10 @@ const LayoutMainContainer = (props) => {
 
   const handleLogout = async () => {
     dispatch(showLoadingUi());
+
     dispatch(logoutUser());
     router.push(PATH.LOGIN_PAGE);
+
     await delayLoading();
     dispatch(hideLoadingUi());
   };

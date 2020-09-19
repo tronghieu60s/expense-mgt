@@ -40,7 +40,10 @@ const HomeBalancesContainer = () => {
       };
 
   const validationSchema = Yup.object().shape({
-    money: Yup.number().typeError(TEXT.FIELD_NOT_MATCHES).required(TEXT.FIELD_IS_REQUIRED),
+    money: Yup.number()
+      .typeError(TEXT.FIELD_NOT_MATCHES)
+      .required(TEXT.FIELD_IS_REQUIRED)
+      .min(1, TEXT.TRANSACTION_MUST_MONEY),
     jar: Yup.string()
       .typeError(TEXT.FIELD_NOT_MATCHES)
       .oneOf(arrNameJars, TEXT.FIELD_NOT_MATCHES)

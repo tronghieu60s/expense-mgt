@@ -1,9 +1,11 @@
 import bcrypt from 'bcryptjs';
 import SignUp from 'components/Pages/Auth/SignUp';
+import * as PATH from 'constant/path';
 import * as TEXT from 'constant/text';
 import Auth from 'containers/Pages/Auth';
 import { Formik } from 'formik';
 import { delayLoading, toastCustom } from 'helpers/common';
+import { useRouter } from 'next/router';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { hideLoadingUi, showLoadingUi } from 'redux/actions/ui.action';
@@ -11,6 +13,7 @@ import { getUsers, newUser } from 'utils/firebase';
 import * as Yup from 'yup';
 
 const SignUpContainer = () => {
+  const router = useRouter();
   const dispatch = useDispatch();
 
   const initialValues = {
@@ -53,12 +56,14 @@ const SignUpContainer = () => {
     dispatch(showLoadingUi());
 
     const users = await getUsers();
-    const checkUser = await checkUserNotExist(users, values);
+    const checkUser = checkUserNotExist(users, values);
     if (checkUser) {
       const hashPass = bcrypt.hashSync(values.password, 12);
-      newUser({ ...values, password: hashPass }).then((res) => {
-        if (res) toastCustom('success', TEXT.USER_NEW_SUCCESS);
-      });
+      const userResult = await newUser({ ...values, password: hashPass });
+      if (userResult) {
+        await toastCustom('success', TEXT.USER_NEW_SUCCESS);
+        router.push(PATH.LOGIN_PAGE);
+      }
     }
 
     await delayLoading();
