@@ -4,7 +4,7 @@ import LayoutMainJarsItem from 'components/Layout/Layout-Main-JarsItem';
 import { JARS } from 'constant/common';
 import * as TEXT from 'constant/text';
 import { delayLoading, toastCustom } from 'helpers/common';
-import { objectTotalValues } from 'helpers/object';
+import { objectIsEqual, objectTotalValues } from 'helpers/object';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { hideLoadingUi, showLoadingUi } from 'redux/actions/ui.action';
@@ -53,24 +53,25 @@ const LayoutMainJarsContainer = () => {
   };
 
   const onSubmit = async (values) => {
+    if (objectIsEqual(initialValues, values)) return toastCustom('error', TEXT.DATA_NOT_CHANGED);
+    if (totalPercent !== 100) return toastCustom('error', TEXT.JARS_PERCENT_OVER);
     dispatch(showLoadingUi());
 
-    if (totalPercent === 100) {
-      await updateUser(user._id, {
-        balance: {
-          ...balance,
-          percent: values,
-        },
-      }).then((res) => {
-        if (res) {
-          toastCustom('success', TEXT.UPDATE_DATA_SUCCESS);
-          dispatch(setUser(res));
-        }
-      });
-    } else toastCustom('error', TEXT.JARS_PERCENT_OVER);
+    await updateUser(user._id, {
+      balance: {
+        ...balance,
+        percent: values,
+      },
+    }).then((res) => {
+      if (res) {
+        toastCustom('success', TEXT.UPDATE_DATA_SUCCESS);
+        dispatch(setUser(res));
+      }
+    });
 
     await delayLoading();
     dispatch(hideLoadingUi());
+    return null;
   };
 
   return (

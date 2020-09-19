@@ -15,3 +15,19 @@ export const objectTotalValues = (object) => {
   for (const key in object) if (object.hasOwnProperty(key)) total += parseInt(object[key], 10);
   return total;
 };
+
+export const objectIsEqual = (objA, objB) => {
+  const aProps = Object.getOwnPropertyNames(objA);
+  const bProps = Object.getOwnPropertyNames(objB);
+  if (aProps.length !== bProps.length) {
+    return false;
+  }
+
+  for (let i = 0; i < aProps.length; i += 1) {
+    const propName = aProps[i];
+    if (objA[propName] !== objB[propName]) {
+      return false;
+    }
+  }
+  return true;
+};

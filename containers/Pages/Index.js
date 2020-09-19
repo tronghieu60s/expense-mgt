@@ -1,4 +1,4 @@
-import Index from 'components/Pages/Index';
+import Index from 'components/Pages';
 import Home from 'containers/Pages/Home';
 import ChartJars from 'containers/Pages/Home/ChartJars';
 import React from 'react';

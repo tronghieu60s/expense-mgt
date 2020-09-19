@@ -19,7 +19,7 @@ const Layout = (props) => {
             </div>
           </Col>
           <Col xs={6} md={6} className="mt-2 mt-md-0 d-flex align-items-center">
-            <Navbar className="p-0 text-14 ml-auto ml-md-0" expand="sm">
+            <Navbar className="p-0 text-14 ml-auto ml-md-0" expand="md">
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
               <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="mr-auto">
@@ -47,7 +47,7 @@ const Layout = (props) => {
               {props.componentSetting}
               <div className="ml-1">{props.componentJars}</div>
             </div>
-            <div className="mt-1">
+            <div className="d-flex justify-content-end mt-1">
               <Button variant="danger" size="sm" className="mt-0" onClick={handleLogout}>
                 <i className="fa fa-sign-out" aria-hidden="true" /> Đăng Xuất
               </Button>
