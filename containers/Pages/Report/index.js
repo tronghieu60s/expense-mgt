@@ -1,29 +1,28 @@
 import Report from 'components/Pages/Report';
+import ReportChart from 'components/Pages/Report/Report-Chart';
 import * as TEXT from 'constant/text';
 import LayoutMain from 'containers/Layout/Layout-Main';
 import HomeBalances from 'containers/Pages/Home/Balances/Home-Balances';
 import TransactionsHistory from 'containers/Pages/Transactions/History/Transactions-History';
-import { getDateNowAgo, parseDateString } from 'helpers/datetime';
+import { arrayUniqueValue, arrSortObjectDate } from 'helpers/array';
+import { delayLoading } from 'helpers/common';
+import { getDateNowAgo, parseDateString, formatDateMark } from 'helpers/datetime';
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { hideLoadingUi, showLoadingUi } from 'redux/actions/ui.action';
 import * as Yup from 'yup';
 import ChartJarsAllContainer from '../Home/ChartJars/ChartJars-All';
-import ReportChartContainer from './Report-Chart';
 import ReportSortContainer from './Report-Sort';
-import { arrSortObjectDate } from 'helpers/array';
-import { useDispatch } from 'react-redux';
-import { hideLoadingUi, showLoadingUi } from 'redux/actions/ui.action';
-import { delayLoading, toastCustom } from 'helpers/common';
 
 const ReportContainer = () => {
   const dispatch = useDispatch();
   const transactions = useSelector((state) => state.transactions);
+  const transSort = arrSortObjectDate(transactions);
 
+  const [labelsDate, setLabelsDate] = useState([]);
   const [incomeData, setIncomeData] = useState([]);
   const [expenseData, setExpenseData] = useState([]);
   const [tabSort, setTabSort] = useState('day');
-
-  const sortedTransactions = arrSortObjectDate(transactions);
 
   const initialValues = {
     date: getDateNowAgo(6),
@@ -45,7 +44,36 @@ const ReportContainer = () => {
   const onSubmit = async (values) => {
     dispatch(showLoadingUi());
 
-    console.log(values);
+    let totalInData = { income: 0, expense: 0 };
+    const arrIncome = [];
+    const arrExpense = [];
+    switch (tabSort) {
+      case 'day': {
+        let labels = arrayUniqueValue(transSort.map((res) => res.date));
+        for (let i = 0; i < labels.length; i += 1) {
+          totalInData = { income: 0, expense: 0 };
+          if (new Date(values.date) <= new Date(labels[i])) {
+            transSort.forEach((trans) => {
+              if (labels[i] === trans.date) totalInData[trans.type] += trans.money;
+            });
+            arrIncome.push(totalInData.income);
+            arrExpense.push(totalInData.expense);
+          }
+        }
+
+        labels = labels.map((res) => formatDateMark(res));
+        setLabelsDate(labels);
+        setIncomeData(arrIncome);
+        setExpenseData(arrExpense);
+        break;
+      }
+      case 'month':
+        break;
+      case 'year':
+        break;
+      default:
+        break;
+    }
 
     await delayLoading();
     dispatch(hideLoadingUi());
@@ -67,7 +95,9 @@ const ReportContainer = () => {
           />
         }
         componentBlock4={<ChartJarsAllContainer />}
-        componentBlock5={<ReportChartContainer />}
+        componentBlock5={
+          <ReportChart labelsDate={labelsDate} incomeData={incomeData} expenseData={expenseData} />
+        }
       />
     </LayoutMain>
   );

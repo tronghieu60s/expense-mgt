@@ -22,13 +22,13 @@ const HomeBalancesModalContainer = (props) => {
   const onSubmit = async (values, { resetForm }) => {
     const type = tab;
     const { money, jar, group, date, description, transfer, receive, no_glass } = values;
-    if (money % 1000 !== 0) return toastCustom('error', TEXT.TRANSACTION_MUST_DIVISIBLE_1000);
 
     dispatch(showLoadingUi());
     let saveUser;
     switch (type) {
       case 'income':
-        if (no_glass) {
+        if (money % 1000 !== 0) toastCustom('error', TEXT.TRANSACTION_MUST_DIVISIBLE_1000);
+        else if (no_glass) {
           const necessities = money + income['necessities'];
           const updateBalance = { ...balance, income: { ...income, necessities } };
           const newTransactions = await newTransaction(user._id, {

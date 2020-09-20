@@ -5,19 +5,21 @@ import * as TEXT from 'constant/text';
 import * as COLOR from 'constant/color';
 
 const ReportChart = (props) => {
+  const { labelsDate, incomeData, expenseData } = props;
+
   return (
     <Line
       data={{
-        labels: ['20/12/2001', '21/12/2001', '22/12/2001'],
+        labels: labelsDate,
         datasets: [
           {
-            data: [86, 114, 106],
+            data: incomeData,
             label: TEXT.INCOME,
             borderColor: COLOR.INCOME_COLOR,
             fill: false,
           },
           {
-            data: [282, 350, 411, 502, 635, 809, 947, 1402, 3700, 5267],
+            data: expenseData,
             label: TEXT.EXPENSE,
             borderColor: COLOR.EXPENSE_COLOR,
             fill: false,
@@ -25,6 +27,10 @@ const ReportChart = (props) => {
         ],
       }}
       options={{
+        title: {
+          display: true,
+          text: `${TEXT.REPORT_REVENUE_EXPENDITURE} (VND)`,
+        },
         legend: {
           display: true,
           position: 'bottom',
@@ -34,6 +40,16 @@ const ReportChart = (props) => {
   );
 };
 
-ReportChart.propTypes = {};
+ReportChart.propTypes = {
+  labelsDate: PropTypes.array,
+  incomeData: PropTypes.array,
+  expenseData: PropTypes.array,
+};
+
+ReportChart.defaultProps = {
+  labelsDate: [],
+  incomeData: [],
+  expenseData: [],
+};
 
 export default ReportChart;

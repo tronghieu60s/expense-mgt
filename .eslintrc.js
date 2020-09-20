@@ -27,6 +27,7 @@ module.exports = {
     'no-underscore-dangle': 0,
     'no-await-in-loop': 0,
     'no-use-before-define': 0,
+    'no-loop-func': 0,
     'dot-notation': 0,
     'react/destructuring-assignment': 0,
     'react/jsx-filename-extension': 0,
