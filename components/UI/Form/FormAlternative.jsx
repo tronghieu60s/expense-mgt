@@ -29,7 +29,7 @@ const FormAlternative = (props) => {
           onChange={onChange}
           onBlur={onBlur}
           type={type}
-          placeholder={placeholder}
+          placeholder={type === 'number' ? 0 : placeholder}
           disabled={disabled}
           onKeyUp={() => handleChange(name, value)}
           autoComplete="off"

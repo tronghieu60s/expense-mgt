@@ -14,7 +14,7 @@ const MainBlock = (props) => {
 
 MainBlock.propTypes = {
   title: PropTypes.string,
-  children: PropTypes.element,
+  children: PropTypes.any,
 };
 
 MainBlock.defaultProps = {

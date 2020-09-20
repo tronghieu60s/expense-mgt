@@ -4,6 +4,14 @@ export const getDateNow = () => {
   return format(new Date(), 'yyyy-MM-dd');
 };
 
+export const getDateNowAgo = (numberDate) => {
+  const timeNow = new Date();
+  return format(
+    new Date(timeNow.getFullYear(), timeNow.getMonth(), timeNow.getDate() - numberDate),
+    'yyyy-MM-dd',
+  );
+};
+
 export const formatDateMark = (localDate) => {
   return format(new Date(localDate), `dd/MM/yyyy`);
 };

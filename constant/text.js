@@ -76,3 +76,13 @@ export const JARS_PERCENT_OVER = 'Tổng phần trăm của tất cả hũ phả
 
 export const MOVE_TRANSFER_TO = 'Chuyển sang hũ';
 export const MOVE_RECEIVE_FROM = 'Nhận từ hũ';
+
+export const SORT_BY_TIME = 'Lọc theo thời gian';
+export const SORT_BY_NUMBER = 'Hiển thị';
+export const SORT_BY_FROM_DATE = 'Từ ngày';
+export const SORT_BY_MONTH = 'Tháng';
+export const SORT_BY_YEAR = 'Năm';
+
+export const DAY = 'Ngày';
+export const MONTH = 'Tháng';
+export const YEAR = 'Năm';

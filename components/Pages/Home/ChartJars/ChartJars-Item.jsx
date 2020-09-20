@@ -1,8 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Doughnut } from 'react-chartjs-2';
-import { Col } from 'react-bootstrap';
 import { formatMoneyLocal } from 'helpers/money';
+import PropTypes from 'prop-types';
+import React from 'react';
+import { Col } from 'react-bootstrap';
+import { Doughnut } from 'react-chartjs-2';
 
 const ChartJarsItem = (props) => {
   const { jar, remain, percent } = props;
