@@ -78,11 +78,13 @@ export const MOVE_TRANSFER_TO = 'Chuyển sang hũ';
 export const MOVE_RECEIVE_FROM = 'Nhận từ hũ';
 
 export const SORT_BY_TIME = 'Lọc theo thời gian';
+export const SORT_BY_JARS = 'Lọc theo hũ';
 export const SORT_BY_NUMBER = 'Hiển thị';
 export const SORT_BY_FROM_DATE = 'Từ ngày';
 export const SORT_BY_MONTH = 'Tháng';
 export const SORT_BY_YEAR = 'Năm';
 
+export const ALL = 'Tất cả';
 export const DAY = 'Ngày';
 export const MONTH = 'Tháng';
 export const YEAR = 'Năm';

@@ -1,18 +1,22 @@
 import Report from 'components/Pages/Report';
 import ReportChart from 'components/Pages/Report/Report-Chart';
+import { JARS } from 'constant/common';
 import * as TEXT from 'constant/text';
 import LayoutMain from 'containers/Layout/Layout-Main';
 import HomeBalances from 'containers/Pages/Home/Balances/Home-Balances';
 import TransactionsHistory from 'containers/Pages/Transactions/History/Transactions-History';
 import { arrayUniqueValue, arrSortObjectDate } from 'helpers/array';
 import { delayLoading } from 'helpers/common';
-import { getDateNowAgo, parseDateString, formatDateMark } from 'helpers/datetime';
+import { formatDateMark, getDateNowAgo, parseDateString } from 'helpers/datetime';
+import { objectKeyToArray } from 'helpers/object';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { hideLoadingUi, showLoadingUi } from 'redux/actions/ui.action';
 import * as Yup from 'yup';
 import ChartJarsAllContainer from '../Home/ChartJars/ChartJars-All';
 import ReportSortContainer from './Report-Sort';
+
+const arrNameJars = objectKeyToArray(JARS);
 
 const ReportContainer = () => {
   const dispatch = useDispatch();
@@ -26,9 +30,9 @@ const ReportContainer = () => {
 
   const initialValues = {
     date: getDateNowAgo(6),
-    show: 5,
-    month: String(new Date().getMonth() + 1),
+    show: 6,
     year: String(new Date().getFullYear()),
+    jar: 'all',
   };
 
   const validationSchema = Yup.object().shape({
@@ -36,44 +40,84 @@ const ReportContainer = () => {
       .typeError(TEXT.FIELD_NOT_MATCHES)
       .transform(parseDateString)
       .required(TEXT.FIELD_IS_REQUIRED),
-    show: Yup.number().typeError(TEXT.FIELD_NOT_MATCHES).required(TEXT.FIELD_IS_REQUIRED),
-    month: Yup.string().typeError(TEXT.FIELD_NOT_MATCHES).required(TEXT.FIELD_IS_REQUIRED),
+    show: Yup.number().typeError(TEXT.FIELD_NOT_MATCHES),
     year: Yup.string().typeError(TEXT.FIELD_NOT_MATCHES).required(TEXT.FIELD_IS_REQUIRED),
+    jar: Yup.string()
+      .oneOf([...arrNameJars, 'all'], TEXT.FIELD_NOT_MATCHES)
+      .typeError(TEXT.FIELD_NOT_MATCHES)
+      .required(TEXT.FIELD_IS_REQUIRED),
   });
 
   const onSubmit = async (values) => {
     dispatch(showLoadingUi());
+
+    let labels = [...transSort];
+    const transJars =
+      values.jar === 'all' ? [...transSort] : transSort.filter((label) => label.jar === values.jar);
+    // Filter Jars
+    labels = arrayUniqueValue(labels.map((res) => res.date));
 
     let totalInData = { income: 0, expense: 0 };
     const arrIncome = [];
     const arrExpense = [];
     switch (tabSort) {
       case 'day': {
-        let labels = arrayUniqueValue(transSort.map((res) => res.date));
+        labels = labels.filter((label) => new Date(values.date) <= new Date(label));
+        // Filter Number Show
+        labels = labels.slice(0, values.show);
+
         for (let i = 0; i < labels.length; i += 1) {
           totalInData = { income: 0, expense: 0 };
-          if (new Date(values.date) <= new Date(labels[i])) {
-            transSort.forEach((trans) => {
-              if (labels[i] === trans.date) totalInData[trans.type] += trans.money;
-            });
-            arrIncome.push(totalInData.income);
-            arrExpense.push(totalInData.expense);
-          }
+          transJars.forEach((trans) => {
+            if (labels[i] === trans.date) totalInData[trans.type] += trans.money;
+          });
+          arrIncome.push(totalInData.income);
+          arrExpense.push(totalInData.expense);
         }
 
         labels = labels.map((res) => formatDateMark(res));
-        setLabelsDate(labels);
-        setIncomeData(arrIncome);
-        setExpenseData(arrExpense);
         break;
       }
       case 'month':
+        // Filter Year
+        labels = labels.filter((label) => Number(values.year) === new Date(label).getFullYear());
+        // Filter Month
+        labels = arrayUniqueValue(labels.map((label) => new Date(label).getMonth() + 1));
+
+        for (let i = 0; i < labels.length; i += 1) {
+          totalInData = { income: 0, expense: 0 };
+          transJars.forEach((trans) => {
+            if (labels[i] === new Date(trans.date).getMonth() + 1)
+              totalInData[trans.type] += trans.money;
+          });
+          arrIncome.push(totalInData.income);
+          arrExpense.push(totalInData.expense);
+        }
+
+        labels = labels.map((res) => `T${res}`);
         break;
       case 'year':
+        // Filter Year
+        labels = arrayUniqueValue(labels.map((label) => new Date(label).getFullYear()));
+
+        for (let i = 0; i < labels.length; i += 1) {
+          totalInData = { income: 0, expense: 0 };
+          transJars.forEach((trans) => {
+            if (labels[i] === new Date(trans.date).getFullYear())
+              totalInData[trans.type] += trans.money;
+          });
+          arrIncome.push(totalInData.income);
+          arrExpense.push(totalInData.expense);
+        }
+
         break;
       default:
         break;
     }
+
+    setLabelsDate(labels);
+    setIncomeData(arrIncome);
+    setExpenseData(arrExpense);
 
     await delayLoading();
     dispatch(hideLoadingUi());

@@ -7,7 +7,7 @@ import React from 'react';
 import { Button, Col, FormGroup, Row } from 'react-bootstrap';
 
 const ReportSort = (props) => {
-  const { optionsSortMonth, optionsSortYear, tabSort, setTabSort } = props;
+  const { optionsSortJars, optionsSortYear, tabSort, setTabSort } = props;
 
   return (
     <Formik
@@ -17,8 +17,8 @@ const ReportSort = (props) => {
     >
       <Form>
         <Row>
-          <Col sm={5}>
-            <FormGroup className="mb-2">
+          <Col sm={12} className="d-flex">
+            <FormGroup className="mb-2" style={{ width: '200px' }}>
               <p className="mb-1 text-12 weight-600">{TEXT.SORT_BY_TIME}</p>
               <div className="input-group input-group-merge input-group-alternative">
                 <select
@@ -32,16 +32,26 @@ const ReportSort = (props) => {
                 </select>
               </div>
             </FormGroup>
-          </Col>
-          <Col className="d-flex" sm={12}>
-            <div style={{ width: '100px' }}>
+            <div className="ml-1">
               <FastField
-                name="show"
-                component={FormAlternative}
-                type="number"
-                placeholder={TEXT.SORT_BY_NUMBER}
+                name="jar"
+                component={SelectAlternative}
+                placeholder={TEXT.SORT_BY_JARS}
+                options={optionsSortJars}
               />
             </div>
+          </Col>
+          <Col sm={12} className="d-flex">
+            {tabSort === 'day' && (
+              <div style={{ width: '100px' }}>
+                <FastField
+                  name="show"
+                  component={FormAlternative}
+                  type="number"
+                  placeholder={TEXT.SORT_BY_NUMBER}
+                />
+              </div>
+            )}
             {tabSort === 'day' && (
               <div className="ml-1">
                 <FastField
@@ -53,16 +63,6 @@ const ReportSort = (props) => {
               </div>
             )}
             {tabSort === 'month' && (
-              <div className="ml-1">
-                <FastField
-                  name="month"
-                  component={SelectAlternative}
-                  placeholder={TEXT.SORT_BY_MONTH}
-                  options={optionsSortMonth}
-                />
-              </div>
-            )}
-            {(tabSort === 'month' || tabSort === 'year') && (
               <div className="ml-1">
                 <FastField
                   name="year"
@@ -83,7 +83,7 @@ const ReportSort = (props) => {
 };
 
 ReportSort.propTypes = {
-  optionsSortMonth: PropTypes.array,
+  optionsSortJars: PropTypes.array,
   optionsSortYear: PropTypes.array,
 
   tabSort: PropTypes.string,
@@ -94,7 +94,7 @@ ReportSort.propTypes = {
 };
 
 ReportSort.defaultProps = {
-  optionsSortMonth: [],
+  optionsSortJars: [],
   optionsSortYear: [],
 
   tabSort: '',
