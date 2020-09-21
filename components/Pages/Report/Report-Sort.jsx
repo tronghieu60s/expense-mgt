@@ -4,10 +4,10 @@ import * as TEXT from 'constant/text';
 import { FastField, Form, Formik } from 'formik';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Button, Col, FormGroup, Row } from 'react-bootstrap';
+import { Button, Col, Row } from 'react-bootstrap';
 
 const ReportSort = (props) => {
-  const { optionsSortJars, optionsSortYear, tabSort, setTabSort } = props;
+  const { optionSortMonth, optionsSortYear, optionsSortJars, tabSort, setTabSort } = props;
 
   return (
     <Formik
@@ -17,22 +17,32 @@ const ReportSort = (props) => {
     >
       <Form>
         <Row className="mb-2">
-          <Col sm={12} className="d-flex">
-            <FormGroup className="mb-2" style={{ width: '150px' }}>
-              <p className="mb-1 text-12 weight-600">{TEXT.SORT_BY_TIME}</p>
-              <div className="input-group input-group-merge input-group-alternative">
-                <select
-                  className="form-control form-control-sm"
-                  value={tabSort}
-                  onChange={setTabSort}
-                >
-                  <option value="day">{TEXT.DAY}</option>
-                  <option value="month">{TEXT.MONTH}</option>
-                  <option value="year">{TEXT.YEAR}</option>
-                </select>
-              </div>
-            </FormGroup>
-            <div className="ml-1">
+          <Col sm={12}>
+            <p className="mb-1 text-12 weight-600">{TEXT.SORT_BY_TIME}</p>
+            <div className="d-flex mb-3">
+              <Button
+                variant={tabSort === 'day' ? 'primary' : 'outline-dark'}
+                size="sm"
+                onClick={() => setTabSort('day')}
+              >
+                {TEXT.DAY}
+              </Button>
+              <Button
+                variant={tabSort === 'month' ? 'primary' : 'outline-dark'}
+                size="sm"
+                onClick={() => setTabSort('month')}
+              >
+                {TEXT.MONTH}
+              </Button>
+              <Button
+                variant={tabSort === 'year' ? 'primary' : 'outline-dark'}
+                size="sm"
+                onClick={() => setTabSort('year')}
+              >
+                {TEXT.YEAR}
+              </Button>
+            </div>
+            <div style={{ width: '150px' }}>
               <FastField
                 name="jar"
                 component={SelectAlternative}
@@ -42,16 +52,14 @@ const ReportSort = (props) => {
             </div>
           </Col>
           <Col sm={12} className="d-flex">
-            {tabSort === 'day' && (
-              <div style={{ width: '100px' }}>
-                <FastField
-                  name="show"
-                  component={FormAlternative}
-                  type="number"
-                  placeholder={TEXT.SORT_BY_NUMBER}
-                />
-              </div>
-            )}
+            <div style={{ width: '100px' }}>
+              <FastField
+                name="show"
+                component={FormAlternative}
+                type="number"
+                placeholder={TEXT.SORT_BY_NUMBER}
+              />
+            </div>
             {tabSort === 'day' && (
               <div className="ml-1">
                 <FastField
@@ -59,6 +67,16 @@ const ReportSort = (props) => {
                   component={FormAlternative}
                   type="date"
                   placeholder={TEXT.SORT_BY_FROM_DATE}
+                />
+              </div>
+            )}
+            {tabSort === 'month' && (
+              <div className="ml-1" style={{ width: '85px' }}>
+                <FastField
+                  name="fromMonth"
+                  component={SelectAlternative}
+                  placeholder={TEXT.SORT_BY_FROM_MONTH}
+                  options={optionSortMonth}
                 />
               </div>
             )}
@@ -83,6 +101,7 @@ const ReportSort = (props) => {
 };
 
 ReportSort.propTypes = {
+  optionSortMonth: PropTypes.array,
   optionsSortJars: PropTypes.array,
   optionsSortYear: PropTypes.array,
 
@@ -94,6 +113,7 @@ ReportSort.propTypes = {
 };
 
 ReportSort.defaultProps = {
+  optionSortMonth: [],
   optionsSortJars: [],
   optionsSortYear: [],
 

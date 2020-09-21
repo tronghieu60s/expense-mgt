@@ -3,7 +3,6 @@ import { JARS } from 'constant/common';
 import * as TEXT from 'constant/text';
 import LayoutMain from 'containers/Layout/Layout-Main';
 import HomeBalances from 'containers/Pages/Home/Balances/Home-Balances';
-import TransactionsHistory from 'containers/Pages/Transactions/History/Transactions-History';
 import { delayLoading } from 'helpers/common';
 import { getDateNowAgo, parseDateString } from 'helpers/datetime';
 import { objectKeyToArray } from 'helpers/object';
@@ -11,6 +10,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { hideLoadingUi, showLoadingUi } from 'redux/actions/ui.action';
 import * as Yup from 'yup';
+import BackupsContainer from '../Home/Backups';
 import ChartJarsAllContainer from '../Home/ChartJars/ChartJars-All';
 import ReportSortContainer from './Report-Sort';
 import ReportChartContainer from './ReportChart';
@@ -20,12 +20,15 @@ const arrNameJars = objectKeyToArray(JARS);
 const ReportContainer = () => {
   const dispatch = useDispatch();
   const transactions = useSelector((state) => state.transactions);
+
   const [tabSort, setTabSort] = useState('day');
+  const monthNow = new Date().getMonth() + 1;
   const [initialValues, setInitialValues] = useState({
     date: getDateNowAgo(6),
     show: 6,
     year: String(new Date().getFullYear()),
     jar: 'all',
+    fromMonth: String(monthNow - 3 > 0 ? monthNow - 3 : monthNow),
   });
 
   const validationSchema = Yup.object().shape({
@@ -39,6 +42,7 @@ const ReportContainer = () => {
       .oneOf([...arrNameJars, 'all'], TEXT.FIELD_NOT_MATCHES)
       .typeError(TEXT.FIELD_NOT_MATCHES)
       .required(TEXT.FIELD_IS_REQUIRED),
+    fromMonth: Yup.string().typeError(TEXT.FIELD_NOT_MATCHES).required(TEXT.FIELD_IS_REQUIRED),
   });
 
   const onSubmit = async (values) => {
@@ -49,14 +53,14 @@ const ReportContainer = () => {
   };
 
   return (
-    <LayoutMain>
+    <LayoutMain title={TEXT.REPORT_REVENUE_EXPENDITURE}>
       <Report
         componentBlock1={<HomeBalances />}
-        componentBlock2={<TransactionsHistory length={3} />}
+        componentBlock2={<BackupsContainer />}
         componentBlock3={
           <ReportSortContainer
             tabSort={tabSort}
-            setTabSort={(e) => setTabSort(e.target.value)}
+            setTabSort={(value) => setTabSort(value)}
             transactions={transactions}
             initialValues={initialValues}
             validationSchema={validationSchema}

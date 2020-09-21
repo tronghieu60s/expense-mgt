@@ -47,7 +47,7 @@ export const SEE_MORE = 'Xem thêm';
 export const INCOME = 'Thu nhập';
 export const EXPENSE = 'Chi tiêu';
 export const AVAILABLE_BALANCES = 'Số dư khả dụng';
-export const REPORT_REVENUE_EXPENDITURE = 'Báo cáo thu chi';
+export const REPORT_REVENUE_EXPENDITURE = 'Báo Cáo Thu Chi';
 export const ADD_TRANSACTION = 'Thêm giao dịch';
 
 export const USER_LOGIN_FAILED = 'Tên tài khoản hoặc mật khẩu không chính xác.';
@@ -68,6 +68,7 @@ export const TRANSACTION_ADD_SUCCESS = 'Thêm giao dịch thành công.';
 export const TRANSACTION_LARGER_WALLET = 'Số tiền giao dịch phải nhỏ hơn số tiền trong ví.';
 
 export const NEW_TRANSACTION = 'Giao dịch mới nhất';
+export const BACKUPS_DATA = 'Sao lưu dữ liệu';
 
 export const SET_UP_JARS = 'Thiết lập các hũ';
 export const MIN_0_PERCENT = 'Nhỏ nhất là 0%';
@@ -82,9 +83,17 @@ export const SORT_BY_JARS = 'Lọc theo hũ';
 export const SORT_BY_NUMBER = 'Hiển thị';
 export const SORT_BY_FROM_DATE = 'Từ ngày';
 export const SORT_BY_MONTH = 'Tháng';
+export const SORT_BY_FROM_MONTH = 'Từ tháng';
 export const SORT_BY_YEAR = 'Năm';
 
 export const ALL = 'Tất cả';
 export const DAY = 'Ngày';
 export const MONTH = 'Tháng';
 export const YEAR = 'Năm';
+
+export const EXPORT = 'Xuất ra';
+export const EXPORT_DATA = 'Xuất dữ liệu';
+export const IMPORT = 'Nhập từ';
+export const IMPORT_DATA = 'Nhập dữ liệu';
+export const FILE_EXCEL = 'File excel';
+export const FILE_JSON = 'File json';

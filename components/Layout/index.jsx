@@ -1,12 +1,15 @@
 import Head from 'next/head';
 import PropTypes from 'prop-types';
 import { createElement } from 'react';
+import { NAME_WEBSITE } from 'constant/text';
 
 const Layout = (props) => {
   return (
     <>
       <Head>
-        <title>{props.title}</title>
+        <title>
+          {NAME_WEBSITE} – {props.title}
+        </title>
         <meta name="theme-color" content="#000000" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         {/* Favicon */}

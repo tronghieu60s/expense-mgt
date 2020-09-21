@@ -9,31 +9,38 @@ import MainBlock from 'components/UI/Block/Main-Block';
 const Index = (props) => {
   return (
     <Row>
-      <Col md={12} lg={3}>
+      <Col className="pr-lg-1" md={12} lg={3}>
         <Row>
           <Col md={6} lg={12}>
             <MainBlock>{props.componentBlock1}</MainBlock>
           </Col>
           <Col md={6} lg={12}>
-            <MainBlock title={TEXT.NEW_TRANSACTION}>{props.componentBlock2}</MainBlock>
+            <MainBlock title={TEXT.BACKUPS_DATA}>{props.componentBlock2}</MainBlock>
           </Col>
         </Row>
       </Col>
-      <Col md={12} lg={9}>
+      <Col className="pl-lg-1" md={12} lg={9}>
         <MainBlock>{props.componentBlock3}</MainBlock>
         <Row>
-          <Col md={6} lg={8}>
+          <Col className="pr-lg-1" md={6} lg={8}>
             <MainBlock title={TEXT.REPORT_REVENUE_EXPENDITURE}>
               {props.componentBlock4}
-              <Link href={PATH.HISTORY_PAGE}>
+              <Link href={PATH.REPORT_PAGE}>
                 <button type="button" className="btn btn-primary btn-block btn-sm mt-2">
                   {TEXT.SEE_MORE} <i className="fa fa-arrow-right" aria-hidden="true" />
                 </button>
               </Link>
             </MainBlock>
           </Col>
-          <Col md={6} lg={4}>
-            <MainBlock title={TEXT.NEW_TRANSACTION}>{props.componentBlock5}</MainBlock>
+          <Col className="pl-lg-1" md={6} lg={4}>
+            <MainBlock title={TEXT.NEW_TRANSACTION}>
+              {props.componentBlock5}
+              <Link href={PATH.HISTORY_PAGE}>
+                <button type="button" className="btn btn-primary btn-block btn-sm mt-2">
+                  {TEXT.SEE_MORE} <i className="fa fa-arrow-right" aria-hidden="true" />
+                </button>
+              </Link>
+            </MainBlock>
           </Col>
         </Row>
       </Col>

@@ -7,17 +7,17 @@ import { Col, Row } from 'react-bootstrap';
 const Report = (props) => {
   return (
     <Row>
-      <Col md={12} lg={3}>
+      <Col className="pr-lg-1" md={12} lg={3}>
         <Row>
           <Col md={6} lg={12}>
             <MainBlock>{props.componentBlock1}</MainBlock>
           </Col>
           <Col md={6} lg={12}>
-            <MainBlock title={TEXT.NEW_TRANSACTION}>{props.componentBlock2}</MainBlock>
+            <MainBlock title={TEXT.BACKUPS_DATA}>{props.componentBlock2}</MainBlock>
           </Col>
         </Row>
       </Col>
-      <Col md={12} lg={9}>
+      <Col className="pl-lg-1" md={12} lg={9}>
         <MainBlock title={TEXT.REPORT_REVENUE_EXPENDITURE}>
           <Row className="px-4 mt-2">
             <Col md={12}>

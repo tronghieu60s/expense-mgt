@@ -22,13 +22,13 @@ span {
 }
 
 // Turn Off Button Up/Down Input Number
-input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button { 
-  -webkit-appearance: none; 
-  margin: 0; 
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
-.modal-title{
+.modal-title {
   text-transform: capitalize;
 }
 
@@ -79,7 +79,7 @@ $percent: 10;
       margin: 0 15px;
     }
   }
-  &-main-block{
+  &-main-block {
     background-color: #fff;
   }
   &-footer {

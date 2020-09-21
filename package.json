@@ -6,8 +6,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start-dev": "next start",
     "start": "next start -p $PORT",
+    "start:dev": "next start",
     "heroku-postbuild": "npm run build"
   },
   "author": "",
@@ -15,7 +15,6 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "chart.js": "^2.9.3",
-    "chartjs-plugin-labels": "^1.1.0",
     "date-fns": "^2.16.1",
     "firebase": "^7.19.1",
     "formik": "^2.1.5",

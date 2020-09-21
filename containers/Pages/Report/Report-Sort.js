@@ -14,6 +14,12 @@ const ReportSortContainer = (props) => {
   const arrYear = sortDate.map((res) => new Date(res.date).getFullYear());
   const arrYearUnique = arrayUniqueValue(arrYear);
 
+  const optionSortMonth = () => {
+    const result = [];
+    for (let i = 1; i <= 12; i += 1) result.push({ key: i, value: `T${i}` });
+    return result;
+  };
+
   const optionsSortYear = (arrYears) => {
     let result = null;
     result = arrYears.map((year) => {
@@ -33,6 +39,7 @@ const ReportSortContainer = (props) => {
 
   return (
     <ReportSort
+      optionSortMonth={optionSortMonth()}
       optionsSortYear={optionsSortYear(arrYearUnique)}
       optionsSortJars={optionsSortJars(arrJarsName)}
       tabSort={props.tabSort}

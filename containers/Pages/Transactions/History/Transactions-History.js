@@ -1,4 +1,3 @@
-import TransactionsHistory from 'components/Pages/Transactions/History/Transactions-History';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { useSelector } from 'react-redux';
@@ -17,7 +16,7 @@ const TransactionsHistoryContainer = (props) => {
     return result;
   };
 
-  return <TransactionsHistory>{renderDealsItems(transactions)}</TransactionsHistory>;
+  return <>{renderDealsItems(transactions)}</>;
 };
 
 TransactionsHistoryContainer.propTypes = {

@@ -44,6 +44,10 @@ const ReportChartContainer = (props) => {
         break;
       }
       case 'month':
+        // Filter From Month
+        labels = labels.filter(
+          (label) => Number(values.fromMonth) <= new Date(label).getMonth() + 1,
+        );
         // Filter Year
         labels = labels.filter((label) => Number(values.year) === new Date(label).getFullYear());
         // Filter Month
@@ -96,6 +100,7 @@ ReportChartContainer.propTypes = {
     show: PropTypes.number,
     year: PropTypes.string,
     jar: PropTypes.string,
+    fromMonth: PropTypes.string,
   }),
 };
 
@@ -107,6 +112,7 @@ ReportChartContainer.defaultProps = {
     show: 6,
     year: String(new Date().getFullYear()),
     jar: 'all',
+    fromMonth: '1',
   },
 };
 

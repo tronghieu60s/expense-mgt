@@ -6,7 +6,7 @@ const MainBlock = (props) => {
 
   return (
     <div className="expense-main-block shadow rounded bg-white p-3 mt-2">
-      {title && <div className="mb-0 text-12 weight-600 text-uppercase mt-1 mb-3">{title}</div>}
+      {title && <div className="mb-0 text-12 weight-600 text-uppercase mt-1 mb-2">{title}</div>}
       {props.children}
     </div>
   );
