@@ -16,9 +16,9 @@ const ReportSort = (props) => {
       onSubmit={props.onSubmit}
     >
       <Form>
-        <Row>
+        <Row className="mb-2">
           <Col sm={12} className="d-flex">
-            <FormGroup className="mb-2" style={{ width: '200px' }}>
+            <FormGroup className="mb-2" style={{ width: '150px' }}>
               <p className="mb-1 text-12 weight-600">{TEXT.SORT_BY_TIME}</p>
               <div className="input-group input-group-merge input-group-alternative">
                 <select

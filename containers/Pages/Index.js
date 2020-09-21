@@ -5,7 +5,7 @@ import HomeBalances from 'containers/Pages/Home/Balances/Home-Balances';
 import ChartJarsContainer from 'containers/Pages/Home/ChartJars';
 import TransactionsHistory from 'containers/Pages/Transactions/History/Transactions-History';
 import React from 'react';
-import ReportContainer from './Report';
+import ReportChartContainer from './Report/ReportChart';
 
 const IndexContainer = () => {
   return (
@@ -14,7 +14,7 @@ const IndexContainer = () => {
         componentBlock1={<HomeBalances />}
         componentBlock2={<TransactionsHistory length={3} />}
         componentBlock3={<ChartJarsContainer />}
-        componentBlock4={<ReportContainer />}
+        componentBlock4={<ReportChartContainer />}
       />
     </LayoutMain>
   );
