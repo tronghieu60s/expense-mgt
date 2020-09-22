@@ -1,3 +1,14 @@
+export const TYPES = {
+  income: {
+    name: 'Thu Nhập',
+    color: '#5e72e4',
+  },
+  expense: {
+    name: 'Chi Tiêu',
+    color: '#f5365c',
+  },
+};
+
 export const JARS = {
   necessities: {
     name: 'Thiết yếu',

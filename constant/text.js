@@ -78,13 +78,15 @@ export const JARS_PERCENT_OVER = 'Tổng phần trăm của tất cả hũ phả
 export const MOVE_TRANSFER_TO = 'Chuyển sang hũ';
 export const MOVE_RECEIVE_FROM = 'Nhận từ hũ';
 
-export const SORT_BY_TIME = 'Lọc theo thời gian';
-export const SORT_BY_JARS = 'Lọc theo hũ';
-export const SORT_BY_NUMBER = 'Hiển thị';
-export const SORT_BY_FROM_DATE = 'Từ ngày';
-export const SORT_BY_MONTH = 'Tháng';
-export const SORT_BY_FROM_MONTH = 'Từ tháng';
-export const SORT_BY_YEAR = 'Năm';
+export const FILTER_BY_TIME = 'Lọc theo thời gian';
+export const FILTER_BY_JARS = 'Lọc theo hũ';
+export const FILTER_BY_NUMBER = 'Hiển thị';
+export const FILTER_BY_FROM_DATE = 'Từ ngày';
+export const FILTER_BY_TO_DATE = 'Đến ngày';
+export const FILTER_BY_MONTH = 'Tháng';
+export const FILTER_BY_FROM_MONTH = 'Từ tháng';
+export const FILTER_BY_YEAR = 'Năm';
+export const FILTER_DATA_SUCCESS = 'Lọc dữ liệu thành công.';
 
 export const ALL = 'Tất cả';
 export const DAY = 'Ngày';
@@ -97,3 +99,10 @@ export const IMPORT = 'Nhập từ';
 export const IMPORT_DATA = 'Nhập dữ liệu';
 export const FILE_EXCEL = 'File excel';
 export const FILE_JSON = 'File json';
+export const NAME_FILE = 'Tên File';
+
+export const TYPE = 'Loại';
+export const MONEY = 'Số Tiền';
+export const JAR = 'Hũ';
+export const DATE = 'Thời Gian';
+export const DESCRIPTION = 'Mô tả';

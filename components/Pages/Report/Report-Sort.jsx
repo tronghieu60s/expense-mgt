@@ -18,7 +18,7 @@ const ReportSort = (props) => {
       <Form>
         <Row className="mb-2">
           <Col sm={12}>
-            <p className="mb-1 text-12 weight-600">{TEXT.SORT_BY_TIME}</p>
+            <p className="mb-1 text-12 weight-600">{TEXT.FILTER_BY_TIME}</p>
             <div className="d-flex mb-3">
               <Button
                 variant={tabSort === 'day' ? 'primary' : 'outline-dark'}
@@ -46,7 +46,7 @@ const ReportSort = (props) => {
               <FastField
                 name="jar"
                 component={SelectAlternative}
-                placeholder={TEXT.SORT_BY_JARS}
+                placeholder={TEXT.FILTER_BY_JARS}
                 options={optionsSortJars}
               />
             </div>
@@ -57,7 +57,7 @@ const ReportSort = (props) => {
                 name="show"
                 component={FormAlternative}
                 type="number"
-                placeholder={TEXT.SORT_BY_NUMBER}
+                placeholder={TEXT.FILTER_BY_NUMBER}
               />
             </div>
             {tabSort === 'day' && (
@@ -66,7 +66,7 @@ const ReportSort = (props) => {
                   name="date"
                   component={FormAlternative}
                   type="date"
-                  placeholder={TEXT.SORT_BY_FROM_DATE}
+                  placeholder={TEXT.FILTER_BY_FROM_DATE}
                 />
               </div>
             )}
@@ -75,7 +75,7 @@ const ReportSort = (props) => {
                 <FastField
                   name="fromMonth"
                   component={SelectAlternative}
-                  placeholder={TEXT.SORT_BY_FROM_MONTH}
+                  placeholder={TEXT.FILTER_BY_FROM_MONTH}
                   options={optionSortMonth}
                 />
               </div>
@@ -85,7 +85,7 @@ const ReportSort = (props) => {
                 <FastField
                   name="year"
                   component={SelectAlternative}
-                  placeholder={TEXT.SORT_BY_YEAR}
+                  placeholder={TEXT.FILTER_BY_YEAR}
                   options={optionsSortYear}
                 />
               </div>
