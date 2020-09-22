@@ -4,6 +4,16 @@ export const objectKeyToArray = (object) => {
   return objectArr;
 };
 
+export const objectKeyNameCodeToArray = (object) => {
+  const arr = [];
+  for (const key in object) {
+    if (object.hasOwnProperty(key)) {
+      arr.push({ ...object[key], nameCode: key });
+    }
+  }
+  return arr;
+};
+
 export const objectToArray = (object) => {
   const objectArr = [];
   for (const key in object) if (object.hasOwnProperty(key)) objectArr.push(object[key]);

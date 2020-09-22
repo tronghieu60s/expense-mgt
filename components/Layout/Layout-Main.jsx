@@ -1,4 +1,5 @@
 import * as PATH from 'constant/path';
+import * as TEXT from 'constant/text';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
 import React, { createElement } from 'react';
@@ -25,17 +26,17 @@ const Layout = (props) => {
                 <Nav className="mr-auto">
                   <Link href={PATH.HOME_PAGE}>
                     <Nav.Link href={PATH.HOME_PAGE} active={pathname === PATH.HOME_PAGE}>
-                      Trang chủ
+                      {TEXT.HOME}
                     </Nav.Link>
                   </Link>
                   <Link href={PATH.HISTORY_PAGE}>
                     <Nav.Link href={PATH.HISTORY_PAGE} active={pathname === PATH.HISTORY_PAGE}>
-                      Lịch sử giao dịch
+                      {TEXT.TRANSACTIONS_HISTORY}
                     </Nav.Link>
                   </Link>
                   <Link href={PATH.REPORT_PAGE}>
                     <Nav.Link href={PATH.REPORT_PAGE} active={pathname === PATH.REPORT_PAGE}>
-                      Báo Cáo Thu Chi
+                      {TEXT.REPORT_REVENUE_EXPENDITURE}
                     </Nav.Link>
                   </Link>
                 </Nav>

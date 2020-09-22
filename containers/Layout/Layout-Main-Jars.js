@@ -1,10 +1,9 @@
-import { objectJarsToArray } from 'common/jars';
 import LayoutMainJars from 'components/Layout/Layout-Main-Jars';
 import LayoutMainJarsItem from 'components/Layout/Layout-Main-JarsItem';
 import { JARS } from 'constant/common';
 import * as TEXT from 'constant/text';
 import { delayLoading, toastCustom } from 'helpers/common';
-import { objectIsEqual, objectTotalValues } from 'helpers/object';
+import { objectIsEqual, objectKeyNameCodeToArray, objectTotalValues } from 'helpers/object';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { hideLoadingUi, showLoadingUi } from 'redux/actions/ui.action';
@@ -12,7 +11,7 @@ import { setUser } from 'redux/actions/user.action';
 import { updateUser } from 'utils/firebase';
 import * as Yup from 'yup';
 
-const arrJarsName = objectJarsToArray(JARS);
+const arrJarsName = objectKeyNameCodeToArray(JARS);
 const jarsName = arrJarsName.map((jar) => jar.name);
 const jarsColor = arrJarsName.map((jar) => jar.color);
 

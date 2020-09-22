@@ -1,10 +1,10 @@
-import React from 'react';
 import ChartJarsAll from 'components/Pages/Home/ChartJars/ChartJars-All';
 import { JARS } from 'constant/common';
-import { objectJarsToArray } from 'common/jars';
+import { objectKeyNameCodeToArray } from 'helpers/object';
+import React from 'react';
 import { useSelector } from 'react-redux';
 
-const arrJarsName = objectJarsToArray(JARS);
+const arrJarsName = objectKeyNameCodeToArray(JARS);
 const jarsName = arrJarsName.map((jar) => jar.name);
 const jarsColor = arrJarsName.map((jar) => jar.color);
 

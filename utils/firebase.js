@@ -2,7 +2,7 @@ import firebase from 'firebase/app';
 import 'firebase/database';
 import 'firebase/storage';
 import { objectToArray } from 'helpers/object';
-import { baseJars } from 'common/jars';
+import { baseJars } from 'common';
 import { JARSPERCENT } from 'constant/common';
 
 const apiKey = process.env.NEXT_PUBLIC_FIREBASE_APIKEY;

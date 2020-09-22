@@ -1,11 +1,11 @@
-import { objectJarsToArray } from 'common/jars';
 import ChartJars from 'components/Pages/Home/ChartJars';
 import ChartJarsItem from 'components/Pages/Home/ChartJars/ChartJars-Item';
 import { JARS } from 'constant/common';
+import { objectKeyNameCodeToArray } from 'helpers/object';
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-const arrJars = objectJarsToArray(JARS);
+const arrJars = objectKeyNameCodeToArray(JARS);
 
 const ChartJarsContainer = () => {
   const balance = useSelector((state) => state.user.balance);

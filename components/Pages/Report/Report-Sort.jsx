@@ -93,7 +93,7 @@ const ReportSort = (props) => {
           </Col>
         </Row>
         <Button type="submit" variant="primary" size="sm">
-          Lọc
+          {TEXT.FILTER}
         </Button>
       </Form>
     </Formik>

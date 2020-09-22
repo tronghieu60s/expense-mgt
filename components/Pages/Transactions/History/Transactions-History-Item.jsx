@@ -18,7 +18,7 @@ const TransactionsHistoryItem = (props) => {
           </button>
         </div>
         <div>
-          <div className="text-13 weight-700">{infoJar.name}</div>
+          <div className="text-13 text-capitalize weight-700">{infoJar.name}</div>
           <div className="text-11">{transaction.description || '...'}</div>
         </div>
       </div>

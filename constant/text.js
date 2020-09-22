@@ -1,5 +1,6 @@
 export const NAME_WEBSITE = 'Expense';
 export const HOME = 'Trang Chủ';
+export const TRANSACTIONS_HISTORY = 'Lịch Sử Giao Dịch';
 
 export const LOGIN_TITLE = 'Đăng nhập';
 export const LOGIN_SLOGAN = 'Rất vui mừng khi được gặp lại bạn!';
@@ -78,8 +79,11 @@ export const JARS_PERCENT_OVER = 'Tổng phần trăm của tất cả hũ phả
 export const MOVE_TRANSFER_TO = 'Chuyển sang hũ';
 export const MOVE_RECEIVE_FROM = 'Nhận từ hũ';
 
+export const FILTER = 'Lọc';
 export const FILTER_BY_TIME = 'Lọc theo thời gian';
 export const FILTER_BY_JARS = 'Lọc theo hũ';
+export const FILTER_BY_GROUPS = 'Lọc theo nhóm';
+export const FILTER_BY_TYPE = 'Lọc theo loại';
 export const FILTER_BY_NUMBER = 'Hiển thị';
 export const FILTER_BY_FROM_DATE = 'Từ ngày';
 export const FILTER_BY_TO_DATE = 'Đến ngày';
@@ -104,5 +108,7 @@ export const NAME_FILE = 'Tên File';
 export const TYPE = 'Loại';
 export const MONEY = 'Số Tiền';
 export const JAR = 'Hũ';
+export const GROUP = 'Nhóm';
 export const DATE = 'Thời Gian';
-export const DESCRIPTION = 'Mô tả';
+export const DESCRIPTION = 'Mô Tả';
+export const ACTION = 'Hành Động';
