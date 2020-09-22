@@ -21,7 +21,10 @@ const Transactions = (props) => {
         <MainBlock title={TEXT.TRANSACTIONS_HISTORY}>
           <Row className="px-md-4 mt-3">
             <Col xs={12}>{props.componentBlock3}</Col>
-            <Col className="mt-2" xs={12}>{props.componentBlock4}</Col>
+            <Col className="mt-2" xs={12}>
+              {props.componentBlock4}
+            </Col>
+            <Col className="d-flex justify-content-end mt-2">{props.componentBlock5}</Col>
           </Row>
         </MainBlock>
       </Col>

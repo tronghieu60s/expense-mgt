@@ -10,7 +10,11 @@ const TransactionsTableFilter = (props) => {
   const { optionsFilterTypes, optionsFilterJars, optionsFilterGroups } = props;
 
   return (
-    <Formik>
+    <Formik
+      initialValues={props.initialValues}
+      validationSchema={props.validationSchema}
+      onSubmit={props.onSubmit}
+    >
       <Form>
         <div className="d-flex">
           <div className="mr-1">
@@ -38,7 +42,7 @@ const TransactionsTableFilter = (props) => {
             />
           </div>
         </div>
-        <div className="d-inline-block mr-2">
+        <div className="d-inline-block mr-2" style={{ width: '100px' }}>
           <FastField
             name="show"
             component={FormAlternative}
@@ -58,12 +62,20 @@ TransactionsTableFilter.propTypes = {
   optionsFilterTypes: PropTypes.array,
   optionsFilterJars: PropTypes.array,
   optionsFilterGroups: PropTypes.array,
+
+  initialValues: PropTypes.shape({}),
+  validationSchema: PropTypes.shape({}),
+  onSubmit: PropTypes.func,
 };
 
 TransactionsTableFilter.defaultProps = {
   optionsFilterTypes: [],
   optionsFilterJars: [],
   optionsFilterGroups: [],
+
+  initialValues: {},
+  validationSchema: {},
+  onSubmit: null,
 };
 
 export default TransactionsTableFilter;
