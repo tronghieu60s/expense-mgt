@@ -4,8 +4,11 @@ import React, { createElement } from 'react';
 import { Table } from 'react-bootstrap';
 
 const TransactionsTable = (props) => {
+  const { numberTrans } = props;
+
   return (
     <>
+      <div className="text-14 text-right weight-700 mb-2">{numberTrans} mục</div>
       <Table className="table-responsive-md" striped bordered hover>
         <thead>
           <tr>
@@ -36,11 +39,13 @@ const TransactionsTable = (props) => {
 };
 
 TransactionsTable.propTypes = {
+  numberTrans: PropTypes.number,
   pagination: PropTypes.element,
   children: PropTypes.array,
 };
 
 TransactionsTable.defaultProps = {
+  numberTrans: 0,
   pagination: createElement('div'),
   children: [],
 };

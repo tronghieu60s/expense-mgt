@@ -40,7 +40,10 @@ const TransactionsTableContainer = (props) => {
   };
 
   return (
-    <TransactionsTable pagination={<Pagination pagination={pagination} />}>
+    <TransactionsTable
+      numberTrans={numberTrans}
+      pagination={<Pagination pagination={pagination} />}
+    >
       {renderHistoryTableItems(initialTrans)}
     </TransactionsTable>
   );

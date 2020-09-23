@@ -50,7 +50,8 @@ const TransactionsContainer = () => {
   const onSubmit = async (values) => {
     dispatch(showLoadingUi());
 
-    setInitialValues(values);
+    if (values.type !== 'expense') setInitialValues({ ...values, group: 'all' });
+    else setInitialValues(values);
     localStorage.setItem(STORAGE_TABLE_HISTORY, JSON.stringify(values));
     router.push({
       pathname: router.pathname,
@@ -78,7 +79,7 @@ const TransactionsContainer = () => {
         componentBlock4={
           <TransactionsTableContainer
             initialValues={initialValues}
-            currentItem={parseInt(page, 10)}
+            currentItem={parseInt(page || 1, 10)}
           />
         }
       />
