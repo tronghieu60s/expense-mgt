@@ -1,22 +1,36 @@
+import getPagination from 'helpers/pagination';
+import { useRouter } from 'next/router';
+import PropTypes from 'prop-types';
 import React from 'react';
 import { Pagination } from 'react-bootstrap';
-import PropTypes from 'prop-types';
-import getPagination from 'helpers/pagination';
 
 const PaginationUI = (props) => {
-  const { currentItem, totalItems, pageSize } = props;
-  let currentPage = Math.floor(currentItem / pageSize);
-  currentPage = currentItem % pageSize === 0 ? currentPage : currentPage + 1;
+  const router = useRouter();
+  const { page } = router.query;
+  const { pagination, numberPage } = props;
+  const { currentPage, endPage, totalPages } = pagination;
+  const paginationPage = getPagination(
+    endPage / numberPage,
+    Math.ceil(currentPage / numberPage),
+    numberPage,
+  );
+  const { startIndex, endIndex } = paginationPage;
 
-  const pagination = getPagination(totalItems, currentPage, pageSize);
-  const { startPage, endPage, startIndex, endIndex } = pagination;
-
-  const renderPaginationItem = (start, end, current, total) => {
+  const renderPaginationItem = () => {
     const result = [];
-    for (let i = start + 1; i <= end; i += 1)
-      if (i <= total)
+    for (let i = startIndex + 1; i <= endIndex; i += 1)
+      if (i <= endPage)
         result.push(
-          <Pagination.Item key={i} active={current === i}>
+          <Pagination.Item
+            key={i}
+            active={currentPage === i}
+            onClick={() => {
+              router.push({
+                pathname: router.pathname,
+                query: { page: i },
+              });
+            }}
+          >
             {i}
           </Pagination.Item>,
         );
@@ -25,25 +39,55 @@ const PaginationUI = (props) => {
 
   return (
     <Pagination>
-      {currentPage !== startPage && <Pagination.First />}
-      {currentItem > 1 && <Pagination.Prev />}
-      {renderPaginationItem(startIndex, endIndex, currentItem, totalItems)}
-      {currentItem < totalItems && <Pagination.Next />}
-      {currentPage !== endPage && <Pagination.Last />}
+      <Pagination.Prev
+        disabled={currentPage <= 1}
+        onClick={() => {
+          router.push({
+            pathname: router.pathname,
+            query: { page: parseInt(page, 10) - 1 },
+          });
+        }}
+      />
+      {renderPaginationItem()}
+      <Pagination.Next
+        disabled={currentPage >= totalPages}
+        onClick={() => {
+          router.push({
+            pathname: router.pathname,
+            query: { page: parseInt(page, 10) + 1 },
+          });
+        }}
+      />
     </Pagination>
   );
 };
 
 PaginationUI.propTypes = {
-  currentItem: PropTypes.number,
-  totalItems: PropTypes.number,
-  pageSize: PropTypes.number,
+  numberPage: PropTypes.number,
+  pagination: PropTypes.shape({
+    currentPage: PropTypes.number,
+    startIndex: PropTypes.number,
+    endIndex: PropTypes.number,
+    startPage: PropTypes.number,
+    endPage: PropTypes.number,
+    pageSize: PropTypes.number,
+    totalItems: PropTypes.number,
+    totalPages: PropTypes.number,
+  }),
 };
 
 PaginationUI.defaultProps = {
-  currentItem: 10,
-  totalItems: 10,
-  pageSize: 4,
+  numberPage: 3,
+  pagination: {
+    currentPage: 0,
+    startIndex: 0,
+    endIndex: 0,
+    startPage: 0,
+    endPage: 0,
+    pageSize: 0,
+    totalItems: 0,
+    totalPages: 0,
+  },
 };
 
-export default PaginationUI;
+export default React.memo(PaginationUI);

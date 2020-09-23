@@ -1,11 +1,14 @@
 import Transactions from 'components/Pages/Transactions';
-import PaginationUI from 'components/UI/Pagination';
 import { GROUPS, JARS, TYPES } from 'constant/common';
 import * as TEXT from 'constant/text';
 import LayoutMain from 'containers/Layout/Layout-Main';
 import HomeBalances from 'containers/Pages/Home/Balances/Home-Balances';
+import { delayLoading } from 'helpers/common';
 import { objectKeyToArray } from 'helpers/object';
+import { useRouter } from 'next/router';
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { hideLoadingUi, showLoadingUi } from 'redux/actions/ui.action';
 import * as Yup from 'yup';
 import BackupsContainer from '../Home/Backups';
 import TransactionsTableContainer from './Table/Transactions-Table';
@@ -16,6 +19,10 @@ const arrNameJars = objectKeyToArray(JARS);
 const arrNameGroups = objectKeyToArray(GROUPS);
 
 const TransactionsContainer = () => {
+  const router = useRouter();
+  const { page } = router.query;
+
+  const dispatch = useDispatch();
   const [initialValues, setInitialValues] = useState({
     show: 5,
     type: 'all',
@@ -39,8 +46,17 @@ const TransactionsContainer = () => {
       .required(TEXT.FIELD_IS_REQUIRED),
   });
 
-  const onSubmit = (values) => {
-    console.log(values);
+  const onSubmit = async (values) => {
+    dispatch(showLoadingUi());
+    setInitialValues(values);
+    router.push({
+      pathname: router.pathname,
+      query: {
+        page: 1,
+      },
+    });
+    await delayLoading();
+    dispatch(hideLoadingUi());
   };
 
   return (
@@ -55,11 +71,15 @@ const TransactionsContainer = () => {
             onSubmit={onSubmit}
           />
         }
-        componentBlock4={<TransactionsTableContainer />}
-        componentBlock5={<PaginationUI />}
+        componentBlock4={
+          <TransactionsTableContainer
+            initialValues={initialValues}
+            currentItem={parseInt(page, 10)}
+          />
+        }
       />
     </LayoutMain>
   );
 };
 
-export default TransactionsContainer;
+export default React.memo(TransactionsContainer);

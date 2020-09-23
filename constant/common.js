@@ -2,10 +2,14 @@ export const TYPES = {
   income: {
     name: 'Thu Nhập',
     color: '#5e72e4',
+    mark: '+',
+    markColor: '#2dce89',
   },
   expense: {
     name: 'Chi Tiêu',
     color: '#f5365c',
+    mark: '-',
+    markColor: '#f5365c',
   },
 };
 

@@ -24,7 +24,6 @@ const Transactions = (props) => {
             <Col className="mt-2" xs={12}>
               {props.componentBlock4}
             </Col>
-            <Col className="d-flex justify-content-end mt-2">{props.componentBlock5}</Col>
           </Row>
         </MainBlock>
       </Col>
@@ -37,7 +36,6 @@ Transactions.propTypes = {
   componentBlock2: PropTypes.element,
   componentBlock3: PropTypes.element,
   componentBlock4: PropTypes.element,
-  componentBlock5: PropTypes.element,
 };
 
 Transactions.defaultProps = {
@@ -45,7 +43,6 @@ Transactions.defaultProps = {
   componentBlock2: createElement('div'),
   componentBlock3: createElement('div'),
   componentBlock4: createElement('div'),
-  componentBlock5: createElement('div'),
 };
 
 export default Transactions;

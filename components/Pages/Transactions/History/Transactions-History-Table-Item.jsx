@@ -1,20 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Button } from 'react-bootstrap';
+import { TYPES, JARS } from 'constant/common';
+import { formatDateMark } from 'helpers/datetime';
 
 const TransactionsHistoryTableItem = (props) => {
+  const { index, transaction } = props;
+  const type = TYPES[transaction.type];
+  const jar = JARS[transaction.jar];
+
   return (
     <tr>
-      <td>2</td>
-      <td className="weight-700 text-success">+ 300.000 đ</td>
-      <td className="weight-700 text-primary text-capitalize">Tiết kiệm</td>
-      <td className="weight-700 text-primary text-capitalize">Ăn uống</td>
-      <td>20/12/2001</td>
-      <td style={{ whiteSpace: 'normal' }}>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis culpa iste quos impedit
-        dolor. Eius accusantium incidunt, esse quidem libero atque necessitatibus soluta quam iusto
-        ipsam placeat, debitis quo illo?
+      <td>{index + 1}</td>
+      <td className="weight-700" style={{ color: type.markColor }}>
+        {type.mark} 300.000 đ
       </td>
+      <td className="weight-700 text-capitalize" style={{ color: jar.color }}>
+        {jar.name}
+      </td>
+      <td className="weight-700 text-capitalize">Ăn uống</td>
+      <td>{formatDateMark(transaction.date)}</td>
+      <td style={{ whiteSpace: 'normal' }}>{transaction.description}</td>
       <td>
         <Button variant="warning" size="sm">
           Sửa
@@ -27,6 +33,24 @@ const TransactionsHistoryTableItem = (props) => {
   );
 };
 
-TransactionsHistoryTableItem.propTypes = {};
+TransactionsHistoryTableItem.propTypes = {
+  index: PropTypes.number,
+  transaction: PropTypes.shape({
+    type: PropTypes.string,
+    jar: PropTypes.string,
+    date: PropTypes.string,
+    description: PropTypes.string,
+  }),
+};
+
+TransactionsHistoryTableItem.defaultProps = {
+  index: 0,
+  transaction: {
+    type: '',
+    jar: '',
+    date: '',
+    description: '',
+  },
+};
 
 export default TransactionsHistoryTableItem;
