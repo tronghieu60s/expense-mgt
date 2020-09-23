@@ -134,4 +134,8 @@ export const GROUPS = {
     name: 'Rút tiền',
     parent: 'necessities',
   },
+  other: {
+    name: 'Khác',
+    parent: 'necessities',
+  },
 };

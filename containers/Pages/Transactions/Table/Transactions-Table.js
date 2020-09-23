@@ -11,13 +11,21 @@ const TransactionsTableContainer = (props) => {
   const { show, type, jar, group } = initialValues;
 
   const transactions = useSelector((state) => state.transactions);
+  const [numberTrans, setNumberTrans] = useState(transactions.length);
   const [initialTrans, setInitialTrans] = useState([...transactions]);
 
-  const pagination = getPagination(transactions.length, currentItem, show);
+  const pagination = getPagination(numberTrans, currentItem, show);
   const { startIndex, endIndex } = pagination;
 
   useEffect(() => {
-    const newTrans = transactions.slice(startIndex, endIndex);
+    let newTrans = [...transactions];
+    newTrans = type === 'all' ? [...newTrans] : newTrans.filter((label) => label.type === type);
+    newTrans = jar === 'all' ? [...newTrans] : newTrans.filter((label) => label.jar === jar);
+    newTrans = group === 'all' ? [...newTrans] : newTrans.filter((label) => label.group === group);
+    setNumberTrans(newTrans.length);
+
+    // Slice Page
+    newTrans = newTrans.slice(startIndex, endIndex);
     setInitialTrans(newTrans);
   }, [initialValues, transactions, currentItem]);
 
@@ -40,12 +48,22 @@ const TransactionsTableContainer = (props) => {
 
 TransactionsTableContainer.propTypes = {
   currentItem: PropTypes.number,
-  initialValues: PropTypes.shape({}),
+  initialValues: PropTypes.shape({
+    show: PropTypes.number,
+    type: PropTypes.string,
+    jar: PropTypes.string,
+    group: PropTypes.string,
+  }),
 };
 
 TransactionsTableContainer.defaultProps = {
   currentItem: 1,
-  initialValues: {},
+  initialValues: {
+    show: 5,
+    type: 'all',
+    jar: 'all',
+    group: 'all',
+  },
 };
 
 export default React.memo(TransactionsTableContainer);

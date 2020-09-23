@@ -90,6 +90,7 @@ const HomeBalancesModalContainer = (props) => {
             money,
             description: `${TEXT.MOVE_TRANSFER_TO} ${JARS[receive].name}`,
             jar: transfer,
+            group: 'other',
           });
           const receiveTransaction = await newTransaction(user._id, {
             type: 'income',

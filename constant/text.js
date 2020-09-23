@@ -63,6 +63,7 @@ export const PASSWORD_NOT_MATCH_2_FORM = 'Mật khẩu không khớp. Vui lòng 
 export const UPDATE_DATA_SUCCESS = 'Cập nhật dữ liệu thành công.';
 export const DATA_NOT_CHANGED = 'Dữ liệu chưa được thay đổi.';
 
+export const TRANSACTIONS_NOT_FOUND = 'Không có giao dịch nào';
 export const TRANSACTION_MUST_MONEY = 'Số tiền giao dịch phải lớn hơn 0.';
 export const TRANSACTION_MUST_DIVISIBLE_1000 = 'Số tiền giao dịch phải chia hết cho 1000.';
 export const TRANSACTION_ADD_SUCCESS = 'Thêm giao dịch thành công.';

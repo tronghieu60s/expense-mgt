@@ -18,7 +18,17 @@ const TransactionsTable = (props) => {
             <th>{TEXT.ACTION}</th>
           </tr>
         </thead>
-        <tbody>{props.children}</tbody>
+        <tbody>
+          {props.children.length !== 0 ? (
+            props.children
+          ) : (
+            <tr>
+              <td className="text-center" colSpan={7}>
+                {TEXT.TRANSACTIONS_NOT_FOUND}
+              </td>
+            </tr>
+          )}
+        </tbody>
       </Table>
       <div className="d-flex justify-content-end mt-2">{props.pagination}</div>
     </>

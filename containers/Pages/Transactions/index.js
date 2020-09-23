@@ -1,5 +1,6 @@
 import Transactions from 'components/Pages/Transactions';
 import { GROUPS, JARS, TYPES } from 'constant/common';
+import { STORAGE_TABLE_HISTORY } from 'constant/storage';
 import * as TEXT from 'constant/text';
 import LayoutMain from 'containers/Layout/Layout-Main';
 import HomeBalances from 'containers/Pages/Home/Balances/Home-Balances';
@@ -48,13 +49,16 @@ const TransactionsContainer = () => {
 
   const onSubmit = async (values) => {
     dispatch(showLoadingUi());
+
     setInitialValues(values);
+    localStorage.setItem(STORAGE_TABLE_HISTORY, JSON.stringify(values));
     router.push({
       pathname: router.pathname,
       query: {
         page: 1,
       },
     });
+
     await delayLoading();
     dispatch(hideLoadingUi());
   };

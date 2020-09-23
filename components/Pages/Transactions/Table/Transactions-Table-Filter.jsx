@@ -7,7 +7,7 @@ import React from 'react';
 import { Button } from 'react-bootstrap';
 
 const TransactionsTableFilter = (props) => {
-  const { optionsFilterTypes, optionsFilterJars, optionsFilterGroups } = props;
+  const { initialValues, optionsFilterTypes, optionsFilterJars, optionsFilterGroups } = props;
 
   return (
     <Formik
@@ -33,14 +33,16 @@ const TransactionsTableFilter = (props) => {
               options={optionsFilterJars}
             />
           </div>
-          <div className="mr-1">
-            <FastField
-              name="group"
-              component={SelectAlternative}
-              placeholder={TEXT.FILTER_BY_GROUPS}
-              options={optionsFilterGroups}
-            />
-          </div>
+          {initialValues.type === 'expense' && (
+            <div className="mr-1">
+              <FastField
+                name="group"
+                component={SelectAlternative}
+                placeholder={TEXT.FILTER_BY_GROUPS}
+                options={optionsFilterGroups}
+              />
+            </div>
+          )}
         </div>
         <div className="d-inline-block mr-2" style={{ width: '100px' }}>
           <FastField
@@ -63,7 +65,9 @@ TransactionsTableFilter.propTypes = {
   optionsFilterJars: PropTypes.array,
   optionsFilterGroups: PropTypes.array,
 
-  initialValues: PropTypes.shape({}),
+  initialValues: PropTypes.shape({
+    type: PropTypes.string,
+  }),
   validationSchema: PropTypes.shape({}),
   onSubmit: PropTypes.func,
 };
@@ -73,7 +77,9 @@ TransactionsTableFilter.defaultProps = {
   optionsFilterJars: [],
   optionsFilterGroups: [],
 
-  initialValues: {},
+  initialValues: {
+    type: 'all',
+  },
   validationSchema: {},
   onSubmit: null,
 };
