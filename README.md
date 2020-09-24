@@ -1,9 +1,10 @@
 # expense-mgt
 
 Web App Money Managerment (Nextjs + Firebase)
-  - Nextjs (Reactjs)
-  - Redux
-  - Firebase
+
+- Nextjs (Reactjs)
+- Redux
+- Firebase
 
 ### Installation
 
@@ -17,6 +18,7 @@ $ npm install
 ```
 
 Config Environment Variables
+
 ```sh
 NEXT_PUBLIC_PRIVATE_KEY=(Your private key - key jwt)
 NEXT_PUBLIC_FIREBASE_APPID=(Appid Firebase)
@@ -26,20 +28,24 @@ NEXT_PUBLIC_FIREBASE_PROJECTID=(ProjectId Firebase)
 ```
 
 Run For Development
+
 ```sh
 $ npm run dev
 ```
 
 Build For Production
+
 ```sh
 $ npm run build
-$ npm run start-dev
+$ npm run start:dev
 ```
 
 Public Production (with PORT)
+
 ```sh
 $ npm start
 ```
+
 ### Todos
 
 - Dark Mode
