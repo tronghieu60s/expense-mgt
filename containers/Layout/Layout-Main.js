@@ -1,9 +1,9 @@
-import LayoutMain from 'components/Layout/Layout-Main';
+import LayoutMain from 'components/layout/Layout-Main';
 import Loading from 'components/UI/Loading';
 import * as PATH from 'constant/path';
 import * as STORAGE from 'constant/storage';
 import * as TEXT from 'constant/text';
-import Layout from 'containers/Layout';
+import Layout from 'containers/layout';
 import { delayLoading } from 'helpers/common';
 import jwt from 'jsonwebtoken';
 import { useRouter } from 'next/router';

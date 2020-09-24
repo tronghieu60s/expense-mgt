@@ -1,4 +1,4 @@
-import HomeBalancesModal from 'components/Pages/Home/Balances/Home-Balances-Modal';
+import HomeBalancesModal from 'components/pages/Home/Balances/Home-Balances-Modal';
 import * as TEXT from 'constant/text';
 import * as STORAGE from 'constant/storage';
 import { toastCustom } from 'helpers/common';

@@ -6,7 +6,7 @@ import { Pagination } from 'react-bootstrap';
 
 const PaginationUI = (props) => {
   const router = useRouter();
-  const { page } = router.query;
+  const page = router.query.page || 1;
   const { pagination, numberPage } = props;
   const { currentPage, endPage, totalPages } = pagination;
   const paginationPage = getPagination(

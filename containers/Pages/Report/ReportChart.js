@@ -1,4 +1,4 @@
-import ReportChart from 'components/Pages/Report/Report-Chart';
+import ReportChart from 'components/pages/Report/Report-Chart';
 import { arrayUniqueValue, arrSortObjectDate } from 'helpers/array';
 import { formatDateMark, getDateNowAgo } from 'helpers/datetime';
 import React, { useEffect, useState } from 'react';

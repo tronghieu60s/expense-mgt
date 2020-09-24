@@ -1,8 +1,8 @@
-import Report from 'components/Pages/Report';
+import Report from 'components/pages/Report';
 import { JARS } from 'constant/common';
 import * as TEXT from 'constant/text';
-import LayoutMain from 'containers/Layout/Layout-Main';
-import HomeBalances from 'containers/Pages/Home/Balances/Home-Balances';
+import LayoutMain from 'containers/layout/Layout-Main';
+import HomeBalances from 'containers/pages/Home/Balances/Home-Balances';
 import { delayLoading } from 'helpers/common';
 import { getDateNowAgo, parseDateString } from 'helpers/datetime';
 import { objectKeyToArray } from 'helpers/object';

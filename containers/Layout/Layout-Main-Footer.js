@@ -1,4 +1,4 @@
-import Footer from 'components/Layout/Layout-Main-Footer';
+import Footer from 'components/layout/Layout-Main-Footer';
 import { version } from 'package.json';
 import React from 'react';
 

@@ -1,9 +1,9 @@
-import Index from 'components/Pages';
+import Index from 'components/pages';
 import * as TEXT from 'constant/text';
-import LayoutMain from 'containers/Layout/Layout-Main';
-import HomeBalances from 'containers/Pages/Home/Balances/Home-Balances';
-import ChartJarsContainer from 'containers/Pages/Home/ChartJars';
-import TransactionsHistory from 'containers/Pages/Transactions/History/Transactions-History';
+import LayoutMain from 'containers/layout/Layout-Main';
+import HomeBalances from 'containers/pages/Home/Balances/Home-Balances';
+import ChartJarsContainer from 'containers/pages/Home/ChartJars';
+import TransactionsHistory from 'containers/pages/Transactions/History/Transactions-History';
 import React from 'react';
 import BackupsContainer from './Home/Backups';
 import ReportChartContainer from './Report/ReportChart';

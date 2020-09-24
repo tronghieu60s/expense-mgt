@@ -1,5 +1,5 @@
-import TransactionsHistoryTableItem from 'components/Pages/Transactions/History/Transactions-History-Table-Item';
-import TransactionsTable from 'components/Pages/Transactions/Table/Transactions-Table';
+import TransactionsHistoryTableItem from 'components/pages/Transactions/History/Transactions-History-Table-Item';
+import TransactionsTable from 'components/pages/Transactions/Table/Transactions-Table';
 import Pagination from 'components/UI/Pagination';
 import { GROUPS, JARS, TYPES } from 'constant/common';
 import * as TEXT from 'constant/text';

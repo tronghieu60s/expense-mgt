@@ -1,5 +1,5 @@
-import ChartJars from 'components/Pages/Home/ChartJars';
-import ChartJarsItem from 'components/Pages/Home/ChartJars/ChartJars-Item';
+import ChartJars from 'components/pages/Home/ChartJars';
+import ChartJarsItem from 'components/pages/Home/ChartJars/ChartJars-Item';
 import { JARS } from 'constant/common';
 import { objectKeyNameCodeToArray } from 'helpers/object';
 import React from 'react';

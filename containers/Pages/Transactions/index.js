@@ -1,9 +1,9 @@
-import Transactions from 'components/Pages/Transactions';
+import Transactions from 'components/pages/Transactions';
 import { GROUPS, JARS, TYPES } from 'constant/common';
 import { STORAGE_TABLE_HISTORY } from 'constant/storage';
 import * as TEXT from 'constant/text';
-import LayoutMain from 'containers/Layout/Layout-Main';
-import HomeBalances from 'containers/Pages/Home/Balances/Home-Balances';
+import LayoutMain from 'containers/layout/Layout-Main';
+import HomeBalances from 'containers/pages/Home/Balances/Home-Balances';
 import { delayLoading } from 'helpers/common';
 import { objectKeyToArray } from 'helpers/object';
 import { useRouter } from 'next/router';

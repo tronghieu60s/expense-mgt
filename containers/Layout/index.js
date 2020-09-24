@@ -1,4 +1,4 @@
-import Layout from 'components/Layout';
+import Layout from 'components/layout';
 import Loading from 'components/UI/Loading';
 import PropTypes from 'prop-types';
 import React, { createElement } from 'react';
