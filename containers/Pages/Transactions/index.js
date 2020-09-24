@@ -7,7 +7,7 @@ import HomeBalances from 'containers/Pages/Home/Balances/Home-Balances';
 import { delayLoading } from 'helpers/common';
 import { objectKeyToArray } from 'helpers/object';
 import { useRouter } from 'next/router';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { hideLoadingUi, showLoadingUi } from 'redux/actions/ui.action';
 import * as Yup from 'yup';
@@ -31,6 +31,11 @@ const TransactionsContainer = () => {
     group: 'all',
   });
 
+  useEffect(() => {
+    const storageFilter = JSON.parse(localStorage.getItem(STORAGE_TABLE_HISTORY));
+    if (storageFilter) setInitialValues(storageFilter);
+  }, []);
+
   const validationSchema = Yup.object().shape({
     show: Yup.number().typeError(TEXT.FIELD_NOT_MATCHES).required(TEXT.FIELD_IS_REQUIRED),
     type: Yup.string()
@@ -50,9 +55,10 @@ const TransactionsContainer = () => {
   const onSubmit = async (values) => {
     dispatch(showLoadingUi());
 
-    if (values.type !== 'expense') setInitialValues({ ...values, group: 'all' });
-    else setInitialValues(values);
-    localStorage.setItem(STORAGE_TABLE_HISTORY, JSON.stringify(values));
+    const newValues = values.type !== 'expense' ? { ...values, group: 'all' } : values;
+    setInitialValues(newValues);
+    localStorage.setItem(STORAGE_TABLE_HISTORY, JSON.stringify(newValues));
+
     router.push({
       pathname: router.pathname,
       query: {

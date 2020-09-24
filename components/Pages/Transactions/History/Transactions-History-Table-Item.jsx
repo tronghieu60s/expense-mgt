@@ -1,8 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Button } from 'react-bootstrap';
-import { TYPES, JARS, GROUPS } from 'constant/common';
+import { GROUPS, JARS, TYPES } from 'constant/common';
 import { formatDateMark } from 'helpers/datetime';
+import { formatMoneyLocal } from 'helpers/money';
+import PropTypes from 'prop-types';
+import React, { createElement } from 'react';
 
 const TransactionsHistoryTableItem = (props) => {
   const { index, transaction } = props;
@@ -14,7 +14,7 @@ const TransactionsHistoryTableItem = (props) => {
     <tr>
       <td>{index + 1}</td>
       <td className="weight-700" style={{ color: type.markColor }}>
-        {type.mark} 300.000 đ
+        {type.mark} {formatMoneyLocal(transaction.money)} đ
       </td>
       <td className="weight-700 text-capitalize" style={{ color: jar.color }}>
         {jar.name}
@@ -23,12 +23,8 @@ const TransactionsHistoryTableItem = (props) => {
       <td>{formatDateMark(transaction.date)}</td>
       <td style={{ whiteSpace: 'normal' }}>{transaction.description}</td>
       <td>
-        <Button variant="warning" size="sm">
-          Sửa
-        </Button>
-        <Button variant="danger" size="sm">
-          Xóa
-        </Button>
+        {props.editButton}
+        {props.deleteButton}
       </td>
     </tr>
   );
@@ -39,21 +35,27 @@ TransactionsHistoryTableItem.propTypes = {
   transaction: PropTypes.shape({
     type: PropTypes.string,
     jar: PropTypes.string,
+    money: PropTypes.number,
     group: PropTypes.string,
     date: PropTypes.string,
     description: PropTypes.string,
   }),
+  editButton: PropTypes.element,
+  deleteButton: PropTypes.element,
 };
 
 TransactionsHistoryTableItem.defaultProps = {
   index: 0,
   transaction: {
     type: '',
+    money: 0,
     jar: '',
     group: '',
     date: '',
     description: '',
   },
+  editButton: createElement('div'),
+  deleteButton: createElement('div'),
 };
 
 export default TransactionsHistoryTableItem;

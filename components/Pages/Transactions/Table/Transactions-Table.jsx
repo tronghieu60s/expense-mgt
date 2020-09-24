@@ -1,10 +1,12 @@
 import * as TEXT from 'constant/text';
+import { getDateNow } from 'helpers/datetime';
 import PropTypes from 'prop-types';
 import React, { createElement } from 'react';
 import { Table } from 'react-bootstrap';
+import { CSVLink } from 'react-csv';
 
 const TransactionsTable = (props) => {
-  const { numberTrans } = props;
+  const { csvData, csvHeaders, numberTrans } = props;
 
   return (
     <>
@@ -33,20 +35,38 @@ const TransactionsTable = (props) => {
           )}
         </tbody>
       </Table>
-      <div className="d-flex justify-content-end mt-2">{props.pagination}</div>
+      <div className="d-flex justify-content-between align-items-center mt-2">
+        <CSVLink
+          data={csvData}
+          headers={csvHeaders}
+          filename={`Expense_(${getDateNow()}).csv`}
+          className="btn btn-success btn-sm text-capitalize"
+          target="_blank"
+        >
+          {TEXT.EXPORT} {TEXT.FILE_EXCEL}
+        </CSVLink>
+        {props.pagination}
+      </div>
+      {props.modalDelete}
     </>
   );
 };
 
 TransactionsTable.propTypes = {
+  csvData: PropTypes.array,
+  csvHeaders: PropTypes.array,
   numberTrans: PropTypes.number,
   pagination: PropTypes.element,
+  modalDelete: PropTypes.element,
   children: PropTypes.array,
 };
 
 TransactionsTable.defaultProps = {
+  csvData: [],
+  csvHeaders: [],
   numberTrans: 0,
   pagination: createElement('div'),
+  modalDelete: createElement('div'),
   children: [],
 };
 

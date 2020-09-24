@@ -99,4 +99,4 @@ const HomeBalancesContainer = () => {
   );
 };
 
-export default React.memo(HomeBalancesContainer);
+export default HomeBalancesContainer;

@@ -38,7 +38,7 @@ const PaginationUI = (props) => {
   };
 
   return (
-    <Pagination>
+    <Pagination className="mb-0">
       <Pagination.Prev
         disabled={currentPage <= 1}
         onClick={() => {

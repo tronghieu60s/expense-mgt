@@ -116,5 +116,8 @@ export function updateTransaction(user, _id, update) {
 }
 
 export function deleteTransaction(user, _id) {
-  return transactionsModel.child(user).child(_id).remove();
+  return getTransaction(user, _id).then((transaction) => {
+    transactionsModel.child(user).child(_id).remove();
+    return transaction;
+  });
 }

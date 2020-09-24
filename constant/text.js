@@ -61,6 +61,7 @@ export const PASSWORD_VALIDATE_INCORRECT = 'Mật khẩu không chính xác.';
 export const PASSWORD_NOT_MATCH_2_FORM = 'Mật khẩu không khớp. Vui lòng thử lại.';
 
 export const UPDATE_DATA_SUCCESS = 'Cập nhật dữ liệu thành công.';
+export const DELETE_DATA_SUCCESS = 'Xóa dữ liệu thành công.';
 export const DATA_NOT_CHANGED = 'Dữ liệu chưa được thay đổi.';
 
 export const TRANSACTIONS_NOT_FOUND = 'Không có giao dịch nào';
@@ -113,3 +114,6 @@ export const GROUP = 'Nhóm';
 export const DATE = 'Thời Gian';
 export const DESCRIPTION = 'Mô Tả';
 export const ACTION = 'Hành Động';
+
+export const EDIT = 'Sửa';
+export const DELETE = 'Xóa';
