@@ -1,4 +1,4 @@
-import Index from 'containers/pages/PageIndex';
+import Index from 'containers/pages/Home/Home';
 
 const index = () => <Index />;
 

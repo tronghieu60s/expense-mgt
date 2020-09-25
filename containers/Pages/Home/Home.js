@@ -1,12 +1,12 @@
-import Index from 'components/pages/PageIndex';
+import Index from 'components/pages/Home/Home';
 import * as TEXT from 'constant/text';
 import LayoutMain from 'containers/layout/Layout-Main';
 import HomeBalances from 'containers/pages/Home/Balances/Home-Balances';
 import ChartJarsContainer from 'containers/pages/Home/ChartJars/ChartJars';
 import TransactionsHistory from 'containers/pages/Transactions/History/Transactions-History';
 import React from 'react';
-import BackupsContainer from './Home/Backups/Backups';
-import ReportChartContainer from './Report/ReportChart';
+import BackupsContainer from './Backups/Backups';
+import ReportChartContainer from '../Report/ReportChart';
 
 const IndexContainer = () => {
   return (
