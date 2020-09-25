@@ -3,7 +3,7 @@ import Loading from 'components/UI/Loading';
 import * as PATH from 'constant/path';
 import * as STORAGE from 'constant/storage';
 import * as TEXT from 'constant/text';
-import Layout from 'containers/layout';
+import Layout from 'containers/layout/Layout';
 import { delayLoading } from 'helpers/common';
 import jwt from 'jsonwebtoken';
 import { useRouter } from 'next/router';

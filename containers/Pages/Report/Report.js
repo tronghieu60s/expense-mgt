@@ -10,7 +10,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { hideLoadingUi, showLoadingUi } from 'redux/actions/ui.action';
 import * as Yup from 'yup';
-import BackupsContainer from '../Home/Backups';
+import BackupsContainer from '../Home/Backups/Backups';
 import ChartJarsAllContainer from '../Home/ChartJars/ChartJars-All';
 import ReportSortContainer from './Report-Sort';
 import ReportChartContainer from './ReportChart';

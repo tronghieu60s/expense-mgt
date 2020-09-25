@@ -11,7 +11,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { hideLoadingUi, showLoadingUi } from 'redux/actions/ui.action';
 import * as Yup from 'yup';
-import BackupsContainer from '../Home/Backups';
+import BackupsContainer from '../Home/Backups/Backups';
 import TransactionsTableContainer from './Table/Transactions-Table';
 import TransactionsTableFilterContainer from './Table/Transactions-Table-Filter';
 
