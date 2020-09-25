@@ -1,4 +1,4 @@
-import Report from 'components/pages/Report';
+import Report from 'components/pages/Report/Report';
 import { JARS } from 'constant/common';
 import * as TEXT from 'constant/text';
 import LayoutMain from 'containers/layout/Layout-Main';

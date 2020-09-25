@@ -1,6 +1,6 @@
 import TransactionsHistoryTableItem from 'components/pages/Transactions/History/Transactions-History-Table-Item';
 import TransactionsTable from 'components/pages/Transactions/Table/Transactions-Table';
-import Pagination from 'components/UI/Pagination';
+import Pagination from 'components/UI/Pagination/Pagination';
 import { GROUPS, JARS, TYPES } from 'constant/common';
 import * as TEXT from 'constant/text';
 import { delayLoading, toastCustom } from 'helpers/common';

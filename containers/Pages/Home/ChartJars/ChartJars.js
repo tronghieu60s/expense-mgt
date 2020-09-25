@@ -1,4 +1,4 @@
-import ChartJars from 'components/pages/Home/ChartJars';
+import ChartJars from 'components/pages/Home/ChartJars/ChartJars';
 import ChartJarsItem from 'components/pages/Home/ChartJars/ChartJars-Item';
 import { JARS } from 'constant/common';
 import { objectKeyNameCodeToArray } from 'helpers/object';

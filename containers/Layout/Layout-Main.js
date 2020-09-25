@@ -1,5 +1,5 @@
 import LayoutMain from 'components/layout/Layout-Main';
-import Loading from 'components/UI/Loading';
+import Loading from 'components/UI/Loading/Loading';
 import * as PATH from 'constant/path';
 import * as STORAGE from 'constant/storage';
 import * as TEXT from 'constant/text';

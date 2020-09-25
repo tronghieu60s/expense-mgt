@@ -1,4 +1,4 @@
-import Transactions from 'components/pages/Transactions';
+import Transactions from 'components/pages/Transactions/Transactions';
 import { GROUPS, JARS, TYPES } from 'constant/common';
 import { STORAGE_TABLE_HISTORY } from 'constant/storage';
 import * as TEXT from 'constant/text';

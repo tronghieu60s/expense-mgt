@@ -1,4 +1,4 @@
-import Index from 'components/pages';
+import Index from 'components/pages/PageIndex';
 import * as TEXT from 'constant/text';
 import LayoutMain from 'containers/layout/Layout-Main';
 import HomeBalances from 'containers/pages/Home/Balances/Home-Balances';

@@ -1,4 +1,4 @@
-import Backups from 'components/pages/Home/Backups';
+import Backups from 'components/pages/Home/Backups/Backups';
 import { JARS, TYPES } from 'constant/common';
 import * as TEXT from 'constant/text';
 import { delayLoading, toastCustom } from 'helpers/common';
