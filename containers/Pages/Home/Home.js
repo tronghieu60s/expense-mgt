@@ -1,4 +1,4 @@
-import Index from 'components/pages/Home/Home';
+import Home from 'components/pages/Home/Home';
 import * as TEXT from 'constant/text';
 import LayoutMain from 'containers/layout/Layout-Main';
 import HomeBalances from 'containers/pages/Home/Balances/Home-Balances';
@@ -8,10 +8,10 @@ import React from 'react';
 import BackupsContainer from './Backups/Backups';
 import ReportChartContainer from '../Report/ReportChart';
 
-const IndexContainer = () => {
+const HomeContainer = () => {
   return (
     <LayoutMain title={TEXT.HOME}>
-      <Index
+      <Home
         componentBlock1={<HomeBalances />}
         componentBlock2={<BackupsContainer />}
         componentBlock3={<ChartJarsContainer />}
@@ -22,4 +22,4 @@ const IndexContainer = () => {
   );
 };
 
-export default IndexContainer;
+export default HomeContainer;

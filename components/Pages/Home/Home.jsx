@@ -6,7 +6,7 @@ import React, { createElement } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import MainBlock from 'components/UI/Block/Main-Block';
 
-const Index = (props) => {
+const Home = (props) => {
   return (
     <Row>
       <Col className="pr-lg-1" md={12} lg={3}>
@@ -48,7 +48,7 @@ const Index = (props) => {
   );
 };
 
-Index.propTypes = {
+Home.propTypes = {
   componentBlock1: PropTypes.element,
   componentBlock2: PropTypes.element,
   componentBlock3: PropTypes.element,
@@ -56,7 +56,7 @@ Index.propTypes = {
   componentBlock5: PropTypes.element,
 };
 
-Index.defaultProps = {
+Home.defaultProps = {
   componentBlock1: createElement('div'),
   componentBlock2: createElement('div'),
   componentBlock3: createElement('div'),
@@ -64,4 +64,4 @@ Index.defaultProps = {
   componentBlock5: createElement('div'),
 };
 
-export default Index;
+export default Home;

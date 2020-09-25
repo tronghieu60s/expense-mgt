@@ -1,5 +1,5 @@
-import Index from 'containers/pages/Home/Home';
+import Home from 'containers/pages/Home/Home';
 
-const index = () => <Index />;
+const index = () => <Home />;
 
 export default index;
