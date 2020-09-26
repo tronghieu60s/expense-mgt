@@ -1,8 +1,8 @@
 # Base on offical Node.js Alpine image
-FROM node:10
+FROM node:10-alpine
 
 # Set working directory
-WORKDIR /usr/src/app
+WORKDIR /app
 
 # Copy package.json and package-lock.json before other files
 # Utilise Docker cache to save re-installing dependencies if unchanged
