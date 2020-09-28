@@ -7,7 +7,7 @@ import { Col, Row } from 'react-bootstrap';
 const Transactions = (props) => {
   return (
     <Row>
-      <Col className="pr-lg-1" md={12} lg={3}>
+      <Col className="d-none d-lg-block pr-lg-1" md={12} lg={3}>
         <Row>
           <Col md={6} lg={12}>
             <MainBlock>{props.componentBlock1}</MainBlock>

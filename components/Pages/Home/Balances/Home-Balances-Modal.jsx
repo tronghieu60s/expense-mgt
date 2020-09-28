@@ -63,7 +63,7 @@ const HomeBalancesModal = (props) => {
           >
             <Form>
               <Row>
-                <Col sm={4}>
+                <Col xs={4}>
                   <Button
                     variant={tab === 'income' ? 'primary' : 'outline-dark'}
                     size="sm"
@@ -89,7 +89,7 @@ const HomeBalancesModal = (props) => {
                     Chuyển Hũ
                   </Button>
                 </Col>
-                <Col sm={8}>
+                <Col xs={8}>
                   {tab === 'move-money' && (
                     <>
                       <FastField

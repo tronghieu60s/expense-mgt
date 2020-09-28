@@ -24,7 +24,7 @@ const LayoutMainJars = (props) => {
         </Modal.Header>
         <Modal.Body className="py-2">
           <div className="px-3 pt-2">
-            <div className="px-5 mb-4">
+            <div className="mb-4 px-2 px-lg-5">
               <Doughnut
                 data={{
                   labels: jarsName,
@@ -49,7 +49,7 @@ const LayoutMainJars = (props) => {
               onSubmit={props.onSubmit}
             >
               <Form>
-                <div className="mb-4 px-5">
+                <div className="mb-4 px-2 px-lg-5">
                   <div className="text-12 weight-700 text-uppercase text-right mb-2">
                     Tổng: {totalPercent || 0}%
                   </div>
