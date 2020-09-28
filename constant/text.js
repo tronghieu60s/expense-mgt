@@ -36,7 +36,7 @@ export const PASSWORD_NOT_MATCH =
   'Mật khẩu phải lớn hơn 6 kí tự, không chứa khoảng trắng và kí tự đặc biệt';
 
 export const SETTING = 'Cài đặt';
-export const PERSONAL_INFORMATION = 'Thông tin cá nhân';
+export const PERSONAL_INFORMATION = 'Thông tin';
 export const CHANGE_PASSWORD = 'Đổi mật khẩu';
 
 export const LOADING_TEXT = 'Đang tải...';

@@ -24,7 +24,7 @@ const LayoutMainJars = (props) => {
         </Modal.Header>
         <Modal.Body className="py-2">
           <div className="px-3 pt-2">
-            <div className="mb-4 px-2 px-lg-5">
+            <div className="d-none d-md-block mb-4 px-2 px-lg-5">
               <Doughnut
                 data={{
                   labels: jarsName,
@@ -37,6 +37,26 @@ const LayoutMainJars = (props) => {
                 }}
                 options={{
                   legend: {
+                    position: 'left',
+                  },
+                  hover: false,
+                }}
+              />
+            </div>
+            <div className="d-md-none mb-4 px-2 px-lg-5">
+              <Doughnut
+                data={{
+                  labels: jarsName,
+                  datasets: [
+                    {
+                      backgroundColor: jarsColor,
+                      data: jarsValues,
+                    },
+                  ],
+                }}
+                options={{
+                  legend: {
+                    display: false,
                     position: 'left',
                   },
                   hover: false,

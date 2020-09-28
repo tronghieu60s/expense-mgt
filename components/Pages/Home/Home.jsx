@@ -14,7 +14,7 @@ const Home = (props) => {
           <Col md={6} lg={12}>
             <MainBlock>{props.componentBlock1}</MainBlock>
           </Col>
-          <Col md={6} lg={12}>
+          <Col className="d-none d-md-block" md={6} lg={12}>
             <MainBlock title={TEXT.BACKUPS_DATA}>{props.componentBlock2}</MainBlock>
           </Col>
         </Row>
@@ -22,7 +22,7 @@ const Home = (props) => {
       <Col className="pl-lg-1" md={12} lg={9}>
         <MainBlock>{props.componentBlock3}</MainBlock>
         <Row>
-          <Col className="pr-lg-1" md={6} lg={8}>
+          <Col className="pr-lg-1 order-2 order-lg-1" md={6} lg={8}>
             <MainBlock title={TEXT.REPORT_REVENUE_EXPENDITURE}>
               {props.componentBlock4}
               <Link href={PATH.REPORT_PAGE}>
@@ -32,7 +32,7 @@ const Home = (props) => {
               </Link>
             </MainBlock>
           </Col>
-          <Col className="pl-lg-1" md={6} lg={4}>
+          <Col className="pl-lg-1 order-1 order-lg-2" md={6} lg={4}>
             <MainBlock title={TEXT.NEW_TRANSACTION}>
               {props.componentBlock5}
               <Link href={PATH.HISTORY_PAGE}>

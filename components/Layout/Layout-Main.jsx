@@ -13,13 +13,13 @@ const Layout = (props) => {
     <div className="expense-main py-3">
       <Container fluid>
         <Row>
-          <Col xs={6} md={3}>
+          <Col xs={6} md={3} className="order-2 order-md-1">
             <div className="expense-main-head">
               <h4 className="mb-0">Xin chào {display_name}!</h4>
               <span className="text-13">Hôm nay bạn có gì mới không?</span>
             </div>
           </Col>
-          <Col xs={6} md={6} className="mt-2 mt-md-0 d-flex align-items-center">
+          <Col xs={6} md={5} className="mt-0 order-1 order-md-2">
             <Navbar className="p-0 text-14 ml-auto ml-md-0" expand="md">
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
               <Navbar.Collapse id="basic-navbar-nav">
@@ -43,13 +43,11 @@ const Layout = (props) => {
               </Navbar.Collapse>
             </Navbar>
           </Col>
-          <Col md={3} className="mt-2 mt-md-0 text-left text-md-right">
-            <div className="d-flex justify-content-end">
+          <Col md={4} className="mt-2 order-3">
+            <div className="d-flex justify-content-start justify-content-lg-end">
               {props.componentSetting}
               <div className="ml-1">{props.componentJars}</div>
-            </div>
-            <div className="d-flex justify-content-end mt-1">
-              <Button variant="danger" size="sm" className="mt-0" onClick={handleLogout}>
+              <Button variant="danger" size="sm" className="ml-1" onClick={handleLogout}>
                 <i className="fa fa-sign-out" aria-hidden="true" /> Đăng Xuất
               </Button>
             </div>
