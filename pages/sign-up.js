@@ -1,4 +1,4 @@
-import SignUp from 'containers/pages/Auth/SignUp';
+import SignUp from 'src/containers/pages/Auth/SignUp';
 
 const signUp = () => <SignUp />;
 

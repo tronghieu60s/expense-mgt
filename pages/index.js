@@ -1,4 +1,4 @@
-import Home from 'containers/pages/Home/Home';
+import Home from 'src/containers/pages/Home/Home';
 
 const index = () => <Home />;
 

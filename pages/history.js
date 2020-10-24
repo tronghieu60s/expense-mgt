@@ -1,5 +1,5 @@
 import React from 'react';
-import TransactionsContainer from 'containers/pages/Transactions/Transactions';
+import TransactionsContainer from 'src/containers/pages/Transactions/Transactions';
 
 const history = () => <TransactionsContainer />;
 

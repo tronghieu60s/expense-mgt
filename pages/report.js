@@ -1,5 +1,5 @@
 import React from 'react';
-import Report from 'containers/pages/Report/Report';
+import Report from 'src/containers/pages/Report/Report';
 
 const report = () => <Report />;
 
