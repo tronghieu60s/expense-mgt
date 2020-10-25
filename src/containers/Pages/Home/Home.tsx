@@ -1,12 +1,12 @@
-import Home from 'src/components/pages/Home/Home';
+import React from 'react';
+import Home from 'src/components/Pages/Home/Home';
 import * as TEXT from 'src/constant/text';
 import LayoutMain from 'src/containers/Layout/Layout-Main';
 import HomeBalances from 'src/containers/Pages/Home/Balances/Home-Balances';
 import ChartJarsContainer from 'src/containers/Pages/Home/ChartJars/ChartJars';
-import TransactionsHistory from 'src/containers/pages/Transactions/History/Transactions-History';
-import React from 'react';
-import BackupsContainer from './Backups/Backups';
+import TransactionsHistory from 'src/containers/Pages/Transactions/History/Transactions-History';
 import ReportChartContainer from '../Report/ReportChart';
+import BackupsContainer from './Backups/Backups';
 
 const HomeContainer = (): JSX.Element => {
   return (

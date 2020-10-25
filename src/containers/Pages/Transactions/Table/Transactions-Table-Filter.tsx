@@ -1,5 +1,5 @@
 import { optionsGroups, optionsJars, optionsTypes } from 'src/common';
-import TransactionsTableFilter from 'src/components/pages/Transactions/Table/Transactions-Table-Filter';
+import TransactionsTableFilter from 'src/components/Pages/Transactions/Table/Transactions-Table-Filter';
 import React from 'react';
 
 interface Props {

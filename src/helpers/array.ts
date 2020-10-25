@@ -17,5 +17,9 @@ export const arraySubtract2Arr = (arr1, arr2) => {
 };
 
 export const arrSortObjectDate = (arr) => {
-  return arr.slice().sort((a, b) => new Date(a.date) - new Date(b.date));
+  return arr.slice().sort((a, b) => {
+    const date1: Date = new Date(a.date);
+    const date2: Date = new Date(b.date);
+    return date1.getTime() - date2.getTime();
+  });
 };

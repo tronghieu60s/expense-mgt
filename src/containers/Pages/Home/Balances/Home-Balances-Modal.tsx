@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { hideLoadingUi, showLoadingUi } from 'src/redux/actions/ui.action';
-import HomeBalancesModal from 'src/components/pages/Home/Balances/Home-Balances-Modal';
+import HomeBalancesModal from 'src/components/Pages/Home/Balances/Home-Balances-Modal';
 import { JARS } from 'src/constant/common';
 import * as STORAGE from 'src/constant/storage';
 import * as TEXT from 'src/constant/text';

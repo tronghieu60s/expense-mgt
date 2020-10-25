@@ -1,5 +1,5 @@
-import LayoutMainJars from 'src/components/layout/Layout-Main-Jars';
-import LayoutMainJarsItem from 'src/components/layout/Layout-Main-JarsItem';
+import LayoutMainJars from 'src/components/Layout/Layout-Main-Jars';
+import LayoutMainJarsItem from 'src/components/Layout/Layout-Main-JarsItem';
 import { JARS } from 'src/constant/common';
 import * as TEXT from 'src/constant/text';
 import { delayLoading, toastCustom } from 'src/helpers/common';

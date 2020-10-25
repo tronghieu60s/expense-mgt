@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import Transactions from 'src/components/pages/Transactions/Transactions';
+import Transactions from 'src/components/Pages/Transactions/Transactions';
 import { GROUPS, JARS, TYPES } from 'src/constant/common';
 import { STORAGE_TABLE_HISTORY } from 'src/constant/storage';
 import * as TEXT from 'src/constant/text';

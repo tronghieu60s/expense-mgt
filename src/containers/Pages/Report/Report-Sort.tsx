@@ -1,5 +1,5 @@
 import { optionsJars } from 'src/common';
-import ReportSort from 'src/components/pages/Report/Report-Sort';
+import ReportSort from 'src/components/Pages/Report/Report-Sort';
 import { arrayUniqueValue, arrSortObjectDate } from 'src/helpers/array';
 import React from 'react';
 

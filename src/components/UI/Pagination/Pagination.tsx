@@ -4,7 +4,7 @@ import React from 'react';
 import { Pagination } from 'react-bootstrap';
 
 interface Props {
-  numberPage: number;
+  numberPage?: number;
   pagination: {
     currentPage: number;
     startIndex: number;

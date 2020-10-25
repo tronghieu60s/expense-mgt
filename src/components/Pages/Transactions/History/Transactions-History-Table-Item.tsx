@@ -13,12 +13,11 @@ interface Props {
     date: string;
     description: string;
   };
-  editButton: JSX.Element;
   deleteButton: JSX.Element;
 }
 
 const TransactionsHistoryTableItem: React.FC<Props> = (props) => {
-  const { index, transaction, editButton, deleteButton } = props;
+  const { index, transaction, deleteButton } = props;
   const type = TYPES[transaction.type];
   const jar = JARS[transaction.jar];
   const group = GROUPS[transaction.group] || { name: '' };
@@ -35,10 +34,7 @@ const TransactionsHistoryTableItem: React.FC<Props> = (props) => {
       <td className="weight-700 text-capitalize">{group.name}</td>
       <td>{formatDateMark(transaction.date)}</td>
       <td style={{ whiteSpace: 'normal' }}>{transaction.description}</td>
-      <td>
-        {editButton}
-        {deleteButton}
-      </td>
+      <td>{deleteButton}</td>
     </tr>
   );
 };

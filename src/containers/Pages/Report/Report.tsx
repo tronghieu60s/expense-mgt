@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Report from 'src/components/pages/Report/Report';
+import Report from 'src/components/Pages/Report/Report';
 import { JARS } from 'src/constant/common';
 import * as TEXT from 'src/constant/text';
 import LayoutMain from 'src/containers/Layout/Layout-Main';

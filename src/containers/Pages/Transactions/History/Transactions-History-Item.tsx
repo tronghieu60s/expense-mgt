@@ -1,4 +1,4 @@
-import TransactionsHistoryItem from 'src/components/pages/Transactions/History/Transactions-History-Item';
+import TransactionsHistoryItem from 'src/components/Pages/Transactions/History/Transactions-History-Item';
 import React from 'react';
 import { JARS } from 'src/constant/common';
 

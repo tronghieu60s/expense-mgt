@@ -1,4 +1,4 @@
-import ChartJarsAll from 'src/components/pages/Home/ChartJars/ChartJars-All';
+import ChartJarsAll from 'src/components/Pages/Home/ChartJars/ChartJars-All';
 import { JARS } from 'src/constant/common';
 import { objectKeyNameCodeToArray } from 'src/helpers/object';
 import React from 'react';

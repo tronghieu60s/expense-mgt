@@ -3,7 +3,7 @@ import { Formik } from 'formik';
 import { useRouter } from 'next/router';
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import SignIn from 'src/components/pages/Auth/SignIn';
+import SignIn from 'src/components/Pages/Auth/SignIn';
 import * as PATH from 'src/constant/path';
 import * as TEXT from 'src/constant/text';
 import Auth from 'src/containers/Pages/Auth/Auth';

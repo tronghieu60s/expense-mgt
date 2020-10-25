@@ -1,12 +1,12 @@
-import ReportChart from 'src/components/pages/Report/Report-Chart';
+import ReportChart from 'src/components/Pages/Report/Report-Chart';
 import { arrayUniqueValue, arrSortObjectDate } from 'src/helpers/array';
 import { formatDateMark, getDateNowAgo } from 'src/helpers/datetime';
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 
 interface Props {
-  tabSort: string;
-  initialValues: {
+  tabSort?: string;
+  initialValues?: {
     date: string;
     show: number;
     year: string;

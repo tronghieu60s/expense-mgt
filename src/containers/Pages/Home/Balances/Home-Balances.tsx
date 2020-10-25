@@ -1,4 +1,4 @@
-import HomeBalances from 'src/components/pages/Home/Balances/Home-Balances';
+import HomeBalances from 'src/components/Pages/Home/Balances/Home-Balances';
 import { GROUPS, JARS } from 'src/constant/common';
 import * as STORAGE from 'src/constant/storage';
 import * as TEXT from 'src/constant/text';

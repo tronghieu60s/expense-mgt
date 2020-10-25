@@ -1,7 +1,7 @@
 import bcrypt from 'bcryptjs';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import LayoutMainSetting from 'src/components/layout/Layout-Main-Setting';
+import LayoutMainSetting from 'src/components/Layout/Layout-Main-Setting';
 import * as TEXT from 'src/constant/text';
 import { delayLoading, toastCustom } from 'src/helpers/common';
 import { hideLoadingUi, showLoadingUi } from 'src/redux/actions/ui.action';

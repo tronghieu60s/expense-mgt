@@ -2,7 +2,7 @@ import jwt from 'jsonwebtoken';
 import { useRouter } from 'next/router';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import LayoutMain from 'src/components/layout/Layout-Main';
+import LayoutMain from 'src/components/Layout/Layout-Main';
 import Loading from 'src/components/UI/Loading/Loading';
 import * as PATH from 'src/constant/path';
 import * as STORAGE from 'src/constant/storage';

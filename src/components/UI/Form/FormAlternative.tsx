@@ -61,7 +61,7 @@ const FormAlternative: React.FC<Props> = (props) => {
           </div>
         )}
         <FormControl
-          size={!icon ? 'sm' : 'md'}
+          size={!icon ? 'sm' : null}
           name={name}
           value={defaultValue || value}
           onChange={onChange}

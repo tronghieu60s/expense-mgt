@@ -1,5 +1,5 @@
 import bcrypt from 'bcryptjs';
-import SignUp from 'src/components/pages/Auth/SignUp';
+import SignUp from 'src/components/Pages/Auth/SignUp';
 import * as PATH from 'src/constant/path';
 import * as TEXT from 'src/constant/text';
 import Auth from 'src/containers/Pages/Auth/Auth';

@@ -26,6 +26,7 @@ module.exports = {
   ],
   rules: {
     camelcase: 'off',
+    '@typescript-eslint/no-empty-function': 'off',
     'no-restricted-syntax': 'off',
     'no-prototype-builtins': 'off',
     'no-underscore-dangle': 'off',

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import Layout from 'src/components/layout/Layout';
+import Layout from 'src/components/Layout/Layout';
 import Loading from 'src/components/UI/Loading/Loading';
 
 interface Props {
