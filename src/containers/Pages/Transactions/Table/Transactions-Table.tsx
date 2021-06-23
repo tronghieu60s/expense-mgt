@@ -90,7 +90,7 @@ const TransactionsTableContainer: React.FC<Props> = (props) => {
       };
     }
     if (itemDelete.type === 'expense') {
-      const cal = balance[itemDelete.type][itemDelete.jar] + itemDelete.money;
+      const cal = balance[itemDelete.type][itemDelete.jar] - itemDelete.money;
       newBalance = {
         ...balance,
         expense: { ...expense, [itemDelete.jar]: cal },
